@@ -21,20 +21,8 @@
 		6D6B98C8140E16F200835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
 		6D6B98CB140E173E00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
 		6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
-		6D6B98D2140E3FEB00835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
-		6D6B98D3140E3FEB00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
 		6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6D6B98B2140E162700835E88 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6D6B9884140E162600835E88 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6D6B988C140E162700835E88;
-			remoteInfo = AutomagicCoding;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6D6B988D140E162700835E88 /* AutomagicCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomagicCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +194,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				6D6B98B3140E162700835E88 /* PBXTargetDependency */,
 			);
 			name = AutomagicCodingTests;
 			productName = AutomagicCodingTests;
@@ -279,8 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D6B98D2140E3FEB00835E88 /* Foo.m in Sources */,
-				6D6B98D3140E3FEB00835E88 /* Bar.m in Sources */,
 				6D6B989E140E162700835E88 /* main.m in Sources */,
 				6D6B98A5140E162700835E88 /* AutomagicCodingAppDelegate.m in Sources */,
 				6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
@@ -299,14 +284,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6D6B98B3140E162700835E88 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6D6B988C140E162700835E88 /* AutomagicCoding */;
-			targetProxy = 6D6B98B2140E162700835E88 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D6B989A140E162700835E88 /* InfoPlist.strings */ = {
@@ -466,6 +443,7 @@
 				6D6B98C2140E162700835E88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6D6B98C3140E162700835E88 /* Build configuration list for PBXNativeTarget "AutomagicCodingTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +452,7 @@
 				6D6B98C5140E162700835E88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
