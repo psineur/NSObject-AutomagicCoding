@@ -121,6 +121,7 @@
         char *classNameCString = strstr(attributes, "@\"");
         if ( classNameCString )
         {
+            classNameCString += 2; //< skip @" substring
             NSString *classNameString = [NSString stringWithCString:classNameCString encoding:NSUTF8StringEncoding];
             NSRange range = [classNameString rangeOfString:@"\""];
             

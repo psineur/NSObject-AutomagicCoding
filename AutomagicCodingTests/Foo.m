@@ -25,6 +25,16 @@
     return self;
 }
 
+- (BOOL) isObjectValueForKey:(NSString *)aKey
+{
+    if ([aKey isEqualToString:@"privateBar"])
+    {
+        return YES;
+    }
+    
+    return [super isObjectValueForKey: aKey];
+}
+
 - (NSArray *) keysForValuesInDictionaryRepresentation
 {
     NSArray *array = [super keysForValuesInDictionaryRepresentation];
