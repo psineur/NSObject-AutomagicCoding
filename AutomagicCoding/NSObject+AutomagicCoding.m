@@ -9,19 +9,32 @@
 #import "NSObject+AutomagicCoding.h"
 #import "objc/runtime.h"
 
+#define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
+
 @implementation NSObject (AutomagicCoding)
+
 
 
 #pragma mark Decode/Create/Init
 
 + (id) objectWithDictionaryRepresentation: (NSDictionary *) aDict
 {
-    NSString *className = [aDict objectForKey: @"class"];
+    if (![aDict isKindOfClass:[NSDictionary class]])
+        return nil;
+    
+    NSString *className = [aDict objectForKey: NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
     if( ![className isKindOfClass:[NSString class]] )
         return nil;
     
     Class rClass = NSClassFromString(className);
-    return [[[rClass alloc] initWithDictionaryRepresentation: aDict] autorelease];
+    if (rClass)
+    {
+        id instance = [[[rClass alloc] initWithDictionaryRepresentation: aDict] autorelease];
+        object_setClass(instance, rClass);
+        return instance;
+    }
+    
+    return nil;
 }
 
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict
@@ -53,7 +66,7 @@
 - (NSDictionary *) dictionaryRepresentation
 {
     NSArray *keysForValues = [self keysForValuesInDictionaryRepresentation];
-    NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count]];
+    NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count] + 1];
        
     for (NSString *key in keysForValues)
     {
@@ -68,6 +81,8 @@
         // Scalar or struct - simply use KVC.                       
         [aDict setValue:value forKey: key];
     }
+    
+    [aDict setValue:[self className] forKey: NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
     
     return aDict;
 }
@@ -101,7 +116,7 @@
     if (property)
     {
         const char *attributes = property_getAttributes(property);
-        if ( NULL != strstr(attributes, "@") )
+        if ( ( NULL != strstr(attributes, "@") ) && ( NULL == strstr(attributes, "NSString") ) )
             return YES;
     }
     

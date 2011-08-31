@@ -21,7 +21,9 @@
 		6D6B98C8140E16F200835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
 		6D6B98CB140E173E00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
 		6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
-		6D6B98CF140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
+		6D6B98D2140E3FEB00835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
+		6D6B98D3140E3FEB00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
+		6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,7 @@
 		6D6B98CA140E173E00835E88 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
 		6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
+		6D6B98D5140E402600835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 		6D6B9882140E162600835E88 = {
 			isa = PBXGroup;
 			children = (
+				6D6B98D5140E402600835E88 /* SenTestingKit.framework */,
 				6D6B9897140E162700835E88 /* AutomagicCoding */,
 				6D6B98B4140E162700835E88 /* AutomagicCodingTests */,
 				6D6B9890140E162700835E88 /* Frameworks */,
@@ -275,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6B98D2140E3FEB00835E88 /* Foo.m in Sources */,
+				6D6B98D3140E3FEB00835E88 /* Bar.m in Sources */,
 				6D6B989E140E162700835E88 /* main.m in Sources */,
 				6D6B98A5140E162700835E88 /* AutomagicCodingAppDelegate.m in Sources */,
 				6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
@@ -285,10 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
 				6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */,
 				6D6B98C8140E16F200835E88 /* Foo.m in Sources */,
 				6D6B98CB140E173E00835E88 /* Bar.m in Sources */,
-				6D6B98CF140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +392,10 @@
 		6D6B98C1140E162700835E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
@@ -397,6 +407,10 @@
 		6D6B98C2140E162700835E88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
