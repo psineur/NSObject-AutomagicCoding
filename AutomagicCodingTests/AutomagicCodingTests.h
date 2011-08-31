@@ -8,6 +8,11 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+@class Foo;
 @interface AutomagicCodingTests : SenTestCase
+{
+    Foo *_foo;
+}
+@property(readwrite, retain) Foo *foo;
 
 @end
