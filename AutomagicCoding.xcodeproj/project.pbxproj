@@ -18,6 +18,8 @@
 		6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98B7140E162700835E88 /* InfoPlist.strings */; };
 		6D6B98BB140E162700835E88 /* AutomagicCodingTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */; };
 		6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */; };
+		6D6B98C8140E16F200835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
+		6D6B98CB140E173E00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,20 +38,24 @@
 		6D6B9894140E162700835E88 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		6D6B9895140E162700835E88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6D6B9896140E162700835E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
+		6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
 		6D6B989B140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D6B989D140E162700835E88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D6B989F140E162700835E88 /* AutomagicCoding-Prefix.pch */ = {isa = PBXFileReference; path = "AutomagicCoding-Prefix.pch"; sourceTree = "<group>"; };
+		6D6B989F140E162700835E88 /* AutomagicCoding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutomagicCoding-Prefix.pch"; sourceTree = "<group>"; };
 		6D6B98A1140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */ = {isa = PBXFileReference; path = AutomagicCodingAppDelegate.h; sourceTree = "<group>"; };
+		6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingAppDelegate.h; sourceTree = "<group>"; };
 		6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingAppDelegate.m; sourceTree = "<group>"; };
 		6D6B98A7140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomagicCodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B98AF140E162700835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */ = {isa = PBXFileReference; path = "AutomagicCodingTests-Info.plist"; sourceTree = "<group>"; };
+		6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutomagicCodingTests-Info.plist"; sourceTree = "<group>"; };
 		6D6B98B8140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingTests.h; sourceTree = "<group>"; };
 		6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingTests.m; sourceTree = "<group>"; };
+		6D6B98C6140E16F200835E88 /* Foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foo.h; sourceTree = "<group>"; };
+		6D6B98C7140E16F200835E88 /* Foo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foo.m; sourceTree = "<group>"; };
+		6D6B98C9140E173E00835E88 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
+		6D6B98CA140E173E00835E88 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,10 @@
 		6D6B98B4140E162700835E88 /* AutomagicCodingTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D6B98C6140E16F200835E88 /* Foo.h */,
+				6D6B98C7140E16F200835E88 /* Foo.m */,
+				6D6B98C9140E173E00835E88 /* Bar.h */,
+				6D6B98CA140E173E00835E88 /* Bar.m */,
 				6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */,
 				6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */,
 				6D6B98B5140E162700835E88 /* Supporting Files */,
@@ -269,6 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */,
+				6D6B98C8140E16F200835E88 /* Foo.m in Sources */,
+				6D6B98CB140E173E00835E88 /* Bar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
