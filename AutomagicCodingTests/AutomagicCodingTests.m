@@ -67,6 +67,8 @@
     STAssertTrue(newFoo.integerValue == self.foo.integerValue, @"foo.integerValue value currupted during save/load.");
     STAssertTrue([newFoo.publicBar.someString isEqualToString: self.foo.publicBar.someString],@"foo.bar.someString currupted during save/load.");
     
+    // Test addition to keys - ivars without public properties.
+    STAssertNotNil([newFoo valueForKey: @"privateBar"], @"newFoo.privateBar failed to create.");
     
     NSString *oldPrivateString = ((Bar *)[newFoo valueForKey:@"privateBar"]).someString;
     NSString *newPrivateString = ((Bar *)[newFoo valueForKey:@"privateBar"]).someString;

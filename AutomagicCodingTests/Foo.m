@@ -7,6 +7,7 @@
 //
 
 #import "Foo.h"
+#import "NSObject+AutomagicCoding.h"
 
 @implementation Foo
 
@@ -14,14 +15,28 @@
 @synthesize publicBar = _publicBar;
 
 
-- (id)init
+- (id)initWithDictionaryRepresentation: (NSDictionary *) aDict
 {
-    self = [super init];
+    self = [super initWithDictionaryRepresentation: aDict];
     if (self) {
-        // Initialization code here.
+        [_publicBar retain];
     }
     
     return self;
+}
+
+- (NSArray *) keysForValuesInDictionaryRepresentation
+{
+    NSArray *array = [super keysForValuesInDictionaryRepresentation];
+    return [array arrayByAddingObject:@"privateBar"];
+}
+
+- (void) dealloc
+{
+    [_publicBar release]; 
+    _publicBar = nil;
+    
+    [super dealloc];
 }
 
 @end
