@@ -14,6 +14,10 @@
 @synthesize integerValue = _integerValue;
 @synthesize publicBar = _publicBar;
 
++ (BOOL) isAutomagicCodingEnabled
+{
+    return YES;
+}
 
 - (id)initWithDictionaryRepresentation: (NSDictionary *) aDict
 {

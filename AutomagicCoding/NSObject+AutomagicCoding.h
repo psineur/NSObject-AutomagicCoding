@@ -10,6 +10,10 @@
 
 @interface NSObject (AutomagicCoding)
 
+/** Reimplement this method in your classes and return YES if you want to enable AutomagicCoding.
+ * Returns NO by default. */
++ (BOOL) isAutomagicCodingEnabled;
+
 #pragma Decode/Create/Init
 
 /** Creates autoreleased object with given dictionary representation.

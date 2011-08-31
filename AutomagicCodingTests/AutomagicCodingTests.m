@@ -45,7 +45,6 @@
 {
     // Save object representation in NSDictionary.
     NSDictionary *fooDict = [self.foo dictionaryRepresentation];
-    [fooDict writeToFile:[self testFilePath] atomically:YES];
     
     // Create new object from that dictionary.
     Foo *newFoo = [[Foo objectWithDictionaryRepresentation: fooDict] retain];

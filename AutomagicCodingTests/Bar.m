@@ -12,6 +12,11 @@
 
 @synthesize someString = _someString;
 
++ (BOOL) isAutomagicCodingEnabled
+{
+    return YES;
+}
+
 - (id)init
 {
     self = [super init];

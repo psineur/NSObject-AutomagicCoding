@@ -13,7 +13,10 @@
 
 @implementation NSObject (AutomagicCoding)
 
-
++ (BOOL) isAutomagicCodingEnabled
+{
+    return NO;
+}
 
 #pragma mark Decode/Create/Init
 
@@ -113,7 +116,7 @@
 }
 
 - (BOOL) isObjectValueForKey: (NSString *) aKey
-{
+{    
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
     if (property)
     {
@@ -128,7 +131,7 @@
             classNameString = [classNameString substringToIndex: range.location];
             
             id class = NSClassFromString(classNameString);
-            if ([class instancesRespondToSelector: @selector(dictionaryRepresentation)])
+            if ([class isAutomagicCodingEnabled])
                 return YES;
         }
     }
