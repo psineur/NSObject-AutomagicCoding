@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D6B9892140E162700835E88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
+		6D6B989C140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B989A140E162700835E88 /* InfoPlist.strings */; };
+		6D6B989E140E162700835E88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B989D140E162700835E88 /* main.m */; };
+		6D6B98A2140E162700835E88 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98A0140E162700835E88 /* Credits.rtf */; };
+		6D6B98A5140E162700835E88 /* AutomagicCodingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */; };
+		6D6B98A8140E162700835E88 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98A6140E162700835E88 /* MainMenu.xib */; };
+		6D6B98B0140E162700835E88 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B98AF140E162700835E88 /* SenTestingKit.framework */; };
+		6D6B98B1140E162700835E88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
+		6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98B7140E162700835E88 /* InfoPlist.strings */; };
+		6D6B98BB140E162700835E88 /* AutomagicCodingTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */; };
+		6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D6B98B2140E162700835E88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D6B9884140E162600835E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D6B988C140E162700835E88;
+			remoteInfo = AutomagicCoding;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D6B988D140E162700835E88 /* AutomagicCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomagicCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6B9891140E162700835E88 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6D6B9894140E162700835E88 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6D6B9895140E162700835E88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6D6B9896140E162700835E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
+		6D6B989B140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6D6B989D140E162700835E88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6D6B989F140E162700835E88 /* AutomagicCoding-Prefix.pch */ = {isa = PBXFileReference; path = "AutomagicCoding-Prefix.pch"; sourceTree = "<group>"; };
+		6D6B98A1140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */ = {isa = PBXFileReference; path = AutomagicCodingAppDelegate.h; sourceTree = "<group>"; };
+		6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingAppDelegate.m; sourceTree = "<group>"; };
+		6D6B98A7140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomagicCodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6B98AF140E162700835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */ = {isa = PBXFileReference; path = "AutomagicCodingTests-Info.plist"; sourceTree = "<group>"; };
+		6D6B98B8140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingTests.h; sourceTree = "<group>"; };
+		6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D6B988A140E162700835E88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6B9892140E162700835E88 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D6B98AA140E162700835E88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6B98B0140E162700835E88 /* SenTestingKit.framework in Frameworks */,
+				6D6B98B1140E162700835E88 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D6B9882140E162600835E88 = {
+			isa = PBXGroup;
+			children = (
+				6D6B9897140E162700835E88 /* AutomagicCoding */,
+				6D6B98B4140E162700835E88 /* AutomagicCodingTests */,
+				6D6B9890140E162700835E88 /* Frameworks */,
+				6D6B988E140E162700835E88 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6D6B988E140E162700835E88 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B988D140E162700835E88 /* AutomagicCoding.app */,
+				6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D6B9890140E162700835E88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B9891140E162700835E88 /* Cocoa.framework */,
+				6D6B98AF140E162700835E88 /* SenTestingKit.framework */,
+				6D6B9893140E162700835E88 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D6B9893140E162700835E88 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B9894140E162700835E88 /* AppKit.framework */,
+				6D6B9895140E162700835E88 /* CoreData.framework */,
+				6D6B9896140E162700835E88 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6D6B9897140E162700835E88 /* AutomagicCoding */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */,
+				6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */,
+				6D6B98A6140E162700835E88 /* MainMenu.xib */,
+				6D6B9898140E162700835E88 /* Supporting Files */,
+			);
+			path = AutomagicCoding;
+			sourceTree = "<group>";
+		};
+		6D6B9898140E162700835E88 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */,
+				6D6B989A140E162700835E88 /* InfoPlist.strings */,
+				6D6B989D140E162700835E88 /* main.m */,
+				6D6B989F140E162700835E88 /* AutomagicCoding-Prefix.pch */,
+				6D6B98A0140E162700835E88 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D6B98B4140E162700835E88 /* AutomagicCodingTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */,
+				6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */,
+				6D6B98B5140E162700835E88 /* Supporting Files */,
+			);
+			path = AutomagicCodingTests;
+			sourceTree = "<group>";
+		};
+		6D6B98B5140E162700835E88 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */,
+				6D6B98B7140E162700835E88 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D6B988C140E162700835E88 /* AutomagicCoding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D6B98C0140E162700835E88 /* Build configuration list for PBXNativeTarget "AutomagicCoding" */;
+			buildPhases = (
+				6D6B9889140E162700835E88 /* Sources */,
+				6D6B988A140E162700835E88 /* Frameworks */,
+				6D6B988B140E162700835E88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutomagicCoding;
+			productName = AutomagicCoding;
+			productReference = 6D6B988D140E162700835E88 /* AutomagicCoding.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D6B98AD140E162700835E88 /* AutomagicCodingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D6B98C3140E162700835E88 /* Build configuration list for PBXNativeTarget "AutomagicCodingTests" */;
+			buildPhases = (
+				6D6B98A9140E162700835E88 /* Sources */,
+				6D6B98AA140E162700835E88 /* Frameworks */,
+				6D6B98AB140E162700835E88 /* Resources */,
+				6D6B98AC140E162700835E88 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D6B98B3140E162700835E88 /* PBXTargetDependency */,
+			);
+			name = AutomagicCodingTests;
+			productName = AutomagicCodingTests;
+			productReference = 6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D6B9884140E162600835E88 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 6D6B9887140E162600835E88 /* Build configuration list for PBXProject "AutomagicCoding" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6D6B9882140E162600835E88;
+			productRefGroup = 6D6B988E140E162700835E88 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D6B988C140E162700835E88 /* AutomagicCoding */,
+				6D6B98AD140E162700835E88 /* AutomagicCodingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D6B988B140E162700835E88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6B989C140E162700835E88 /* InfoPlist.strings in Resources */,
+				6D6B98A2140E162700835E88 /* Credits.rtf in Resources */,
+				6D6B98A8140E162700835E88 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D6B98AB140E162700835E88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */,
+				6D6B98BB140E162700835E88 /* AutomagicCodingTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D6B98AC140E162700835E88 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D6B9889140E162700835E88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6B989E140E162700835E88 /* main.m in Sources */,
+				6D6B98A5140E162700835E88 /* AutomagicCodingAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D6B98A9140E162700835E88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D6B98B3140E162700835E88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D6B988C140E162700835E88 /* AutomagicCoding */;
+			targetProxy = 6D6B98B2140E162700835E88 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6D6B989A140E162700835E88 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D6B989B140E162700835E88 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6D6B98A0140E162700835E88 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D6B98A1140E162700835E88 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		6D6B98A6140E162700835E88 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D6B98A7140E162700835E88 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		6D6B98B7140E162700835E88 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D6B98B8140E162700835E88 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D6B98BE140E162700835E88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6D6B98BF140E162700835E88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6D6B98C1140E162700835E88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6D6B98C2140E162700835E88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6D6B98C4140E162700835E88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutomagicCoding.app/Contents/MacOS/AutomagicCoding";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6D6B98C5140E162700835E88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutomagicCoding.app/Contents/MacOS/AutomagicCoding";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D6B9887140E162600835E88 /* Build configuration list for PBXProject "AutomagicCoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6B98BE140E162700835E88 /* Debug */,
+				6D6B98BF140E162700835E88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D6B98C0140E162700835E88 /* Build configuration list for PBXNativeTarget "AutomagicCoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6B98C1140E162700835E88 /* Debug */,
+				6D6B98C2140E162700835E88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6D6B98C3140E162700835E88 /* Build configuration list for PBXNativeTarget "AutomagicCodingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6B98C4140E162700835E88 /* Debug */,
+				6D6B98C5140E162700835E88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D6B9884140E162600835E88 /* Project object */;
+}
