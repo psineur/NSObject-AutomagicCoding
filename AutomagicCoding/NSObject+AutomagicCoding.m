@@ -7,8 +7,10 @@
 //
 
 #import "NSObject+AutomagicCoding.h"
+#import "objc/runtime.h"
 
 @implementation NSObject (AutomagicCoding)
+
 
 #pragma mark Decode/Create/Init
 
@@ -75,12 +77,35 @@
 
 - (NSArray *) keysForValuesInDictionaryRepresentation
 {
-    //TODO: use objc runtime to get all properties and return their names.
+    id class = [self class];
+    
+    // Use objc runtime to get all properties and return their names.
+    unsigned int outCount;
+    objc_property_t *properties = class_copyPropertyList(class, &outCount);
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity: outCount];
+    for (int i = 0; i < outCount; ++i)
+    {
+        objc_property_t curProperty = properties[i];
+        const char *name = property_getName(curProperty);
+        
+        NSString *propertyKey = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+        [array addObject: propertyKey];        
+    }
+    
+    return array;
 }
 
 - (BOOL) isObjectValueForKey: (NSString *) aKey
 {
-    //TODO: use objc runtime to get all properties and return their names if their type is ObjC.
+    objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
+    if (property)
+    {
+        const char *attributes = property_getAttributes(property);
+        if ( NULL != strstr(attributes, "@") )
+            return YES;
+    }
+    
+    return NO;
 }
 
 @end

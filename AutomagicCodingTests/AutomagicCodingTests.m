@@ -9,6 +9,7 @@
 #import "AutomagicCodingTests.h"
 #import "Foo.h"
 #import "Bar.h"
+#import "NSObject+AutomagicCoding.h"
 
 @implementation AutomagicCodingTests
 @synthesize foo = _foo;
