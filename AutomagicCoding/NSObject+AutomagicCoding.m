@@ -72,10 +72,11 @@
     {
         id value = [self valueForKey: key];
         
-        // Save object as it's dictionary representatin if needed.
+        // Save object as it's dictionary representatin if needed & possible.
         if ([self isObjectValueForKey: key ])
         {
-            value = [(NSObject *) value dictionaryRepresentation];
+            if ([value respondsToSelector:@selector(dictionaryRepresentation)])
+                value = [(NSObject *) value dictionaryRepresentation];
         }
         
         // Scalar or struct - simply use KVC.                       
@@ -116,7 +117,7 @@
     if (property)
     {
         const char *attributes = property_getAttributes(property);
-        if ( ( NULL != strstr(attributes, "@") ) && ( NULL == strstr(attributes, "NSString") ) )
+        if ( NULL != strstr(attributes, "@") )
             return YES;
     }
     
