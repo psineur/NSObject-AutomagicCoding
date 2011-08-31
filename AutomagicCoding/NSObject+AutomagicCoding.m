@@ -49,7 +49,7 @@
             // Object as it's representation - create new.
             if ([self isObjectValueForKey: key ])
             {
-                NSDictionary *objectDict = (NSDictionary *) objectDict;
+                NSDictionary *objectDict = (NSDictionary *) value;
                 value = [NSObject objectWithDictionaryRepresentation: objectDict];
             }
             
