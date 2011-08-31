@@ -27,10 +27,9 @@
         return nil;
     
     Class rClass = NSClassFromString(className);
-    if (rClass)
+    if ( rClass && [rClass instancesRespondToSelector:@selector(initWithDictionaryRepresentation:) ] )
     {
         id instance = [[[rClass alloc] initWithDictionaryRepresentation: aDict] autorelease];
-        object_setClass(instance, rClass);
         return instance;
     }
     
@@ -50,7 +49,9 @@
             if ([self isObjectValueForKey: key ])
             {
                 NSDictionary *objectDict = (NSDictionary *) value;
-                value = [NSObject objectWithDictionaryRepresentation: objectDict];
+                id object = [NSObject objectWithDictionaryRepresentation: objectDict];
+                if (object)
+                    value = object;
             }
             
             // Scalar or struct - simply use KVC.                       
@@ -117,8 +118,18 @@
     if (property)
     {
         const char *attributes = property_getAttributes(property);
-        if ( NULL != strstr(attributes, "@") )
-            return YES;
+        char *classNameCString = strstr(attributes, "@\"");
+        if ( classNameCString )
+        {
+            NSString *classNameString = [NSString stringWithCString:classNameCString encoding:NSUTF8StringEncoding];
+            NSRange range = [classNameString rangeOfString:@"\""];
+            
+            classNameString = [classNameString substringToIndex: range.location];
+            
+            id class = NSClassFromString(classNameString);
+            if ([class instancesRespondToSelector: @selector(dictionaryRepresentation)])
+                return YES;
+        }
     }
     
     return NO;
