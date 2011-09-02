@@ -7,9 +7,12 @@
 //
 
 #import "AMCCollectionsTest.h"
-#import "FooWithCollections.h"
 #import "NSObject+AutomagicCoding.h"
+
+// Test objects.
 #import "Foo.h"
+#import "FooWithCollections.h"
+#import "FooWithMutableCollections.h"
 #import "Bar.h"
 
 @implementation AMCCollectionsTest
@@ -438,13 +441,13 @@
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
     // Test mutable collection detection.
+    self.fooWithCollections = [[FooWithMutableCollections new] autorelease];
     self.fooWithCollections.array =[NSMutableArray arrayWithObjects: one, two, nil];
     [(NSMutableArray *)self.fooWithCollections.array addObject: three ];
     self.fooWithCollections.dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects: obj1, obj2, nil] 
                                                                       forKeys:[NSArray arrayWithObjects: @"key1", @"key2", nil]];
     [(NSMutableDictionary *)self.fooWithCollections.dict setObject: obj3 forKey: @"key3" ];
     
-    //TODO: use NSMutableArray property biach!
     if ( kAMCObjectFieldTypeCollectionArrayMutable != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     

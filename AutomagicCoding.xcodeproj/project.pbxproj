@@ -25,6 +25,7 @@
 		6D6D28A21410B03200B7EA19 /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A11410B03200B7EA19 /* FooWithCollections.m */; };
 		6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
 		6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
+		6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,8 @@
 		6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCCollectionsTest.m; sourceTree = "<group>"; };
 		6D6D28A71410B7F500B7EA19 /* AMCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTest.h; sourceTree = "<group>"; };
 		6D6D28A81410B7F500B7EA19 /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
+		6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithMutableCollections.h; sourceTree = "<group>"; };
+		6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,12 +178,14 @@
 		6D6D28A61410B1E400B7EA19 /* ObjectsForTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */,
+				6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */,
 				6D6D28A01410B03200B7EA19 /* FooWithCollections.h */,
 				6D6D28A11410B03200B7EA19 /* FooWithCollections.m */,
-				6D6B98C9140E173E00835E88 /* Bar.h */,
-				6D6B98CA140E173E00835E88 /* Bar.m */,
 				6D6B98C6140E16F200835E88 /* Foo.h */,
 				6D6B98C7140E16F200835E88 /* Foo.m */,
+				6D6B98C9140E173E00835E88 /* Bar.h */,
+				6D6B98CA140E173E00835E88 /* Bar.m */,
 			);
 			name = ObjectsForTests;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				6D6D28A21410B03200B7EA19 /* FooWithCollections.m in Sources */,
 				6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */,
 				6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */,
+				6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
