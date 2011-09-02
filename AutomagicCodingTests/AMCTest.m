@@ -40,12 +40,34 @@
 
 - (BOOL) array: (NSArray *) arr1 isEqualTo: (NSArray *) arr2
 {
-    return NO;
+    if (!arr1 || !arr2)
+        return NO;
+    
+    if ([arr1 count] != [arr2 count])
+        return NO;
+    
+    for (NSUInteger i = 0; i < [arr1 count]; ++i)
+        if (![[arr1 objectAtIndex: i] isEqual: [arr2 objectAtIndex:i] ] )
+            return NO;
+    
+    return YES;
 }
 
 - (BOOL) dict: (NSDictionary *) dict1 isEqualTo: (NSDictionary *) dict2
 {
-    return NO;
+    if (!dict1 || !dict2)
+        return NO;
+    
+    if ([dict1 count] != [dict2 count])
+        return NO;
+    
+    if ( ![self array:[dict1 allKeys] isEqualTo:[dict2 allKeys] ])
+        return NO;
+    
+    if ( ![self array:[dict1 allValues] isEqualTo:[dict2 allValues] ])
+        return NO;
+    
+    return YES;
 }
 
 @end
