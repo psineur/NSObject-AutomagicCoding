@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+/** @class FooWithMutableCollections Almost like FooWithCollections, but ivars & properties are mutable.
+ * You must use NSMutableArray instead of NSArray in order to AMC work properly.
+ * NSObject(AutoMagicCoding)#fieldTypeForValueWithKey: uses property type to get class 
+ * and ask it about is it mutable or not.
+ */
 @interface FooWithMutableCollections : NSObject
 {
     NSMutableArray *_array;
