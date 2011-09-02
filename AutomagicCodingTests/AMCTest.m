@@ -22,7 +22,7 @@
     if (!aSuffix)
         aSuffix = @"";
     
-    NSString *filename = [NSString stringWithFormat:@"%@test%@.plist", [self className], aSuffix ];
+    NSString *filename = [NSString stringWithFormat:@"%@%@.plist", [self className], aSuffix ];
     
     NSArray *paths					= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory	= [paths objectAtIndex:0];
