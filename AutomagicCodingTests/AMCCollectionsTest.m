@@ -117,8 +117,8 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is not wrong!" );
     
-    STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
-    STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 
 - (void) testStringCollectionsInFile
@@ -154,8 +154,8 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is not wrong!" );
     
-    STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
-    STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 
 - (void) testCustomObjectsCollectionInMemory
@@ -210,8 +210,8 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is not wrong!" );
     
-    STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
-    STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 
 - (void) testCustomObjectsCollectionInFile
@@ -263,8 +263,8 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is not wrong!" );
     
-    STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
-    STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 
 - (void) testCollectionsOfCollectionsInMemory
@@ -333,8 +333,8 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is wrong!" );
     
-    STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
-    STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 
 - (void) testCollectionsOfCollectionsInFile
@@ -406,8 +406,8 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is not wrong!" );
     
-    STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
-    STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 
 

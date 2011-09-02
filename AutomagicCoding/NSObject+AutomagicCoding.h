@@ -63,6 +63,13 @@ typedef enum
  */
 - (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey;
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+- (NSString *) className;
++ (NSString *) className;
+
+#endif
+
 @end
 
 #pragma mark Helper Functions
@@ -71,3 +78,5 @@ typedef enum
 * Otherwise returns nil.
 */
 id AMCPropertyClass (objc_property_t property);
+
+

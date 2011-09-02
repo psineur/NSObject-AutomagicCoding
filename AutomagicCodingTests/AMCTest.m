@@ -7,6 +7,7 @@
 //
 
 #import "AMCTest.h"
+#import "NSObject+AutomagicCoding.h"
 
 @implementation AMCTest
 
@@ -35,6 +36,16 @@
     // Tear-down code here.
     
     [super tearDown];
+}
+
+- (BOOL) array: (NSArray *) arr1 isEqualTo: (NSArray *) arr2
+{
+    return NO;
+}
+
+- (BOOL) dict: (NSDictionary *) dict1 isEqualTo: (NSDictionary *) dict2
+{
+    return NO;
 }
 
 @end

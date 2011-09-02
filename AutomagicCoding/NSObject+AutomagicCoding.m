@@ -180,6 +180,24 @@
     return kAMCObjectFieldTypeSimple;
 }
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+- (NSString *) className
+{
+    const char* name = class_getName([self class]);
+    
+    return [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+}
+
++ (NSString *) className
+{
+    const char* name = class_getName([self class]);
+    
+    return [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+}
+
+#endif
+
 @end
 
 
