@@ -178,6 +178,13 @@
     self.fooWithCollections.dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: obj1, obj2, obj3, nil] 
                                                                forKeys:[NSArray arrayWithObjects: @"key1", @"key2", @"key3", nil]];
     
+    
+    if ( kAMCObjectFieldTypeCollectionArray != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+    
+    if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+    
     // Save & Load.
     NSDictionary *fooDict = [self.fooWithCollections dictionaryRepresentation];   
     // Create new object from that dictionary.
@@ -397,6 +404,58 @@
     
     STAssertTrue([newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
     STAssertTrue([newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+}
+
+
+- (void) testFieldTypeDetection
+{
+    // Prepare custom object for collections.
+    Foo *one = [[Foo new] autorelease];
+    Foo *two = [[Foo new] autorelease];
+    Foo *three = [[Foo new] autorelease];
+    one.integerValue = 1;
+    two.integerValue = 2;
+    three.integerValue = 3;
+    
+    Bar *obj1 = [[Bar new] autorelease];
+    Bar *obj2 = [[Bar new] autorelease];
+    Bar *obj3 = [[Bar new] autorelease];
+    obj1.someString = @"object numero uno!";
+    obj2.someString = @"object numero dvuno!";
+    obj3.someString = @"object numero trino!";
+    
+    
+    // Test immutable collection detection.
+    self.fooWithCollections.array =[NSArray arrayWithObjects: one, two, three, nil];
+    self.fooWithCollections.dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects: obj1, obj2, obj3, nil] 
+                                                               forKeys:[NSArray arrayWithObjects: @"key1", @"key2", @"key3", nil]];
+    
+    
+    if ( kAMCObjectFieldTypeCollectionArray != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+    
+    if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+    
+    // Test mutable collection detection.
+    self.fooWithCollections.array =[NSMutableArray arrayWithObjects: one, two, nil];
+    [(NSMutableArray *)self.fooWithCollections.array addObject: three ];
+    self.fooWithCollections.dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects: obj1, obj2, nil] 
+                                                                      forKeys:[NSArray arrayWithObjects: @"key1", @"key2", nil]];
+    [(NSMutableDictionary *)self.fooWithCollections.dict setObject: obj3 forKey: @"key3" ];
+    
+    //TODO: use NSMutableArray property biach!
+    if ( kAMCObjectFieldTypeCollectionArrayMutable != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+    
+    if ( kAMCObjectFieldTypeCollectionHashMutable != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+    
+    if ( kAMCObjectFieldTypeSimple != [one fieldTypeForValueWithKey:@"integerValue"])
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize int as scalar/struct!");
+    
+    if ( kAMCObjectFieldTypeCustom != [one fieldTypeForValueWithKey:@"publicBar"])
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize Bar as Custom!");
 }
 
 - (void)tearDown

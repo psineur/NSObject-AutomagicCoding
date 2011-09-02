@@ -143,11 +143,39 @@
 
 - (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey
 {
+    // isAutomagicCodingEnabled == YES? Then it's custom object.
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
     id class = AMCPropertyClass(property);
     
     if ([class isAutomagicCodingEnabled])
         return kAMCObjectFieldTypeCustom;
+    
+    // Is it ordered collection?
+    if ( ([class instancesRespondToSelector:@selector(count)])
+        && ([class instancesRespondToSelector:@selector(objectAtIndex:)])
+             && ([class instancesRespondToSelector:@selector(initWithArray:)]) 
+        )
+    {
+        // Mutable or not?
+        if ( [class instancesRespondToSelector:@selector(addObject:)] )
+            return kAMCObjectFieldTypeCollectionArrayMutable;
+        
+        return kAMCObjectFieldTypeCollectionArray;
+    }
+    
+    // Is it hash collection?
+    if ( ([class instancesRespondToSelector:@selector(count)])
+        && ([class instancesRespondToSelector:@selector(allKeys)])
+        && ([class instancesRespondToSelector:@selector(initWithDictionary:)]) 
+        )
+    {
+        // Mutable or not?
+        if ([class instancesRespondToSelector:@selector(setObject:forKey:)] )
+            return kAMCObjectFieldTypeCollectionHashMutable;
+        
+        return kAMCObjectFieldTypeCollectionHash;
+    }
+    
     
     return kAMCObjectFieldTypeSimple;
 }
