@@ -1,12 +1,12 @@
 //
-//  AutomagicCodingTests.m
+//  AMCTestSimple.m
 //  AutomagicCodingTests
 //
 //  Created by Stepan Generalov on 31.08.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "AutomagicCodingTests.h"
+#import "AMCTestSimple.h"
 #import "Foo.h"
 #import "Bar.h"
 #import "NSObject+AutomagicCoding.h"
@@ -19,7 +19,7 @@
     [super setUp];
     
     // Prepare Foo class - that we will serialize & deserialize in-memory.
-    Foo *foo = [Foo new];
+    Foo *foo = [[Foo new] autorelease];
     foo.publicBar = [[Bar new] autorelease];
     foo.integerValue = 17;
     Bar *privateBarInFoo = [[Bar new]autorelease];
@@ -78,21 +78,13 @@
     
 }
 
-- (NSString *) testFilePath
-{
-    NSArray *paths					= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory	= [paths objectAtIndex:0];
-	NSString *fullPath				= [documentsDirectory stringByAppendingPathComponent:@"test2.plist"];
-	return fullPath;
-}
-
 - (void) testInFile
 {
     // Save object representation in PLIST.
-    [[self.foo dictionaryRepresentation] writeToFile:[self testFilePath] atomically:YES];
+    [[self.foo dictionaryRepresentation] writeToFile:[self testFilePathWithSuffix:nil] atomically:YES];
     
     // Create new object from that PLIST.
-    Foo *newFoo = [[Foo objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile:[self testFilePath]]] retain];
+    Foo *newFoo = [[Foo objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile:[self testFilePathWithSuffix:nil]]] retain];
     
     // Test Foo
     STAssertNotNil(newFoo, @"newFoo failed to create.");

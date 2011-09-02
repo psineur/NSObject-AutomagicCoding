@@ -16,12 +16,15 @@
 		6D6B98B0140E162700835E88 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B98AF140E162700835E88 /* SenTestingKit.framework */; };
 		6D6B98B1140E162700835E88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
 		6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98B7140E162700835E88 /* InfoPlist.strings */; };
-		6D6B98BB140E162700835E88 /* AutomagicCodingTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */; };
-		6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */; };
+		6D6B98BB140E162700835E88 /* AMCTestSimple.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AMCTestSimple.h */; };
+		6D6B98BD140E162700835E88 /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AMCTestSimple.m */; };
 		6D6B98C8140E16F200835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
 		6D6B98CB140E173E00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
 		6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
 		6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
+		6D6D28A21410B03200B7EA19 /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A11410B03200B7EA19 /* FooWithCollections.m */; };
+		6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
+		6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +45,8 @@
 		6D6B98AF140E162700835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutomagicCodingTests-Info.plist"; sourceTree = "<group>"; };
 		6D6B98B8140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingTests.h; sourceTree = "<group>"; };
-		6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingTests.m; sourceTree = "<group>"; };
+		6D6B98BA140E162700835E88 /* AMCTestSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMCTestSimple.h; sourceTree = "<group>"; };
+		6D6B98BC140E162700835E88 /* AMCTestSimple.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMCTestSimple.m; sourceTree = "<group>"; };
 		6D6B98C6140E16F200835E88 /* Foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foo.h; sourceTree = "<group>"; };
 		6D6B98C7140E16F200835E88 /* Foo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foo.m; sourceTree = "<group>"; };
 		6D6B98C9140E173E00835E88 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
@@ -51,6 +54,12 @@
 		6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
 		6D6B98D5140E402600835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6D6D28A01410B03200B7EA19 /* FooWithCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCollections.h; sourceTree = "<group>"; };
+		6D6D28A11410B03200B7EA19 /* FooWithCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCollections.m; sourceTree = "<group>"; };
+		6D6D28A31410B12000B7EA19 /* AMCCollectionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCCollectionsTest.h; sourceTree = "<group>"; };
+		6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCCollectionsTest.m; sourceTree = "<group>"; };
+		6D6D28A71410B7F500B7EA19 /* AMCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTest.h; sourceTree = "<group>"; };
+		6D6D28A81410B7F500B7EA19 /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,13 +151,14 @@
 		6D6B98B4140E162700835E88 /* AutomagicCodingTests */ = {
 			isa = PBXGroup;
 			children = (
-				6D6B98C6140E16F200835E88 /* Foo.h */,
-				6D6B98C7140E16F200835E88 /* Foo.m */,
-				6D6B98C9140E173E00835E88 /* Bar.h */,
-				6D6B98CA140E173E00835E88 /* Bar.m */,
-				6D6B98BA140E162700835E88 /* AutomagicCodingTests.h */,
-				6D6B98BC140E162700835E88 /* AutomagicCodingTests.m */,
 				6D6B98B5140E162700835E88 /* Supporting Files */,
+				6D6D28A61410B1E400B7EA19 /* ObjectsForTests */,
+				6D6D28A71410B7F500B7EA19 /* AMCTest.h */,
+				6D6D28A81410B7F500B7EA19 /* AMCTest.m */,
+				6D6B98BA140E162700835E88 /* AMCTestSimple.h */,
+				6D6B98BC140E162700835E88 /* AMCTestSimple.m */,
+				6D6D28A31410B12000B7EA19 /* AMCCollectionsTest.h */,
+				6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */,
 			);
 			path = AutomagicCodingTests;
 			sourceTree = "<group>";
@@ -160,6 +170,19 @@
 				6D6B98B7140E162700835E88 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D6D28A61410B1E400B7EA19 /* ObjectsForTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D6D28A01410B03200B7EA19 /* FooWithCollections.h */,
+				6D6D28A11410B03200B7EA19 /* FooWithCollections.m */,
+				6D6B98C9140E173E00835E88 /* Bar.h */,
+				6D6B98CA140E173E00835E88 /* Bar.m */,
+				6D6B98C6140E16F200835E88 /* Foo.h */,
+				6D6B98C7140E16F200835E88 /* Foo.m */,
+			);
+			name = ObjectsForTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */,
-				6D6B98BB140E162700835E88 /* AutomagicCodingTests.h in Resources */,
+				6D6B98BB140E162700835E88 /* AMCTestSimple.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,9 +300,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
-				6D6B98BD140E162700835E88 /* AutomagicCodingTests.m in Sources */,
+				6D6B98BD140E162700835E88 /* AMCTestSimple.m in Sources */,
 				6D6B98C8140E16F200835E88 /* Foo.m in Sources */,
 				6D6B98CB140E173E00835E88 /* Bar.m in Sources */,
+				6D6D28A21410B03200B7EA19 /* FooWithCollections.m in Sources */,
+				6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */,
+				6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

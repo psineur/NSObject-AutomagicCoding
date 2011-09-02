@@ -1,5 +1,5 @@
 //
-//  AutomagicCodingTests.h
+//  AMCTestSimple.h
 //  AutomagicCodingTests
 //
 //  Created by Stepan Generalov on 31.08.11.
@@ -7,9 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "AMCTest.h"
 
 @class Foo;
-@interface AutomagicCodingTests : SenTestCase
+@interface AutomagicCodingTests : AMCTest
 {
     Foo *_foo;
 }

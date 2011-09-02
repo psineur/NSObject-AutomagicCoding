@@ -7,7 +7,6 @@
 //
 
 #import "AutomagicCodingAppDelegate.h"
-#import "AutomagicCodingTests.h"
 
 @implementation AutomagicCodingAppDelegate
 
