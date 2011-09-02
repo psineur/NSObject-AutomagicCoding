@@ -9,6 +9,51 @@
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
 
+#pragma mark Collection Protocols
+
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Ordered Collection. */
+@protocol AMCArrayProtocol
+
+- (NSUInteger)count;
+- (id) objectAtIndex:(NSUInteger) index; 
+- (id) initWithArray:(NSArray *) array;
+
+@end
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Mutable Ordered Collection.
+ * It simply adds new methods to AMCArrayProtocol. 
+ */
+@protocol AMCArrayMutableProtocol <AMCArrayProtocol>
+
+- (void) addObject: (id) anObject;
+
+@end
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Hash(NSDictionary-Like Key-Value) Collection. */
+@protocol AMCHashProtocol
+
+- (NSUInteger)count;
+- (NSArray *) allKeys;
+- (id) initWithDictionary: (NSDictionary *) aDict;
+
+@end
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Mutable Hash(NSMutableDictionary-Like Key-Value) Collection. 
+ * It simply adds new methods to AMCArrayProtocol. 
+ */
+@protocol AMCHashMutableProtocol <AMCHashProtocol>
+
+- (void) setObject: (id) anObject forKey:(NSString *) aKey;
+
+@end
+
+
+
 typedef enum 
 {
     kAMCObjectFieldTypeSimple, //< Scalar value or Struct.
@@ -71,3 +116,12 @@ typedef enum
 * Otherwise returns nil.
 */
 id AMCPropertyClass (objc_property_t property);
+
+/** Returns YES, if instances of given class respond to all required instance methods listed
+ * in protocol p.
+ * Otherwise returns NO;
+ */
+BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p );
+
+
+

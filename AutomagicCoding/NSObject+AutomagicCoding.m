@@ -151,28 +151,24 @@
         return kAMCObjectFieldTypeCustom;
     
     // Is it ordered collection?
-    if ( ([class instancesRespondToSelector:@selector(count)])
-        && ([class instancesRespondToSelector:@selector(objectAtIndex:)])
-             && ([class instancesRespondToSelector:@selector(initWithArray:)]) 
-        )
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
     {
-        // Mutable or not?
-        if ( [class instancesRespondToSelector:@selector(addObject:)] )
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
             return kAMCObjectFieldTypeCollectionArrayMutable;
         
+        // Not Mutable.
         return kAMCObjectFieldTypeCollectionArray;
     }
     
     // Is it hash collection?
-    if ( ([class instancesRespondToSelector:@selector(count)])
-        && ([class instancesRespondToSelector:@selector(allKeys)])
-        && ([class instancesRespondToSelector:@selector(initWithDictionary:)]) 
-        )
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashProtocol) ) )
     {
-        // Mutable or not?
-        if ([class instancesRespondToSelector:@selector(setObject:forKey:)] )
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
             return kAMCObjectFieldTypeCollectionHashMutable;
         
+        // Not Mutable.
         return kAMCObjectFieldTypeCollectionHash;
     }
     
@@ -206,3 +202,38 @@ id AMCPropertyClass (objc_property_t property)
     
     return nil;
 }
+
+BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
+{
+    unsigned int outCount = 0;
+    struct objc_method_description *methods = NULL;
+    
+    methods = protocol_copyMethodDescriptionList( p, YES, YES, &outCount);
+    
+    for (unsigned int i = 0; i < outCount; ++i)
+    {
+        SEL selector = methods[i].name;
+        if (![class instancesRespondToSelector: selector])
+            return NO;
+    }
+        
+    
+    return YES;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
