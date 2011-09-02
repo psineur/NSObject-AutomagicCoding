@@ -73,24 +73,7 @@
         
         
         AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
-        switch (fieldType) 
-        {
-                
-            // Object as it's representation - create new.
-            case kAMCObjectFieldTypeCustom:
-            {
-                if ([value respondsToSelector:@selector(dictionaryRepresentation)])
-                    value = [(NSObject *) value dictionaryRepresentation];
-            }
-            break;
-                
-                
-                // Scalar or struct - simply use KVC.
-            case kAMCObjectFieldTypeSimple:
-                break;                    
-            default:
-                break;
-        }
+        value = AMCEncodeObject(value, fieldType);
         
         // Scalar or struct - simply use KVC.                       
         [aDict setValue:value forKey: key];
@@ -291,6 +274,67 @@ id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType field
     return value;
 }
 
+id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
+{
+    switch (fieldType) 
+    {
+            
+            // Object as it's representation - create new.
+        case kAMCObjectFieldTypeCustom:
+        {
+            if ([value respondsToSelector:@selector(dictionaryRepresentation)])
+                value = [(NSObject *) value dictionaryRepresentation];
+        }
+            break;
+            
+        case kAMCObjectFieldTypeCollectionArray:
+        case kAMCObjectFieldTypeCollectionArrayMutable:
+        {
+            
+            id <AMCArrayProtocol> collection = (id <AMCArrayProtocol> )value;
+            NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity: [collection count]];
+            
+            for (unsigned int i = 0; i < [collection count]; ++i)
+            {
+                NSObject *curObjectInCollection = [collection objectAtIndex: i];
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeForObject(curObjectInCollection) );
+                
+                [tmpArray addObject: curObjectInCollectionEncoded];
+            }
+            
+            value = tmpArray;
+        }
+            break;
+            
+        case kAMCObjectFieldTypeCollectionHash:
+        case kAMCObjectFieldTypeCollectionHashMutable:
+        {
+            NSObject <AMCHashProtocol> *collection = (NSObject <AMCHashProtocol> *)value;
+            NSMutableDictionary *tmpDict = [NSMutableDictionary dictionaryWithCapacity: [collection count]];
+            
+            for (NSString *curKey in [collection allKeys])
+            {
+                NSObject *curObjectInCollection = [collection valueForKey: curKey];
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeForObject(curObjectInCollection));
+                
+                [tmpDict setObject:curObjectInCollectionEncoded forKey:curKey];
+            }
+            
+            value = tmpDict;
+        }
+            break;
+            
+            
+            // Scalar or struct - simply use KVC.
+        case kAMCObjectFieldTypeSimple:
+            break;                    
+        default:
+            break;
+    }
+    
+    return value;
+}
+
 AMCObjectFieldType AMCFieldTypeForObject(id object)
 {    
     id class = [object class];
@@ -334,7 +378,6 @@ AMCObjectFieldType AMCFieldTypeForObject(id object)
     
     return kAMCObjectFieldTypeSimple;
 }
-
 
 
 

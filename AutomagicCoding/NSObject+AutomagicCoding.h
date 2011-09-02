@@ -116,6 +116,9 @@ typedef enum
  * Recursively uses itself for objects in collections. */
 id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass);
 
+/** Returns object that can be added to dictionary for dictionaryRepresentation. */
+id AMCEncodeObject (id value, AMCObjectFieldType fieldType);
+
 /** Returns Class of given property if it is a Objective-C object.
 * Otherwise returns nil.
 */
