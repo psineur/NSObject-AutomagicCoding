@@ -10,7 +10,7 @@
 #import "AMCTest.h"
 
 @class Foo;
-@interface AutomagicCodingTests : AMCTest
+@interface AMCTestSimple : AMCTest
 {
     Foo *_foo;
 }

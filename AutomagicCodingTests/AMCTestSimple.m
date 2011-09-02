@@ -11,7 +11,7 @@
 #import "Bar.h"
 #import "NSObject+AutomagicCoding.h"
 
-@implementation AutomagicCodingTests
+@implementation AMCTestSimple
 @synthesize foo = _foo;
 
 - (void)setUp
