@@ -80,11 +80,14 @@
 
 - (void) testInFile
 {
-    // Save object representation in PLIST.
-    [[self.foo dictionaryRepresentation] writeToFile:[self testFilePathWithSuffix:nil] atomically:YES];
+    // Save object representation in PLIST & Create new object from that PLIST.
+    NSString *path = [self testFilePathWithSuffix:nil];
+    NSDictionary *dictRepr =[self.foo dictionaryRepresentation];
+    [dictRepr writeToFile: path atomically:YES]; 
+    Foo *newFoo = [[Foo objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile: path]] retain];
     
-    // Create new object from that PLIST.
-    Foo *newFoo = [[Foo objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile:[self testFilePathWithSuffix:nil]]] retain];
+    if (![[NSFileManager defaultManager] fileExistsAtPath: path ])
+        STFail(@"Test file with path = %@ not exist! Dictionary representation = %@", path, dictRepr);
     
     // Test Foo
     STAssertNotNil(newFoo, @"newFoo failed to create.");
