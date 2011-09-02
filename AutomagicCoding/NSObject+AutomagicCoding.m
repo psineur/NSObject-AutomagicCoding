@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+AutomagicCoding.h"
-#import "objc/runtime.h"
+
 
 #define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
 
@@ -118,25 +118,37 @@
 - (BOOL) isObjectValueForKey: (NSString *) aKey
 {    
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
-    if (property)
-    {
-        const char *attributes = property_getAttributes(property);
-        char *classNameCString = strstr(attributes, "@\"");
-        if ( classNameCString )
-        {
-            classNameCString += 2; //< skip @" substring
-            NSString *classNameString = [NSString stringWithCString:classNameCString encoding:NSUTF8StringEncoding];
-            NSRange range = [classNameString rangeOfString:@"\""];
-            
-            classNameString = [classNameString substringToIndex: range.location];
-            
-            id class = NSClassFromString(classNameString);
-            if ([class isAutomagicCodingEnabled])
-                return YES;
-        }
-    }
+    id class = AMCPropertyClass(property);
+    
+    if ([class isAutomagicCodingEnabled])
+        return YES;
     
     return NO;
 }
 
 @end
+
+
+#pragma mark Helper Functions
+
+id AMCPropertyClass (objc_property_t property)
+{
+    if (!property)
+        return nil;
+    
+    const char *attributes = property_getAttributes(property);
+    char *classNameCString = strstr(attributes, "@\"");
+    if ( classNameCString )
+    {
+        classNameCString += 2; //< skip @" substring
+        NSString *classNameString = [NSString stringWithCString:classNameCString encoding:NSUTF8StringEncoding];
+        NSRange range = [classNameString rangeOfString:@"\""];
+        
+        classNameString = [classNameString substringToIndex: range.location];
+        
+        id class = NSClassFromString(classNameString);
+        return class;
+    }
+    
+    return nil;
+}

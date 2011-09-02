@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "objc/runtime.h"
 
 @interface NSObject (AutomagicCoding)
 
@@ -50,3 +51,10 @@
 - (BOOL) isObjectValueForKey: (NSString *) aKey;
 
 @end
+
+#pragma mark Helper Functions
+
+/** Returns Class of given property if it is a Objective-C object.
+* Otherwise returns nil.
+*/
+id AMCPropertyClass (objc_property_t property);
