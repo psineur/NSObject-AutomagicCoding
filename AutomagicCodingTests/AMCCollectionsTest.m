@@ -438,7 +438,7 @@
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
     if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
-        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSDictionary as hash collection!");
     
     // Test mutable collection detection.
     self.fooWithCollections = [[FooWithMutableCollections new] autorelease];
@@ -452,7 +452,7 @@
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
     if ( kAMCObjectFieldTypeCollectionHashMutable != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
-        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
+        STFail(@"fieldTypeForValueWithKey: doesn't recognize NSDictionary as hash collection!");
     
     if ( kAMCObjectFieldTypeSimple != [one fieldTypeForValueWithKey:@"integerValue"])
         STFail(@"fieldTypeForValueWithKey: doesn't recognize int as scalar/struct!");
