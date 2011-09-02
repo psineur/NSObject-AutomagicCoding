@@ -48,27 +48,10 @@
         {
             id value = [aDict valueForKey: key];
             
-            AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
-            switch (fieldType) 
-            {
-                     
-                // Object as it's representation - create new.
-                case kAMCObjectFieldTypeCustom:
-                {
-                    id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
-                
-                    if (object)
-                        value = object;
-                }
-                break;
-                    
-                    
-                // Scalar or struct - simply use KVC.
-                case kAMCObjectFieldTypeSimple:
-                    break;                    
-                default:
-                    break;
-            }            
+            AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];
+            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+            id class = AMCPropertyClass(property);
+            value = AMCFieldValueFromEncodedStateAndFieldType(value, fieldType, class);            
                                    
             [self setValue:value forKey: key];
         }
@@ -221,14 +204,136 @@ BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
     return YES;
 }
 
+id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass )
+{
+    switch (fieldType) 
+    {
+            
+        // Object as it's representation - create new.
+        case kAMCObjectFieldTypeCustom:
+        {
+            id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
+            
+            if (object)
+                value = object;
+        }
+        break;
+            
+            
+        case kAMCObjectFieldTypeCollectionArray:
+        case kAMCObjectFieldTypeCollectionArrayMutable:
+        {
+            // Create temporary array of all objects in collection.
+            id <AMCArrayProtocol> srcCollection = (id <AMCArrayProtocol> ) value;
+            NSMutableArray *dstCollection = [NSMutableArray arrayWithCapacity:[srcCollection count]];
+            for (unsigned int i = 0; i < [srcCollection count]; ++i)
+            {
+                id curEncodedObjectInCollection = [srcCollection objectAtIndex: i];
+                id curDecodedObjectInCollection = AMCFieldValueFromEncodedStateAndFieldType( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                [dstCollection addObject: curDecodedObjectInCollection];
+            }
+            
+            // Get Collection Array Class from property and create object
+            id class = collectionClass;
+            if (!collectionClass)
+            {
+                if (kAMCObjectFieldTypeCollectionArray)
+                    class = [NSArray class];
+                else
+                    class = [NSMutableArray class];
+            }
+            
+            id <AMCArrayProtocol> object = (id <AMCArrayProtocol> )[class alloc];
+            [object initWithArray: dstCollection];
+            
+            if (object)
+                value = object;
+        }
+            break;
+            
+        case kAMCObjectFieldTypeCollectionHash:
+        case kAMCObjectFieldTypeCollectionHashMutable:
+        {
+            // Create temporary array of all objects in collection.
+            NSObject <AMCHashProtocol> *srcCollection = (NSObject <AMCHashProtocol> *) value;
+            NSMutableDictionary *dstCollection = [NSMutableDictionary dictionaryWithCapacity:[srcCollection count]];
+            for (NSString *curKey in [srcCollection allKeys])
+            {
+                id curEncodedObjectInCollection = [srcCollection valueForKey: curKey];
+                id curDecodedObjectInCollection = AMCFieldValueFromEncodedStateAndFieldType( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                [dstCollection setObject: curDecodedObjectInCollection forKey: curKey];
+            }
+            
+            // Get Collection Array Class from property and create object
+            id class = collectionClass;
+            if (!collectionClass)
+            {
+                if (kAMCObjectFieldTypeCollectionArray)
+                    class = [NSDictionary class];
+                else
+                    class = [NSMutableDictionary class];
+            }
+            
+            id <AMCHashProtocol> object = (id <AMCHashProtocol> )[class alloc];
+            [object initWithDictionary: dstCollection];
+            
+            if (object)
+                value = object;
+        }            break;     
+            
+            // Scalar or struct - simply use KVC.
+        case kAMCObjectFieldTypeSimple:
+            break;                    
+        default:
+            break;
+    }
+    
+    return value;
+}
 
-
-
-
-
-
-
-
+AMCObjectFieldType AMCFieldTypeForObject(id object)
+{    
+    id class = [object class];
+    
+    // Is it ordered collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
+    {
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionArrayMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionArray;
+    }
+    
+    // Is it hash collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashProtocol) ) )
+    {
+        
+        // Maybe it's custom object encoded in NSDictionary?
+        if ([object respondsToSelector:@selector(objectForKey:)])
+        {
+            NSString *className = [object objectForKey:NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
+            if ([className isKindOfClass:[NSString class]])
+            {
+                id encodedObjectClass = NSClassFromString(className);
+                
+                if ([encodedObjectClass isAutomagicCodingEnabled])
+                    return kAMCObjectFieldTypeCustom;
+            }
+        }        
+        
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionHashMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionHash;
+    }
+    
+    
+    return kAMCObjectFieldTypeSimple;
+}
 
 
 

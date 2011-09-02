@@ -112,16 +112,25 @@ typedef enum
 
 #pragma mark Helper Functions
 
+/** Returns value, prepared for setValue:forKey: based on it's fieldType 
+ * Recursively uses itself for objects in collections. */
+id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass);
+
 /** Returns Class of given property if it is a Objective-C object.
 * Otherwise returns nil.
 */
 id AMCPropertyClass (objc_property_t property);
+
+/** Tries to guess fieldType for given object. Used in collections decoding to create objects in collections. */
+AMCObjectFieldType AMCFieldTypeForObject(id object);
 
 /** Returns YES, if instances of given class respond to all required instance methods listed
  * in protocol p.
  * Otherwise returns NO;
  */
 BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p );
+
+
 
 
 
