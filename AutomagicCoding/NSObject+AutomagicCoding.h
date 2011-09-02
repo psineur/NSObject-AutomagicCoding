@@ -9,6 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
 
+typedef enum 
+{
+    kAMCObjectFieldTypeSimple, //< Scalar value or Struct.
+    
+    kAMCObjectFieldTypeCustom,                   // Your own object, that will be saved as it's dictionaryRepresentation
+    kAMCObjectFieldTypeCollectionHash,           //< NSDictionary-like objects.
+    kAMCObjectFieldTypeCollectionHashMutable,    //< NSMutableDictionary-like objects.
+    kAMCObjectFieldTypeCollectionArray,          //< NSArray-like objects.
+    kAMCObjectFieldTypeCollectionArrayMutable,   //< NSMutableArray-like objects.
+} AMCObjectFieldType;
+
 @interface NSObject (AutomagicCoding)
 
 /** Reimplement this method in your classes and return YES if you want to enable AutomagicCoding.
@@ -46,9 +57,11 @@
  * You can expand it with your custom non-property ivars, by appending your keys to returned in super. */
 - (NSArray *) keysForValuesInDictionaryRepresentation;
 
-/** Returns YES if object contains property for given key. 
- * Reimplement this method & return YES for your object ivars without readwrite properties.*/
-- (BOOL) isObjectValueForKey: (NSString *) aKey;
+/** Returns field type for given key to save/load it in dictionaryRepresentation
+ * as Scalar, CustomObject, Collection, etc...
+ * Reimplement this method to add your custom ivar without properties.
+ */
+- (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey;
 
 @end
 

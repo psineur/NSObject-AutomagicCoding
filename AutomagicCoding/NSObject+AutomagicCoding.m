@@ -48,16 +48,28 @@
         {
             id value = [aDict valueForKey: key];
             
-            // Object as it's representation - create new.
-            if ([self isObjectValueForKey: key ])
+            AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
+            switch (fieldType) 
             {
-                NSDictionary *objectDict = (NSDictionary *) value;
-                id object = [NSObject objectWithDictionaryRepresentation: objectDict];
-                if (object)
-                    value = object;
-            }
-            
-            // Scalar or struct - simply use KVC.                       
+                     
+                // Object as it's representation - create new.
+                case kAMCObjectFieldTypeCustom:
+                {
+                    id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
+                
+                    if (object)
+                        value = object;
+                }
+                break;
+                    
+                    
+                // Scalar or struct - simply use KVC.
+                case kAMCObjectFieldTypeSimple:
+                    break;                    
+                default:
+                    break;
+            }            
+                                   
             [self setValue:value forKey: key];
         }
         
@@ -76,11 +88,25 @@
     {
         id value = [self valueForKey: key];
         
-        // Save object as it's dictionary representatin if needed & possible.
-        if ([self isObjectValueForKey: key ])
+        
+        AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
+        switch (fieldType) 
         {
-            if ([value respondsToSelector:@selector(dictionaryRepresentation)])
-                value = [(NSObject *) value dictionaryRepresentation];
+                
+            // Object as it's representation - create new.
+            case kAMCObjectFieldTypeCustom:
+            {
+                if ([value respondsToSelector:@selector(dictionaryRepresentation)])
+                    value = [(NSObject *) value dictionaryRepresentation];
+            }
+            break;
+                
+                
+                // Scalar or struct - simply use KVC.
+            case kAMCObjectFieldTypeSimple:
+                break;                    
+            default:
+                break;
         }
         
         // Scalar or struct - simply use KVC.                       
@@ -115,15 +141,15 @@
     return array;
 }
 
-- (BOOL) isObjectValueForKey: (NSString *) aKey
-{    
+- (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey
+{
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
     id class = AMCPropertyClass(property);
     
     if ([class isAutomagicCodingEnabled])
-        return YES;
+        return kAMCObjectFieldTypeCustom;
     
-    return NO;
+    return kAMCObjectFieldTypeSimple;
 }
 
 @end
