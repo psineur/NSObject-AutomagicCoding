@@ -16,4 +16,7 @@
  */
 - (NSString *) testFilePathWithSuffix: (NSString *) aSuffix;
 
+- (BOOL) array: (NSArray *) arr1 isEqualTo: (NSArray *) arr2;
+- (BOOL) dict: (NSDictionary *) dict1 isEqualTo: (NSDictionary *) dict2;
+
 @end

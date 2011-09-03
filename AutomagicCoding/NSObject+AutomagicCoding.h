@@ -108,6 +108,13 @@ typedef enum
  */
 - (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey;
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+- (NSString *) className;
++ (NSString *) className;
+
+#endif
+
 @end
 
 #pragma mark Helper Functions
@@ -132,8 +139,5 @@ AMCObjectFieldType AMCFieldTypeForObject(id object);
  * Otherwise returns NO;
  */
 BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p );
-
-
-
 
 
