@@ -53,4 +53,18 @@
     [super dealloc];
 }
 
+- (BOOL) isEqual:(id)object
+{
+    if ([object isMemberOfClass:[self class]])
+    {
+        Foo *other = (Foo *)object;
+        if(self.integerValue == other.integerValue && [self.publicBar isEqual: other.publicBar])
+            return YES;
+        
+        return NO;
+    }
+    
+    return [super isEqual: object];
+}
+
 @end
