@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Bar.h"
+#import "NSObject+AutomagicCoding.h"
 
 @interface Foo : NSObject
 {

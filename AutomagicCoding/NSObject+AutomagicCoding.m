@@ -48,27 +48,10 @@
         {
             id value = [aDict valueForKey: key];
             
-            AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
-            switch (fieldType) 
-            {
-                     
-                // Object as it's representation - create new.
-                case kAMCObjectFieldTypeCustom:
-                {
-                    id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
-                
-                    if (object)
-                        value = object;
-                }
-                break;
-                    
-                    
-                // Scalar or struct - simply use KVC.
-                case kAMCObjectFieldTypeSimple:
-                    break;                    
-                default:
-                    break;
-            }            
+            AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];
+            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+            id class = AMCPropertyClass(property);
+            value = AMCFieldValueFromEncodedStateAndFieldType(value, fieldType, class);            
                                    
             [self setValue:value forKey: key];
         }
@@ -90,24 +73,7 @@
         
         
         AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
-        switch (fieldType) 
-        {
-                
-            // Object as it's representation - create new.
-            case kAMCObjectFieldTypeCustom:
-            {
-                if ([value respondsToSelector:@selector(dictionaryRepresentation)])
-                    value = [(NSObject *) value dictionaryRepresentation];
-            }
-            break;
-                
-                
-                // Scalar or struct - simply use KVC.
-            case kAMCObjectFieldTypeSimple:
-                break;                    
-            default:
-                break;
-        }
+        value = AMCEncodeObject(value, fieldType);
         
         // Scalar or struct - simply use KVC.                       
         [aDict setValue:value forKey: key];
@@ -151,34 +117,48 @@
         return kAMCObjectFieldTypeCustom;
     
     // Is it ordered collection?
-    if ( ([class instancesRespondToSelector:@selector(count)])
-        && ([class instancesRespondToSelector:@selector(objectAtIndex:)])
-             && ([class instancesRespondToSelector:@selector(initWithArray:)]) 
-        )
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
     {
-        // Mutable or not?
-        if ( [class instancesRespondToSelector:@selector(addObject:)] )
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
             return kAMCObjectFieldTypeCollectionArrayMutable;
         
+        // Not Mutable.
         return kAMCObjectFieldTypeCollectionArray;
     }
     
     // Is it hash collection?
-    if ( ([class instancesRespondToSelector:@selector(count)])
-        && ([class instancesRespondToSelector:@selector(allKeys)])
-        && ([class instancesRespondToSelector:@selector(initWithDictionary:)]) 
-        )
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashProtocol) ) )
     {
-        // Mutable or not?
-        if ([class instancesRespondToSelector:@selector(setObject:forKey:)] )
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
             return kAMCObjectFieldTypeCollectionHashMutable;
         
+        // Not Mutable.
         return kAMCObjectFieldTypeCollectionHash;
     }
     
     
     return kAMCObjectFieldTypeSimple;
 }
+
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+- (NSString *) className
+{
+    const char* name = class_getName([self class]);
+    
+    return [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+}
+
++ (NSString *) className
+{
+    const char* name = class_getName([self class]);
+    
+    return [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+}
+
+#endif
 
 @end
 
@@ -206,3 +186,258 @@ id AMCPropertyClass (objc_property_t property)
     
     return nil;
 }
+
+BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
+{
+    unsigned int outCount = 0;
+    struct objc_method_description *methods = NULL;
+    
+    methods = protocol_copyMethodDescriptionList( p, YES, YES, &outCount);
+    
+    for (unsigned int i = 0; i < outCount; ++i)
+    {
+        SEL selector = methods[i].name;
+        if (![class instancesRespondToSelector: selector])
+            return NO;
+    }
+        
+    
+    return YES;
+}
+
+id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass )
+{
+    switch (fieldType) 
+    {
+            
+        // Object as it's representation - create new.
+        case kAMCObjectFieldTypeCustom:
+        {
+            id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
+            
+            if (object)
+                value = object;
+        }
+        break;
+            
+            
+        case kAMCObjectFieldTypeCollectionArray:
+        case kAMCObjectFieldTypeCollectionArrayMutable:
+        {
+            // Create temporary array of all objects in collection.
+            id <AMCArrayProtocol> srcCollection = (id <AMCArrayProtocol> ) value;
+            NSMutableArray *dstCollection = [NSMutableArray arrayWithCapacity:[srcCollection count]];
+            for (unsigned int i = 0; i < [srcCollection count]; ++i)
+            {
+                id curEncodedObjectInCollection = [srcCollection objectAtIndex: i];
+                id curDecodedObjectInCollection = AMCFieldValueFromEncodedStateAndFieldType( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                [dstCollection addObject: curDecodedObjectInCollection];
+            }
+            
+            // Get Collection Array Class from property and create object
+            id class = collectionClass;
+            if (!collectionClass)
+            {
+                if (kAMCObjectFieldTypeCollectionArray)
+                    class = [NSArray class];
+                else
+                    class = [NSMutableArray class];
+            }
+            
+            id <AMCArrayProtocol> object = (id <AMCArrayProtocol> )[class alloc];
+            object = [object initWithArray: dstCollection];
+            
+            if (object)
+                value = object;
+        }
+            break;
+            
+        case kAMCObjectFieldTypeCollectionHash:
+        case kAMCObjectFieldTypeCollectionHashMutable:
+        {
+            // Create temporary array of all objects in collection.
+            NSObject <AMCHashProtocol> *srcCollection = (NSObject <AMCHashProtocol> *) value;
+            NSMutableDictionary *dstCollection = [NSMutableDictionary dictionaryWithCapacity:[srcCollection count]];
+            for (NSString *curKey in [srcCollection allKeys])
+            {
+                id curEncodedObjectInCollection = [srcCollection valueForKey: curKey];
+                id curDecodedObjectInCollection = AMCFieldValueFromEncodedStateAndFieldType( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                [dstCollection setObject: curDecodedObjectInCollection forKey: curKey];
+            }
+            
+            // Get Collection Array Class from property and create object
+            id class = collectionClass;
+            if (!collectionClass)
+            {
+                if (kAMCObjectFieldTypeCollectionArray)
+                    class = [NSDictionary class];
+                else
+                    class = [NSMutableDictionary class];
+            }
+            
+            id <AMCHashProtocol> object = (id <AMCHashProtocol> )[class alloc];
+            object = [object initWithDictionary: dstCollection];
+            
+            if (object)
+                value = object;
+        }            break;     
+            
+            // Scalar or struct - simply use KVC.
+        case kAMCObjectFieldTypeSimple:
+            break;                    
+        default:
+            break;
+    }
+    
+    return value;
+}
+
+id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
+{
+    switch (fieldType) 
+    {
+            
+            // Object as it's representation - create new.
+        case kAMCObjectFieldTypeCustom:
+        {
+            if ([value respondsToSelector:@selector(dictionaryRepresentation)])
+                value = [(NSObject *) value dictionaryRepresentation];
+        }
+            break;
+            
+        case kAMCObjectFieldTypeCollectionArray:
+        case kAMCObjectFieldTypeCollectionArrayMutable:
+        {
+            
+            id <AMCArrayProtocol> collection = (id <AMCArrayProtocol> )value;
+            NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity: [collection count]];
+            
+            for (unsigned int i = 0; i < [collection count]; ++i)
+            {
+                NSObject *curObjectInCollection = [collection objectAtIndex: i];
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeToEncodeForObject(curObjectInCollection) );
+                
+                [tmpArray addObject: curObjectInCollectionEncoded];
+            }
+            
+            value = tmpArray;
+        }
+            break;
+            
+        case kAMCObjectFieldTypeCollectionHash:
+        case kAMCObjectFieldTypeCollectionHashMutable:
+        {
+            NSObject <AMCHashProtocol> *collection = (NSObject <AMCHashProtocol> *)value;
+            NSMutableDictionary *tmpDict = [NSMutableDictionary dictionaryWithCapacity: [collection count]];
+            
+            for (NSString *curKey in [collection allKeys])
+            {
+                NSObject *curObjectInCollection = [collection valueForKey: curKey];
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeToEncodeForObject(curObjectInCollection));
+                
+                [tmpDict setObject:curObjectInCollectionEncoded forKey:curKey];
+            }
+            
+            value = tmpDict;
+        }
+            break;
+            
+            
+            // Scalar or struct - simply use KVC.
+        case kAMCObjectFieldTypeSimple:
+            break;                    
+        default:
+            break;
+    }
+    
+    return value;
+}
+
+AMCObjectFieldType AMCFieldTypeForObject(id object)
+{    
+    id class = [object class];
+    
+    // Is it ordered collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
+    {
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionArrayMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionArray;
+    }
+    
+    // Is it hash collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashProtocol) ) )
+    {
+        
+        // Maybe it's custom object encoded in NSDictionary?
+        if ([object respondsToSelector:@selector(objectForKey:)])
+        {
+            NSString *className = [object objectForKey:NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
+            if ([className isKindOfClass:[NSString class]])
+            {
+                id encodedObjectClass = NSClassFromString(className);
+                
+                if ([encodedObjectClass isAutomagicCodingEnabled])
+                    return kAMCObjectFieldTypeCustom;
+            }
+        }        
+        
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionHashMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionHash;
+    }
+    
+    
+    return kAMCObjectFieldTypeSimple;
+}
+
+
+
+AMCObjectFieldType AMCFieldTypeToEncodeForObject(id object)
+{    
+    id class = [object class];
+    
+    // Is it custom object with dictionaryRepresentation support?
+    if (([[object class] isAutomagicCodingEnabled]
+        && ([object respondsToSelector:@selector(dictionaryRepresentation)]))
+        )
+    {
+        return kAMCObjectFieldTypeCustom;
+    }
+    
+    // Is it ordered collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
+    {
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionArrayMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionArray;
+    }
+    
+    // Is it hash collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashProtocol) ) )
+    {        
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionHashMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionHash;
+    }
+    
+    
+    return kAMCObjectFieldTypeSimple;
+}
+
+
+
+
+

@@ -27,4 +27,23 @@
     return self;
 }
 
+- (BOOL) isEqual:(id)object
+{
+    if ([object isMemberOfClass:[self class]])
+    {
+        Bar *other = (Bar *)object;
+        if([self.someString isEqualToString: other.someString])
+            return YES;
+        
+        return NO;
+    }
+    
+    return [super isEqual: object];
+}
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"%@ someString={%@}",[self class], self.someString];
+}
+
 @end

@@ -9,6 +9,51 @@
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
 
+#pragma mark Collection Protocols
+
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Ordered Collection. */
+@protocol AMCArrayProtocol
+
+- (NSUInteger)count;
+- (id) objectAtIndex:(NSUInteger) index; 
+- (id) initWithArray:(NSArray *) array;
+
+@end
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Mutable Ordered Collection.
+ * It simply adds new methods to AMCArrayProtocol. 
+ */
+@protocol AMCArrayMutableProtocol <AMCArrayProtocol>
+
+- (void) addObject: (id) anObject;
+
+@end
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Hash(NSDictionary-Like Key-Value) Collection. */
+@protocol AMCHashProtocol
+
+- (NSUInteger)count;
+- (NSArray *) allKeys;
+- (id) initWithDictionary: (NSDictionary *) aDict;
+
+@end
+
+/** Protocol that describes selectors, which object must respond to in order to
+ * be detected as Mutable Hash(NSMutableDictionary-Like Key-Value) Collection. 
+ * It simply adds new methods to AMCArrayProtocol. 
+ */
+@protocol AMCHashMutableProtocol <AMCHashProtocol>
+
+- (void) setObject: (id) anObject forKey:(NSString *) aKey;
+
+@end
+
+
+
 typedef enum 
 {
     kAMCObjectFieldTypeSimple, //< Scalar value or Struct.
@@ -63,11 +108,39 @@ typedef enum
  */
 - (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey;
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+- (NSString *) className;
++ (NSString *) className;
+
+#endif
+
 @end
 
 #pragma mark Helper Functions
+
+/** Returns value, prepared for setValue:forKey: based on it's fieldType 
+ * Recursively uses itself for objects in collections. */
+id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass);
+
+/** Returns object that can be added to dictionary for dictionaryRepresentation. */
+id AMCEncodeObject (id value, AMCObjectFieldType fieldType);
 
 /** Returns Class of given property if it is a Objective-C object.
 * Otherwise returns nil.
 */
 id AMCPropertyClass (objc_property_t property);
+
+/** Tries to guess fieldType for given encoded object. Used in collections decoding to create objects in collections. */
+AMCObjectFieldType AMCFieldTypeForObject(id object);
+
+/** Returns fieldType for given not yet encoded object. */
+AMCObjectFieldType AMCFieldTypeToEncodeForObject(id object);
+
+/** Returns YES, if instances of given class respond to all required instance methods listed
+ * in protocol p.
+ * Otherwise returns NO;
+ */
+BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p );
+
+

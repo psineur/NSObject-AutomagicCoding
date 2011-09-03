@@ -131,9 +131,6 @@
 			children = (
 				6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */,
 				6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */,
-				6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */,
-				6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */,
-				6D6B98A6140E162700835E88 /* MainMenu.xib */,
 				6D6B9898140E162700835E88 /* Supporting Files */,
 			);
 			path = AutomagicCoding;
@@ -142,6 +139,9 @@
 		6D6B9898140E162700835E88 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */,
+				6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */,
+				6D6B98A6140E162700835E88 /* MainMenu.xib */,
 				6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */,
 				6D6B989A140E162700835E88 /* InfoPlist.strings */,
 				6D6B989D140E162700835E88 /* main.m */,
