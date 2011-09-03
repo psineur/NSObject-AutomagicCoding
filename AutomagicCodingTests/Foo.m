@@ -58,13 +58,39 @@
     if ([object isMemberOfClass:[self class]])
     {
         Foo *other = (Foo *)object;
-        if(self.integerValue == other.integerValue && [self.publicBar isEqual: other.publicBar])
-            return YES;
+        if(self.integerValue == other.integerValue)
+        {
+            BOOL equal = YES;
+            
+            if (self.publicBar != other.publicBar)
+            {
+                if (![self.publicBar isEqual: other.publicBar])
+                    equal = NO;
+            }
+            
+            if ( _privateBar != [other valueForKey: @"privateBar" ])
+            {
+                if (![_privateBar isEqual:  [other valueForKey: @"privateBar" ]])
+                    equal = NO;
+            }
+                
+            
+            return equal;
+        }
         
         return NO;
     }
     
     return [super isEqual: object];
+}
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"%@ integerValue={%d}, publicBar = %@, pribateBar = %@",
+            [self class], 
+            self.integerValue,
+            self.publicBar,
+            _privateBar ];
 }
 
 @end

@@ -263,7 +263,7 @@
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     STAssertTrue([newFoo.dict count] == [self.fooWithCollections.dict count], @"newFoo.dict count is not wrong!" );
     
-    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"self.fooWithCollections.array = %@, newFoo.array = %@", self.fooWithCollections.array, newFoo.array  );
     STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
 }
 

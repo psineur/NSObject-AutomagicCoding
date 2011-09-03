@@ -41,4 +41,9 @@
     return [super isEqual: object];
 }
 
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"%@ someString={%@}",[self class], self.someString];
+}
+
 @end
