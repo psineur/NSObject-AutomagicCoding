@@ -61,11 +61,13 @@
     if ([dict1 count] != [dict2 count])
         return NO;
     
-    if ( ![self array:[dict1 allKeys] isEqualTo:[dict2 allKeys] ])
-        return NO;
-    
-    if ( ![self array:[dict1 allValues] isEqualTo:[dict2 allValues] ])
-        return NO;
+    for (NSString *key in dict1)
+    {
+        id value1 = [dict1 objectForKey: key];
+        id value2 = [dict2 objectForKey: key];
+        if ( ![value1 isEqual: value2] )
+            return NO;
+    }
     
     return YES;
 }
