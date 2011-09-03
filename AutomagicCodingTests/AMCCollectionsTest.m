@@ -224,12 +224,25 @@
     two.integerValue = 2;
     three.integerValue = 3;
     
+    one.publicBar = [[Bar new] autorelease];
+    one.publicBar.someString = @"someString in one.publicBar";
+    Bar *onePrivateBar = [[Bar new] autorelease];
+    onePrivateBar.someString = @"someString in onePrivateBar";
+    [one setValue:onePrivateBar forKey:@"privateBar"];
+    
+    two.publicBar = [[Bar new] autorelease];
+    two.publicBar.someString = @"someString in two.publicBar";
+    Bar *twoPrivateBar = [[Bar new] autorelease];
+    twoPrivateBar.someString = @"someString in twoPrivateBar";
+    [two setValue:twoPrivateBar forKey:@"privateBar"];
+    
     Bar *obj1 = [[Bar new] autorelease];
     Bar *obj2 = [[Bar new] autorelease];
     Bar *obj3 = [[Bar new] autorelease];
     obj1.someString = @"object numero uno!";
     obj2.someString = @"object numero dvuno!";
     obj3.someString = @"object numero trino!";
+    
     
     
     // Prepare source foo.
@@ -265,6 +278,11 @@
     
     STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"self.fooWithCollections.array = %@, newFoo.array = %@", self.fooWithCollections.array, newFoo.array  );
     STAssertTrue([ self dict: newFoo.dict isEqualTo: self.fooWithCollections.dict], @"newFoo.dict is not equal with the original!" );
+    
+    // Test Foo#isEqual & Bar#isEqual for negative reaction
+    twoPrivateBar.someString = @"someString in twoPrivateBar messed up";
+    STAssertFalse([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"self.fooWithCollections.array = %@, newFoo.array = %@", self.fooWithCollections.array, newFoo.array  );
+    
 }
 
 - (void) testCollectionsOfCollectionsInMemory
