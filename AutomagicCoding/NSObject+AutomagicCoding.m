@@ -245,7 +245,7 @@ id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType field
             }
             
             id <AMCArrayProtocol> object = (id <AMCArrayProtocol> )[class alloc];
-            [object initWithArray: dstCollection];
+            object = [object initWithArray: dstCollection];
             
             if (object)
                 value = object;
@@ -276,7 +276,7 @@ id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType field
             }
             
             id <AMCHashProtocol> object = (id <AMCHashProtocol> )[class alloc];
-            [object initWithDictionary: dstCollection];
+            object = [object initWithDictionary: dstCollection];
             
             if (object)
                 value = object;
