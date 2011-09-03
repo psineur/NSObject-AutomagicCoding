@@ -131,8 +131,11 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType);
 */
 id AMCPropertyClass (objc_property_t property);
 
-/** Tries to guess fieldType for given object. Used in collections decoding to create objects in collections. */
+/** Tries to guess fieldType for given encoded object. Used in collections decoding to create objects in collections. */
 AMCObjectFieldType AMCFieldTypeForObject(id object);
+
+/** Returns fieldType for given not yet encoded object. */
+AMCObjectFieldType AMCFieldTypeToEncodeForObject(id object);
 
 /** Returns YES, if instances of given class respond to all required instance methods listed
  * in protocol p.

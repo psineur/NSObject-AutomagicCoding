@@ -315,7 +315,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
             for (unsigned int i = 0; i < [collection count]; ++i)
             {
                 NSObject *curObjectInCollection = [collection objectAtIndex: i];
-                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeForObject(curObjectInCollection) );
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeToEncodeForObject(curObjectInCollection) );
                 
                 [tmpArray addObject: curObjectInCollectionEncoded];
             }
@@ -333,7 +333,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
             for (NSString *curKey in [collection allKeys])
             {
                 NSObject *curObjectInCollection = [collection valueForKey: curKey];
-                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeForObject(curObjectInCollection));
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeToEncodeForObject(curObjectInCollection));
                 
                 [tmpDict setObject:curObjectInCollectionEncoded forKey:curKey];
             }
@@ -398,6 +398,44 @@ AMCObjectFieldType AMCFieldTypeForObject(id object)
 }
 
 
+
+AMCObjectFieldType AMCFieldTypeToEncodeForObject(id object)
+{    
+    id class = [object class];
+    
+    // Is it custom object with dictionaryRepresentation support?
+    if (([[object class] isAutomagicCodingEnabled]
+        && ([object respondsToSelector:@selector(dictionaryRepresentation)]))
+        )
+    {
+        return kAMCObjectFieldTypeCustom;
+    }
+    
+    // Is it ordered collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
+    {
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionArrayMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionArray;
+    }
+    
+    // Is it hash collection?
+    if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashProtocol) ) )
+    {        
+        // Mutable?
+        if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
+            return kAMCObjectFieldTypeCollectionHashMutable;
+        
+        // Not Mutable.
+        return kAMCObjectFieldTypeCollectionHash;
+    }
+    
+    
+    return kAMCObjectFieldTypeSimple;
+}
 
 
 
