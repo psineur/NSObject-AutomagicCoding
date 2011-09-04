@@ -37,14 +37,14 @@
 	return [[[self alloc] initWithCapacity:capacity] autorelease];
 }
 
-+ (id) arrayWithArray:(CCArray*)otherArray
++ (id) arrayWithCCArray:(CCArray*)otherArray
 {
-	return [[(CCArray*)[self alloc] initWithArray:otherArray] autorelease];
+	return [[(CCArray*)[self alloc] initWithCCArray:otherArray] autorelease];
 }
 
-+ (id) arrayWithNSArray:(NSArray*)otherArray
++ (id) arrayWithArray:(NSArray*)otherArray
 {
-	return [[(CCArray*)[self alloc] initWithNSArray:otherArray] autorelease];
+	return [[(CCArray*)[self alloc] initWithArray:otherArray] autorelease];
 }
 
 - (id) init
@@ -62,7 +62,7 @@
 	return self;
 }
 
-- (id) initWithArray:(CCArray*)otherArray
+- (id) initWithCCArray:(CCArray*)otherArray
 {
 	self = [self initWithCapacity:otherArray->data->num];
 	if (self != nil) {
@@ -71,7 +71,7 @@
 	return self;
 }
 
-- (id) initWithNSArray:(NSArray*)otherArray
+- (id) initWithArray:(NSArray*)otherArray
 {
 	self = [self initWithCapacity:otherArray.count];
 	if (self != nil) {
@@ -82,7 +82,7 @@
 
 - (id) initWithCoder:(NSCoder*)coder
 {
-	self = [self initWithNSArray:[coder decodeObjectForKey:@"nsarray"]];
+	self = [self initWithArray:[coder decodeObjectForKey:@"nsarray"]];
 	return self;
 }
 
@@ -269,7 +269,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
 	NSArray *nsArray = [self getNSArray];
-	CCArray *newArray = [[[self class] allocWithZone:zone] initWithNSArray:nsArray];
+	CCArray *newArray = [[[self class] allocWithZone:zone] initWithArray:nsArray];
 	return newArray;
 }
 

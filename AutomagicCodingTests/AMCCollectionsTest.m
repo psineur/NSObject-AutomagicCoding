@@ -601,7 +601,7 @@
     
     
     // Prepare source foo.
-    self.fooWithCollections.array = [CCArray arrayWithNSArray: [NSArray arrayWithObjects: one, two, three, four, nil] ];   
+    self.fooWithCollections.array = [CCArray arrayWithArray: [NSArray arrayWithObjects: one, two, three, four, nil] ];   
     
     // Save object representation in PLIST & Create new object from that PLIST.
     NSString *path = [self testFilePathWithSuffix:@"CollectionWithCollectionOfCustom"];
