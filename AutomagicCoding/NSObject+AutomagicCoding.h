@@ -90,10 +90,23 @@ typedef enum
  */
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict;
 
+/** Used in initWithDictionaryRepresentation: to decode value with given key 
+ * from given dicctionary representation.
+ * Uses AMCDecodeObject() internally to decode objects from dict.
+ * Reimplement this method to customize your own object decoding.
+ */
+- (id) AMCDecodeFieldWithKey: (NSString *) aKey fromDictionary: (NSDictionary *) aDict;
+
 
 #pragma mark Encode/Save
 
 - (NSDictionary *) dictionaryRepresentation;
+
+/** Used in dictionaryRepresentation to encode value with given key.
+ * Uses AMCEncodeObject() internally to encode objects.
+ * Reimplement this method to customize your own object encoding.
+ */
+- (id) AMCEncodeFieldWithKey: (NSString *) aKey;
 
 
 #pragma Info for Serialization

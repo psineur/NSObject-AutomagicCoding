@@ -39,6 +39,18 @@
     return nil;
 }
 
+- (id) AMCDecodeFieldWithKey: (NSString *) aKey fromDictionary: (NSDictionary *) aDict
+{
+    id value = [aDict valueForKey: aKey];
+    
+    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: aKey];
+    objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
+    id class = AMCPropertyClass(property);
+    value = AMCDecodeObject(value, fieldType, class);
+    
+    return value;
+}
+
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict
 {
     if ( (self =  [self init]) )
@@ -46,13 +58,7 @@
         NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
         for (NSString *key in keysForValues)
         {
-            id value = [aDict valueForKey: key];
-            
-            AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
-            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
-            id class = AMCPropertyClass(property);
-            value = AMCDecodeObject(value, fieldType, class);            
-                                   
+            id value = [self AMCDecodeFieldWithKey: key fromDictionary: aDict];                                   
             [self setValue:value forKey: key];
         }
         
@@ -62,6 +68,16 @@
 
 #pragma mark Encode/Save
 
+- (id) AMCEncodeFieldWithKey: (NSString *) aKey
+{
+    id value = [self valueForKey: aKey];
+    
+    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: aKey];            
+    value = AMCEncodeObject(value, fieldType);
+    
+    return value;
+}
+
 - (NSDictionary *) dictionaryRepresentation
 {
     NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
@@ -69,11 +85,7 @@
        
     for (NSString *key in keysForValues)
     {
-        id value = [self valueForKey: key];
-        
-        
-        AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];            
-        value = AMCEncodeObject(value, fieldType);
+        id value = [self AMCEncodeFieldWithKey: key];
         
         // Scalar or struct - simply use KVC.                       
         [aDict setValue:value forKey: key];
@@ -143,6 +155,7 @@
     if (structName)
         return kAMCFieldTypeStructure;
     
+    // Otherwise - it's a scalar or PLIST-Compatible object (i.e. NSString)
     return kAMCFieldTypeScalar;
 }
 
