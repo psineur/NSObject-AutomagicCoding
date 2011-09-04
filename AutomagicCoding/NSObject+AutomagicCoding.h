@@ -90,24 +90,39 @@ typedef enum
  */
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict;
 
-/** Used in initWithDictionaryRepresentation: to decode value with given key 
- * from given dicctionary representation.
- * Uses AMCDecodeObject() internally to decode objects from dict.
- * Reimplement this method to customize your own object decoding.
- */
-- (id) AMCDecodeFieldWithKey: (NSString *) aKey fromDictionary: (NSDictionary *) aDict;
-
 
 #pragma mark Encode/Save
 
 /** Encodes object and returns it's dictionary representation, that can be writed to PLIST. */
 - (NSDictionary *) dictionaryRepresentation;
 
-/** Used in dictionaryRepresentation to encode value with given key.
- * Uses AMCEncodeObject() internally to encode objects.
- * Reimplement this method to customize your own object encoding.
+#pragma mark Structure Support
+
+/** Returns NSString representation of given struct.
+ * Reimplement this method to support your own custom structs.
+ * Default implementation encodes NS/CG Point, Size & Rect & returns nil if
+ * structName is different then @"NSPoint", @"NSSize", @"NSRect", @"CGpoint", 
+ * @"CGSize" or @"CGRect".
+ *
+ * @param pStruct pointer to structure to encode.
+ *
+ * @param structName Name of structure type to encode. 
+ *
  */
-- (id) AMCEncodeFieldWithKey: (NSString *) aKey;
+- (NSString *) AMCEncodeStruct: (void *) pStruct withName: (NSString *) structName;
+
+/** Decodes structure from given string & sets it's value for given key.
+ * Reimplement this method to support your own custom structs. 
+ * ATTENTION: This method must use setValue:forKey: to set value of struct!
+ *
+ * @param structName Name of structure type to decode.
+ *
+ * @param value NSString repreentation of structure.
+ *
+ * @param key Key/Name of your property to be set.
+ *
+ **/
+- (void) AMCSetStructWithName: (NSString *) structName decodedFromString: (NSString *)value forKey: (NSString *)key;
 
 
 #pragma Info for Serialization

@@ -11,6 +11,18 @@
 
 #define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
 
+@interface AMCStructHackishObject : NSObject 
+{
+    @public
+    NSPoint _nsPoint;
+    NSSize  _nsSize;
+    NSRect  _nsRect;
+}
+@end
+
+@implementation AMCStructHackishObject  
+@end
+
 @implementation NSObject (AutomagicCoding)
 
 + (BOOL) AMCEnabled
@@ -39,18 +51,6 @@
     return nil;
 }
 
-- (id) AMCDecodeFieldWithKey: (NSString *) aKey fromDictionary: (NSDictionary *) aDict
-{
-    id value = [aDict valueForKey: aKey];
-    
-    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: aKey];
-    objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
-    id class = AMCPropertyClass(property);
-    value = AMCDecodeObject(value, fieldType, class);
-    
-    return value;
-}
-
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict
 {
     if ( (self =  [self init]) )
@@ -58,8 +58,20 @@
         NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
         for (NSString *key in keysForValues)
         {
-            id value = [self AMCDecodeFieldWithKey: key fromDictionary: aDict];                                   
-            [self setValue:value forKey: key];
+            id value = [aDict valueForKey: key];
+            
+            AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
+            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+            if ( kAMCFieldTypeStructure == fieldType)
+            {
+                [self AMCSetStructWithName: AMCPropertyStructName(property) decodedFromString: (NSString *)value forKey: key];
+            }
+            else
+            {
+                id class = AMCPropertyClass(property);
+                value = AMCDecodeObject(value, fieldType, class);
+                [self setValue:value forKey: key];
+            }
         }
         
     }
@@ -72,8 +84,17 @@
 {
     id value = [self valueForKey: aKey];
     
-    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: aKey];            
-    value = AMCEncodeObject(value, fieldType);
+    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: aKey]; 
+    
+    if ( kAMCFieldTypeStructure == fieldType)
+    {
+        objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
+        value = [self AMCEncodeStruct: value withName: AMCPropertyStructName(property)];
+    }
+    else
+    {
+        value = AMCEncodeObject(value, fieldType);
+    }
     
     return value;
 }
@@ -176,6 +197,106 @@
 }
 
 #endif
+
+#pragma mark Structure Support
+
+- (void) AMCSetStructWithName: (NSString *) structName decodedFromString: (NSString *)value forKey: (NSString *)key
+{
+    AMCStructHackishObject *hackishObject = [AMCStructHackishObject new];
+    
+    if ([structName isEqualToString:@"CGPoint"])
+    {
+        NSPoint p = NSPointFromString(value);
+        hackishObject->_nsPoint = p;
+        
+        [self setValue:[hackishObject valueForKey:@"nsPoint"] forKey:key];
+    }
+    else if ([structName isEqualToString:@"NSPoint"])
+    {
+        NSPoint p = NSPointFromString(value);
+        hackishObject->_nsPoint = p;
+        
+        [self setValue:[hackishObject valueForKey:@"nsPoint"] forKey:key];
+    }
+    else if ([structName isEqualToString:@"CGSize"])
+    {
+        NSSize s = NSSizeFromString(value);
+        hackishObject->_nsSize = s;
+        
+        [self setValue:[hackishObject valueForKey:@"nsSize"] forKey:key];
+    }
+    else if ([structName isEqualToString:@"NSSize"])
+    {
+        NSSize s = NSSizeFromString(value);
+        hackishObject->_nsSize = s;
+        
+        [self setValue:[hackishObject valueForKey:@"nsSize"] forKey:key];
+    }
+    else if ([structName isEqualToString:@"CGRect"])
+    {
+        NSRect r = NSRectFromString(value);
+        hackishObject->_nsRect = r;
+        
+        [self setValue:[hackishObject valueForKey:@"nsRect"] forKey:key];   
+    }
+    else if ([structName isEqualToString:@"NSRect"])
+    {
+        NSRect r = NSRectFromString(value);
+        hackishObject->_nsRect = r;
+        
+        [self setValue:[hackishObject valueForKey:@"nsRect"] forKey:key];
+    }
+    
+    [hackishObject release];
+}
+
+- (NSString *) AMCEncodeStruct: (void *) pStruct withName: (NSString *) structName
+{
+    if ([structName isEqualToString:@"CGPoint"])
+    {
+        CGPoint *pP = (CGPoint *)pStruct;
+        CGPoint point = *pP;
+        
+        return NSStringFromPoint(NSPointFromCGPoint(point));        
+    }
+    else if ([structName isEqualToString:@"NSPoint"])
+    {
+        NSPoint *pP = (NSPoint *)pStruct;
+        NSPoint point = *pP;
+        
+        return NSStringFromPoint(point);
+    }
+    else if ([structName isEqualToString:@"CGSize"])
+    {
+        CGSize *pS = (CGSize *)pStruct;
+        CGSize size = *pS;
+        
+        return NSStringFromSize(NSSizeFromCGSize(size));
+    }
+    else if ([structName isEqualToString:@"NSSize"])
+    {
+        NSSize *pS = (NSSize *)pStruct;
+        NSSize size = *pS;
+        
+        return NSStringFromSize(size);
+    }
+    else if ([structName isEqualToString:@"CGRect"])
+    {
+        CGRect *pR = (CGRect *)pStruct;
+        CGRect rect = *pR;
+        
+        return NSStringFromRect(NSRectFromCGRect(rect));
+    }
+    else if ([structName isEqualToString:@"NSRect"])
+    {
+        NSRect *pR = (NSRect *)pStruct;
+        NSRect rect = *pR;
+        
+        return NSStringFromRect(rect);
+    }
+    
+    return nil;
+}
 
 @end
 
