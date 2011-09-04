@@ -122,12 +122,12 @@
 		return data->arr[data->num-1];
 	return nil;
 }
-
-- (id) randomObject
-{
-	if(data->num==0) return nil;
-	return data->arr[(int)(data->num*CCRANDOM_0_1())];
-}
+//
+//- (id) randomObject
+//{
+//	if(data->num==0) return nil;
+//	return data->arr[(int)(data->num*CCRANDOM_0_1())];
+//}
 
 - (NSArray*) getNSArray
 {

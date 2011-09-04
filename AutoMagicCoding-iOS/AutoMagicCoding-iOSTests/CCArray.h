@@ -66,7 +66,7 @@ for(id *__arr__ = __array__->data->arr, *end = __array__->data->arr + __array__-
 - (NSUInteger) indexOfObject:(id)object;
 - (id) objectAtIndex:(NSUInteger)index;
 - (BOOL) containsObject:(id)object;
-- (id) randomObject;
+//- (id) randomObject;
 - (id) lastObject;
 - (NSArray*) getNSArray;
 
