@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D29975B141398A3005F486B /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29975A141398A3005F486B /* FooWithSctructs.m */; };
+		6D2997631413DD9A005F486B /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997621413DD9A005F486B /* CCArray.m */; };
+		6D2997691413DDC9005F486B /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997681413DDC9005F486B /* FooWithCustomCollection.m */; };
 		6D6B9892140E162700835E88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
 		6D6B989C140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B989A140E162700835E88 /* InfoPlist.strings */; };
 		6D6B989E140E162700835E88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B989D140E162700835E88 /* main.m */; };
@@ -32,6 +34,11 @@
 /* Begin PBXFileReference section */
 		6D299759141398A3005F486B /* FooWithSctructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithSctructs.h; sourceTree = "<group>"; };
 		6D29975A141398A3005F486B /* FooWithSctructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithSctructs.m; sourceTree = "<group>"; };
+		6D2997601413DD9A005F486B /* ccCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccCArray.h; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/ccCArray.h"; sourceTree = "<group>"; };
+		6D2997611413DD9A005F486B /* CCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCArray.h; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/CCArray.h"; sourceTree = "<group>"; };
+		6D2997621413DD9A005F486B /* CCArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCArray.m; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/CCArray.m"; sourceTree = "<group>"; };
+		6D2997671413DDC9005F486B /* FooWithCustomCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCustomCollection.h; sourceTree = "<group>"; };
+		6D2997681413DDC9005F486B /* FooWithCustomCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCustomCollection.m; sourceTree = "<group>"; };
 		6D6B988D140E162700835E88 /* AutomagicCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomagicCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B9891140E162700835E88 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D6B9894140E162700835E88 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -181,6 +188,11 @@
 		6D6D28A61410B1E400B7EA19 /* ObjectsForTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D2997601413DD9A005F486B /* ccCArray.h */,
+				6D2997611413DD9A005F486B /* CCArray.h */,
+				6D2997621413DD9A005F486B /* CCArray.m */,
+				6D2997671413DDC9005F486B /* FooWithCustomCollection.h */,
+				6D2997681413DDC9005F486B /* FooWithCustomCollection.m */,
 				6D299759141398A3005F486B /* FooWithSctructs.h */,
 				6D29975A141398A3005F486B /* FooWithSctructs.m */,
 				6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */,
@@ -318,6 +330,8 @@
 				6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */,
 				6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */,
 				6D29975B141398A3005F486B /* FooWithSctructs.m in Sources */,
+				6D2997631413DD9A005F486B /* CCArray.m in Sources */,
+				6D2997691413DDC9005F486B /* FooWithCustomCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

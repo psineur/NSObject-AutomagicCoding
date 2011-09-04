@@ -14,6 +14,7 @@
 #import "FooWithCollections.h"
 #import "FooWithMutableCollections.h"
 #import "Bar.h"
+#import "FooWithCustomCollection.h"
 
 @implementation AMCCollectionsTest
 @synthesize fooWithCollections = _fooWithCollections;
@@ -571,6 +572,75 @@
     }
     @catch (NSException *exception) {
         STFail(@"Mutable collections crashed while trying to modify them");
+    }
+}
+
+- (void) testCustomCollection
+{
+    // Set-up code here.
+    self.fooWithCollections = [[FooWithCustomCollection new] autorelease];
+    
+    // Prepare custom objects for collections.
+    Foo *one = [[Foo new] autorelease];
+    Foo *two = [[Foo new] autorelease];
+    Foo *three = [[Foo new] autorelease];
+    one.integerValue = 1;
+    two.integerValue = 2;
+    three.integerValue = 3;
+    
+    // Prepare objects for collections in collections.
+    Foo *fourOne = [[Foo new] autorelease];
+    Foo *fourTwo = [[Foo new] autorelease];
+    Foo *fourThree = [[Foo new] autorelease];
+    fourOne.integerValue = 41;
+    fourTwo.integerValue = 42;
+    fourThree.integerValue = 43;
+    
+    // Prepare collections in collections.
+    NSArray *four = [NSArray arrayWithObjects:fourOne, fourTwo, fourThree, nil];
+    
+    
+    // Prepare source foo.
+    self.fooWithCollections.array = [CCArray arrayWithNSArray: [NSArray arrayWithObjects: one, two, three, four, nil] ];   
+    
+    // Save object representation in PLIST & Create new object from that PLIST.
+    NSString *path = [self testFilePathWithSuffix:@"CollectionWithCollectionOfCustom"];
+    NSDictionary *dictRepr =[self.fooWithCollections dictionaryRepresentation];    
+    [dictRepr writeToFile: path atomically:YES]; 
+    FooWithCollections *newFoo = [[FooWithCollections objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile: path]] retain];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath: path ])
+        STFail(@"Test file with path = %@ not exist! Dictionary representation = %@", path, dictRepr);
+    
+    // Test newFoo.
+    STAssertNotNil(newFoo, @"newFoo failed to create.");
+    
+    if (![[newFoo className] isEqualToString: [FooWithCustomCollection className]])
+        STFail(@"newFoo should be FooWithCustomCollection!");
+    STAssertTrue( [newFoo isMemberOfClass: [FooWithCustomCollection class]], @"newFoo is NOT MemberOfClass FooWithCustomCollection!" );
+    
+    // Test newFoo collections.
+    STAssertNotNil(newFoo.array, @"newFoo.array failed to create.");   
+    STAssertTrue( [newFoo.array isKindOfClass: [CCArray class]], @"newFoo.array is NOT KindOfClass CCArray!" );    
+    
+    // Test newFoo collections to be the same size.
+    STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
+    
+    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    
+    // Test if newFoo has mutable collections
+    STAssertTrue([newFoo.array isKindOfClass: [CCArray class]], @"newFoo.array = %@", newFoo.array);
+    
+    FooWithMutableCollections *newFooMutable = (FooWithMutableCollections *) newFoo;
+    NSUInteger prevArrayCount = [newFoo.array count];
+    
+    @try {
+        [newFooMutable.array addObject: @"blablaObject"];
+        
+        STAssertFalse([newFoo.array count] == prevArrayCount, @"");
+    }
+    @catch (NSException *exception) {
+        STFail(@"Mutable custom collection crashed while trying to modify them");
     }
 }
 

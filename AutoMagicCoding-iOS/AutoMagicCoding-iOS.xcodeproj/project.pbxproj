@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D299757141397C4005F486B /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D299756141397C4005F486B /* FooWithSctructs.m */; };
+		6D29975E1413DD6F005F486B /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29975D1413DD6F005F486B /* CCArray.m */; };
+		6D2997661413DDB3005F486B /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997651413DDB3005F486B /* FooWithCustomCollection.m */; };
 		6D6D28BD1411608600B7EA19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
 		6D6D28BF1411608600B7EA19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
 		6D6D28C11411608600B7EA19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
@@ -47,6 +49,11 @@
 /* Begin PBXFileReference section */
 		6D299755141397C4005F486B /* FooWithSctructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithSctructs.h; sourceTree = "<group>"; };
 		6D299756141397C4005F486B /* FooWithSctructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithSctructs.m; sourceTree = "<group>"; };
+		6D29975C1413DD6F005F486B /* CCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCArray.h; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/CCArray.h"; sourceTree = "<group>"; };
+		6D29975D1413DD6F005F486B /* CCArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCArray.m; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/CCArray.m"; sourceTree = "<group>"; };
+		6D29975F1413DD7A005F486B /* ccCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccCArray.h; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/ccCArray.h"; sourceTree = "<group>"; };
+		6D2997641413DDB3005F486B /* FooWithCustomCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCustomCollection.h; sourceTree = "<group>"; };
+		6D2997651413DDB3005F486B /* FooWithCustomCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCustomCollection.m; sourceTree = "<group>"; };
 		6D6D28B81411608600B7EA19 /* AutoMagicCoding-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutoMagicCoding-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6D28BC1411608600B7EA19 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6D6D28BE1411608600B7EA19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -212,6 +219,11 @@
 		6D6D29041411610700B7EA19 /* ObjectsForTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D29975F1413DD7A005F486B /* ccCArray.h */,
+				6D29975C1413DD6F005F486B /* CCArray.h */,
+				6D29975D1413DD6F005F486B /* CCArray.m */,
+				6D2997641413DDB3005F486B /* FooWithCustomCollection.h */,
+				6D2997651413DDB3005F486B /* FooWithCustomCollection.m */,
 				6D299755141397C4005F486B /* FooWithSctructs.h */,
 				6D299756141397C4005F486B /* FooWithSctructs.m */,
 				6D6D29051411610700B7EA19 /* FooWithMutableCollections.h */,
@@ -352,6 +364,8 @@
 				6D6D29191411611400B7EA19 /* AMCCollectionsTest.m in Sources */,
 				6D6D291D1411613500B7EA19 /* NSObject+AutomagicCoding.m in Sources */,
 				6D299757141397C4005F486B /* FooWithSctructs.m in Sources */,
+				6D29975E1413DD6F005F486B /* CCArray.m in Sources */,
+				6D2997661413DDB3005F486B /* FooWithCustomCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
