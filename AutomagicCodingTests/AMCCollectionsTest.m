@@ -604,10 +604,10 @@
     self.fooWithCollections.array = [CCArray arrayWithArray: [NSArray arrayWithObjects: one, two, three, four, nil] ];   
     
     // Save object representation in PLIST & Create new object from that PLIST.
-    NSString *path = [self testFilePathWithSuffix:@"CollectionWithCollectionOfCustom"];
+    NSString *path = [self testFilePathWithSuffix:@"CCArray"];
     NSDictionary *dictRepr =[self.fooWithCollections dictionaryRepresentation];    
     [dictRepr writeToFile: path atomically:YES]; 
-    FooWithCollections *newFoo = [[FooWithCollections objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile: path]] retain];
+    FooWithCustomCollection *newFoo = [[FooWithCustomCollection objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile: path]] retain];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath: path ])
         STFail(@"Test file with path = %@ not exist! Dictionary representation = %@", path, dictRepr);
@@ -626,7 +626,7 @@
     // Test newFoo collections to be the same size.
     STAssertTrue([newFoo.array count] == [self.fooWithCollections.array count], @"newFoo.array count is not wrong!" );
     
-    STAssertTrue([ self array:newFoo.array isEqualTo: self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
+    STAssertTrue([ self array:(NSArray *)newFoo.array isEqualTo: (NSArray *)self.fooWithCollections.array], @"newFoo.array is not equal with the original!" );
     
     // Test if newFoo has mutable collections
     STAssertTrue([newFoo.array isKindOfClass: [CCArray class]], @"newFoo.array = %@", newFoo.array);
@@ -642,6 +642,25 @@
     @catch (NSException *exception) {
         STFail(@"Mutable custom collection crashed while trying to modify them");
     }
+    
+    // Save again.
+    NSString *path2 = [self testFilePathWithSuffix:@"CCArrayModified"];
+    dictRepr =[newFooMutable dictionaryRepresentation];    
+    [dictRepr writeToFile: path2 atomically:YES];
+    
+    // Test that file exists after saving modified CCArray.
+    if (![[NSFileManager defaultManager] fileExistsAtPath: path2 ])
+        STFail(@"Test file with path = %@ not exist! Dictionary representation = %@", path, dictRepr);
+    
+    // Test if its modified in new file.
+    FooWithCustomCollection *newFooModified = [[FooWithCustomCollection objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile: path2]] retain];
+    
+    // Test newFooModified.
+    STAssertNotNil(newFooModified, @"newFoo failed to create.");
+    
+    // Test last added object equality in CCArray.
+    STAssertTrue([[newFooModified.array objectAtIndex: 4] isEqual: [newFooMutable.array objectAtIndex: 4]], @"newFooModified.array[4] = %@ newFooMutable.array[4] = %@", [newFooModified.array objectAtIndex: 4], [newFooMutable.array objectAtIndex: 4]);
+        
 }
 
 - (void)tearDown
