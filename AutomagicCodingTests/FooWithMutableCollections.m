@@ -13,7 +13,7 @@
 @synthesize array = _array;
 @synthesize dict = _dict;
 
-+ (BOOL) isAutomagicCodingEnabled
++ (BOOL) AMCEnabled
 {
     return YES;
 }

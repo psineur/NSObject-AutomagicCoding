@@ -13,7 +13,7 @@
 
 @implementation NSObject (AutomagicCoding)
 
-+ (BOOL) isAutomagicCodingEnabled
++ (BOOL) AMCEnabled
 {
     return NO;
 }
@@ -113,7 +113,7 @@
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
     id class = AMCPropertyClass(property);
     
-    if ([class isAutomagicCodingEnabled])
+    if ([class AMCEnabled])
         return kAMCFieldTypeCustomObject;
     
     // Is it ordered collection?
@@ -405,7 +405,7 @@ AMCFieldType AMCFieldTypeForEncodedObject(id object)
             {
                 id encodedObjectClass = NSClassFromString(className);
                 
-                if ([encodedObjectClass isAutomagicCodingEnabled])
+                if ([encodedObjectClass AMCEnabled])
                     return kAMCFieldTypeCustomObject;
             }
         }        
@@ -429,7 +429,7 @@ AMCFieldType AMCFieldTypeForObjectToEncode(id object)
     id class = [object class];
     
     // Is it custom object with dictionaryRepresentation support?
-    if (([[object class] isAutomagicCodingEnabled]
+    if (([[object class] AMCEnabled]
         && ([object respondsToSelector:@selector(dictionaryRepresentation)]))
         )
     {

@@ -12,7 +12,7 @@
 
 @synthesize someString = _someString;
 
-+ (BOOL) isAutomagicCodingEnabled
++ (BOOL) AMCEnabled
 {
     return YES;
 }

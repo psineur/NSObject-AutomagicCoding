@@ -14,7 +14,7 @@
 @synthesize integerValue = _integerValue;
 @synthesize publicBar = _publicBar;
 
-+ (BOOL) isAutomagicCodingEnabled
++ (BOOL) AMCEnabled
 {
     return YES;
 }

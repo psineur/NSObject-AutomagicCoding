@@ -12,7 +12,7 @@
 
 @synthesize rect = _rect, point = _point, size = _size;
 
-+ (BOOL) isAutomagicCodingEnabled
++ (BOOL) AMCEnabled
 {
     return YES;
 }

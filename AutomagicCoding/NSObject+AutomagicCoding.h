@@ -71,7 +71,7 @@ typedef enum
 
 /** Reimplement this method in your classes and return YES if you want to enable AutomagicCoding.
  * Returns NO by default. */
-+ (BOOL) isAutomagicCodingEnabled;
++ (BOOL) AMCEnabled;
 
 #pragma Decode/Create/Init
 
