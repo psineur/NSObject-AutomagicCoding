@@ -108,7 +108,7 @@ typedef enum
  * as Scalar, CustomObject, Collection, etc...
  * Reimplement this method to add your custom ivar without properties.
  */
-- (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey;
+- (AMCObjectFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey;
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 

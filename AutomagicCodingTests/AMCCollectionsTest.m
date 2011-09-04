@@ -182,10 +182,10 @@
                                                                forKeys:[NSArray arrayWithObjects: @"key1", @"key2", @"key3", nil]];
     
     
-    if ( kAMCObjectFieldTypeCollectionArray != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
+    if ( kAMCObjectFieldTypeCollectionArray != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"array"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
-    if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
+    if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"dict"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
     // Save & Load.
@@ -452,10 +452,10 @@
                                                                forKeys:[NSArray arrayWithObjects: @"key1", @"key2", @"key3", nil]];
     
     
-    if ( kAMCObjectFieldTypeCollectionArray != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
+    if ( kAMCObjectFieldTypeCollectionArray != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"array"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
-    if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
+    if ( kAMCObjectFieldTypeCollectionHash != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"dict"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSDictionary as hash collection!");
     
     // Test mutable collection detection.
@@ -466,16 +466,16 @@
                                                                       forKeys:[NSArray arrayWithObjects: @"key1", @"key2", nil]];
     [(NSMutableDictionary *)self.fooWithCollections.dict setObject: obj3 forKey: @"key3" ];
     
-    if ( kAMCObjectFieldTypeCollectionArrayMutable != [self.fooWithCollections fieldTypeForValueWithKey: @"array"] )
+    if ( kAMCObjectFieldTypeCollectionArrayMutable != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"array"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSArray as array collection!");
     
-    if ( kAMCObjectFieldTypeCollectionHashMutable != [self.fooWithCollections fieldTypeForValueWithKey: @"dict"] )
+    if ( kAMCObjectFieldTypeCollectionHashMutable != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"dict"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSDictionary as hash collection!");
     
-    if ( kAMCObjectFieldTypeSimple != [one fieldTypeForValueWithKey:@"integerValue"])
+    if ( kAMCObjectFieldTypeSimple != [one AMCFieldTypeForValueWithKey:@"integerValue"])
         STFail(@"fieldTypeForValueWithKey: doesn't recognize int as scalar/struct!");
     
-    if ( kAMCObjectFieldTypeCustom != [one fieldTypeForValueWithKey:@"publicBar"])
+    if ( kAMCObjectFieldTypeCustom != [one AMCFieldTypeForValueWithKey:@"publicBar"])
         STFail(@"fieldTypeForValueWithKey: doesn't recognize Bar as Custom!");
 }
 

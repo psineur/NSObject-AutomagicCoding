@@ -48,7 +48,7 @@
         {
             id value = [aDict valueForKey: key];
             
-            AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];
+            AMCObjectFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
             objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
             id class = AMCPropertyClass(property);
             value = AMCDecodeObject(value, fieldType, class);            
@@ -72,7 +72,7 @@
         id value = [self valueForKey: key];
         
         
-        AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];            
+        AMCObjectFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];            
         value = AMCEncodeObject(value, fieldType);
         
         // Scalar or struct - simply use KVC.                       
@@ -107,7 +107,7 @@
     return array;
 }
 
-- (AMCObjectFieldType) fieldTypeForValueWithKey: (NSString *) aKey
+- (AMCObjectFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
 {
     // isAutomagicCodingEnabled == YES? Then it's custom object.
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
