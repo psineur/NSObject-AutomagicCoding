@@ -98,18 +98,18 @@ typedef enum
 
 #pragma mark Structure Support
 
-/** Returns NSString representation of given struct.
+/** Returns NSString representation of structure given in NSValue.
  * Reimplement this method to support your own custom structs.
  * Default implementation encodes NS/CG Point, Size & Rect & returns nil if
  * structName is different then @"NSPoint", @"NSSize", @"NSRect", @"CGpoint", 
  * @"CGSize" or @"CGRect".
  *
- * @param pStruct pointer to structure to encode.
+ * @param structValue NSValue that holds structure to encode.
  *
  * @param structName Name of structure type to encode. 
  *
  */
-- (NSString *) AMCEncodeStruct: (void *) pStruct withName: (NSString *) structName;
+- (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName;
 
 /** Decodes structure from given string & sets it's value for given key.
  * Reimplement this method to support your own custom structs. 

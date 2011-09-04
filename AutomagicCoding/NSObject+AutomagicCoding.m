@@ -89,7 +89,7 @@
     if ( kAMCFieldTypeStructure == fieldType)
     {
         objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
-        value = [self AMCEncodeStruct: value withName: AMCPropertyStructName(property)];
+        value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
     }
     else
     {
@@ -202,6 +202,9 @@
 
 - (void) AMCSetStructWithName: (NSString *) structName decodedFromString: (NSString *)value forKey: (NSString *)key
 {
+    // valueForKey: never returns CGPoint, CGRect, etc - it returns NSPoint, NSRect stored in NSValue instead.
+    // This is why here was made no difference between struct names such CGP
+    
     AMCStructHackishObject *hackishObject = [AMCStructHackishObject new];
     
     if ([structName isEqualToString:@"CGPoint"])
@@ -250,47 +253,26 @@
     [hackishObject release];
 }
 
-- (NSString *) AMCEncodeStruct: (void *) pStruct withName: (NSString *) structName
+- (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName
 {
-    if ([structName isEqualToString:@"CGPoint"])
+    // valueForKey: never returns CGPoint, CGRect, etc - it returns NSPoint, NSRect stored in NSValue instead.
+    // This is why here was made no difference between struct names such CGPoint & NSPoint.
+    
+    if ( [structName isEqualToString:@"CGPoint"] || [structName isEqualToString:@"NSPoint"])
     {
-        CGPoint *pP = (CGPoint *)pStruct;
-        CGPoint point = *pP;
-        
-        return NSStringFromPoint(NSPointFromCGPoint(point));        
-    }
-    else if ([structName isEqualToString:@"NSPoint"])
-    {
-        NSPoint *pP = (NSPoint *)pStruct;
-        NSPoint point = *pP;
+        NSPoint point = [structValue pointValue];
         
         return NSStringFromPoint(point);
     }
-    else if ([structName isEqualToString:@"CGSize"])
+    else if ( [structName isEqualToString:@"CGSize"] || [structName isEqualToString:@"NSSize"])
     {
-        CGSize *pS = (CGSize *)pStruct;
-        CGSize size = *pS;
-        
-        return NSStringFromSize(NSSizeFromCGSize(size));
-    }
-    else if ([structName isEqualToString:@"NSSize"])
-    {
-        NSSize *pS = (NSSize *)pStruct;
-        NSSize size = *pS;
+        NSSize size = [structValue sizeValue];
         
         return NSStringFromSize(size);
     }
-    else if ([structName isEqualToString:@"CGRect"])
+    else if ( [structName isEqualToString:@"CGRect"] || [structName isEqualToString:@"NSRect"])
     {
-        CGRect *pR = (CGRect *)pStruct;
-        CGRect rect = *pR;
-        
-        return NSStringFromRect(NSRectFromCGRect(rect));
-    }
-    else if ([structName isEqualToString:@"NSRect"])
-    {
-        NSRect *pR = (NSRect *)pStruct;
-        NSRect rect = *pR;
+        NSRect rect = [structValue rectValue];
         
         return NSStringFromRect(rect);
     }
