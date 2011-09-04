@@ -56,16 +56,16 @@
 
 typedef enum 
 {
-    kAMCObjectFieldTypeSimple, //< Scalar value.
+    kAMCFieldTypeSimple, //< Scalar value.
     
-    kAMCObjectFieldTypeCustom,                   // Your own object, that will be saved as it's dictionaryRepresentation
-    kAMCObjectFieldTypeCollectionHash,           //< NSDictionary-like objects.
-    kAMCObjectFieldTypeCollectionHashMutable,    //< NSMutableDictionary-like objects.
-    kAMCObjectFieldTypeCollectionArray,          //< NSArray-like objects.
-    kAMCObjectFieldTypeCollectionArrayMutable,   //< NSMutableArray-like objects.
+    kAMCFieldTypeCustom,                   // Your own object, that will be saved as it's dictionaryRepresentation
+    kAMCFieldTypeCollectionHash,           //< NSDictionary-like objects.
+    kAMCFieldTypeCollectionHashMutable,    //< NSMutableDictionary-like objects.
+    kAMCFieldTypeCollectionArray,          //< NSArray-like objects.
+    kAMCFieldTypeCollectionArrayMutable,   //< NSMutableArray-like objects.
     
-    kAMCObjectFieldTypeStructure, //< Struct
-} AMCObjectFieldType;
+    kAMCFieldTypeStructure, //< Struct
+} AMCFieldType;
 
 @interface NSObject (AutomagicCoding)
 
@@ -108,7 +108,7 @@ typedef enum
  * as Scalar, CustomObject, Collection, etc...
  * Reimplement this method to add your custom ivar without properties.
  */
-- (AMCObjectFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey;
+- (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey;
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
@@ -123,10 +123,10 @@ typedef enum
 
 /** Returns value, prepared for setValue:forKey: based on it's fieldType 
  * Recursively uses itself for objects in collections. */
-id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass);
+id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass);
 
 /** Returns object that can be added to dictionary for dictionaryRepresentation. */
-id AMCEncodeObject (id value, AMCObjectFieldType fieldType);
+id AMCEncodeObject (id value, AMCFieldType fieldType);
 
 /** Returns Class of given property if it is a Objective-C object.
 * Otherwise returns nil.
@@ -139,10 +139,10 @@ id AMCPropertyClass (objc_property_t property);
 NSString *AMCPropertyStructName(objc_property_t property);
 
 /** Tries to guess fieldType for given encoded object. Used in collections decoding to create objects in collections. */
-AMCObjectFieldType AMCFieldTypeForEncodedObject(id object);
+AMCFieldType AMCFieldTypeForEncodedObject(id object);
 
 /** Returns fieldType for given not yet encoded object. */
-AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object);
+AMCFieldType AMCFieldTypeForObjectToEncode(id object);
 
 /** Returns YES, if instances of given class respond to all required instance methods listed
  * in protocol p.

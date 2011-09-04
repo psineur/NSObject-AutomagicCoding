@@ -29,11 +29,11 @@
     return self;
 }
 
-- (AMCObjectFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
+- (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
 {
     if ([aKey isEqualToString:@"privateBar"])
     {
-        return kAMCObjectFieldTypeCustom;
+        return kAMCFieldTypeCustom;
     }
     
     return [super AMCFieldTypeForValueWithKey: aKey];

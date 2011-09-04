@@ -48,7 +48,7 @@
         {
             id value = [aDict valueForKey: key];
             
-            AMCObjectFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
+            AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
             objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
             id class = AMCPropertyClass(property);
             value = AMCDecodeObject(value, fieldType, class);            
@@ -72,7 +72,7 @@
         id value = [self valueForKey: key];
         
         
-        AMCObjectFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];            
+        AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];            
         value = AMCEncodeObject(value, fieldType);
         
         // Scalar or struct - simply use KVC.                       
@@ -107,24 +107,24 @@
     return array;
 }
 
-- (AMCObjectFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
+- (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
 {
     // isAutomagicCodingEnabled == YES? Then it's custom object.
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
     id class = AMCPropertyClass(property);
     
     if ([class isAutomagicCodingEnabled])
-        return kAMCObjectFieldTypeCustom;
+        return kAMCFieldTypeCustom;
     
     // Is it ordered collection?
     if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
     {
         // Mutable?
         if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
-            return kAMCObjectFieldTypeCollectionArrayMutable;
+            return kAMCFieldTypeCollectionArrayMutable;
         
         // Not Mutable.
-        return kAMCObjectFieldTypeCollectionArray;
+        return kAMCFieldTypeCollectionArray;
     }
     
     // Is it hash collection?
@@ -132,18 +132,18 @@
     {
         // Mutable?
         if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
-            return kAMCObjectFieldTypeCollectionHashMutable;
+            return kAMCFieldTypeCollectionHashMutable;
         
         // Not Mutable.
-        return kAMCObjectFieldTypeCollectionHash;
+        return kAMCFieldTypeCollectionHash;
     }
     
     // Is it a structure?
     NSString *structName = AMCPropertyStructName(property);
     if (structName)
-        return kAMCObjectFieldTypeStructure;
+        return kAMCFieldTypeStructure;
     
-    return kAMCObjectFieldTypeSimple;
+    return kAMCFieldTypeSimple;
 }
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
@@ -230,13 +230,13 @@ BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
     return YES;
 }
 
-id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
+id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
 {
     switch (fieldType) 
     {
             
         // Object as it's representation - create new.
-        case kAMCObjectFieldTypeCustom:
+        case kAMCFieldTypeCustom:
         {
             id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
             
@@ -246,8 +246,8 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
         break;
             
             
-        case kAMCObjectFieldTypeCollectionArray:
-        case kAMCObjectFieldTypeCollectionArrayMutable:
+        case kAMCFieldTypeCollectionArray:
+        case kAMCFieldTypeCollectionArrayMutable:
         {
             // Create temporary array of all objects in collection.
             id <AMCArrayProtocol> srcCollection = (id <AMCArrayProtocol> ) value;
@@ -263,7 +263,7 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
             id class = collectionClass;
             if (!collectionClass)
             {
-                if (kAMCObjectFieldTypeCollectionArray)
+                if (kAMCFieldTypeCollectionArray)
                     class = [NSArray class];
                 else
                     class = [NSMutableArray class];
@@ -277,8 +277,8 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
         }
             break;
             
-        case kAMCObjectFieldTypeCollectionHash:
-        case kAMCObjectFieldTypeCollectionHashMutable:
+        case kAMCFieldTypeCollectionHash:
+        case kAMCFieldTypeCollectionHashMutable:
         {
             // Create temporary array of all objects in collection.
             NSObject <AMCHashProtocol> *srcCollection = (NSObject <AMCHashProtocol> *) value;
@@ -294,7 +294,7 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
             id class = collectionClass;
             if (!collectionClass)
             {
-                if (kAMCObjectFieldTypeCollectionArray)
+                if (kAMCFieldTypeCollectionArray)
                     class = [NSDictionary class];
                 else
                     class = [NSMutableDictionary class];
@@ -308,7 +308,7 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
         }            break;     
             
             // Scalar or struct - simply use KVC.
-        case kAMCObjectFieldTypeSimple:
+        case kAMCFieldTypeSimple:
             break;                    
         default:
             break;
@@ -317,21 +317,21 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
     return value;
 }
 
-id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
+id AMCEncodeObject (id value, AMCFieldType fieldType)
 {
     switch (fieldType) 
     {
             
         // Object as it's representation - create new.
-        case kAMCObjectFieldTypeCustom:
+        case kAMCFieldTypeCustom:
         {
             if ([value respondsToSelector:@selector(dictionaryRepresentation)])
                 value = [(NSObject *) value dictionaryRepresentation];
         }
         break;
             
-        case kAMCObjectFieldTypeCollectionArray:
-        case kAMCObjectFieldTypeCollectionArrayMutable:
+        case kAMCFieldTypeCollectionArray:
+        case kAMCFieldTypeCollectionArrayMutable:
         {
             
             id <AMCArrayProtocol> collection = (id <AMCArrayProtocol> )value;
@@ -349,8 +349,8 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
         }
             break;
             
-        case kAMCObjectFieldTypeCollectionHash:
-        case kAMCObjectFieldTypeCollectionHashMutable:
+        case kAMCFieldTypeCollectionHash:
+        case kAMCFieldTypeCollectionHashMutable:
         {
             NSObject <AMCHashProtocol> *collection = (NSObject <AMCHashProtocol> *)value;
             NSMutableDictionary *tmpDict = [NSMutableDictionary dictionaryWithCapacity: [collection count]];
@@ -369,7 +369,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
             
             
             // Scalar or struct - simply use KVC.
-        case kAMCObjectFieldTypeSimple:
+        case kAMCFieldTypeSimple:
             break;                    
         default:
             break;
@@ -378,7 +378,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
     return value;
 }
 
-AMCObjectFieldType AMCFieldTypeForEncodedObject(id object)
+AMCFieldType AMCFieldTypeForEncodedObject(id object)
 {    
     id class = [object class];
     
@@ -387,10 +387,10 @@ AMCObjectFieldType AMCFieldTypeForEncodedObject(id object)
     {
         // Mutable?
         if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
-            return kAMCObjectFieldTypeCollectionArrayMutable;
+            return kAMCFieldTypeCollectionArrayMutable;
         
         // Not Mutable.
-        return kAMCObjectFieldTypeCollectionArray;
+        return kAMCFieldTypeCollectionArray;
     }
     
     // Is it hash collection?
@@ -406,25 +406,25 @@ AMCObjectFieldType AMCFieldTypeForEncodedObject(id object)
                 id encodedObjectClass = NSClassFromString(className);
                 
                 if ([encodedObjectClass isAutomagicCodingEnabled])
-                    return kAMCObjectFieldTypeCustom;
+                    return kAMCFieldTypeCustom;
             }
         }        
         
         // Mutable?
         if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
-            return kAMCObjectFieldTypeCollectionHashMutable;
+            return kAMCFieldTypeCollectionHashMutable;
         
         // Not Mutable.
-        return kAMCObjectFieldTypeCollectionHash;
+        return kAMCFieldTypeCollectionHash;
     }
     
     
-    return kAMCObjectFieldTypeSimple;
+    return kAMCFieldTypeSimple;
 }
 
 
 
-AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object)
+AMCFieldType AMCFieldTypeForObjectToEncode(id object)
 {    
     id class = [object class];
     
@@ -433,7 +433,7 @@ AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object)
         && ([object respondsToSelector:@selector(dictionaryRepresentation)]))
         )
     {
-        return kAMCObjectFieldTypeCustom;
+        return kAMCFieldTypeCustom;
     }
     
     // Is it ordered collection?
@@ -441,10 +441,10 @@ AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object)
     {
         // Mutable?
         if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayMutableProtocol) ) )
-            return kAMCObjectFieldTypeCollectionArrayMutable;
+            return kAMCFieldTypeCollectionArrayMutable;
         
         // Not Mutable.
-        return kAMCObjectFieldTypeCollectionArray;
+        return kAMCFieldTypeCollectionArray;
     }
     
     // Is it hash collection?
@@ -452,13 +452,13 @@ AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object)
     {        
         // Mutable?
         if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCHashMutableProtocol) ) )
-            return kAMCObjectFieldTypeCollectionHashMutable;
+            return kAMCFieldTypeCollectionHashMutable;
         
         // Not Mutable.
-        return kAMCObjectFieldTypeCollectionHash;
+        return kAMCFieldTypeCollectionHash;
     }    
     
-    return kAMCObjectFieldTypeSimple;
+    return kAMCFieldTypeSimple;
 }
 
 
