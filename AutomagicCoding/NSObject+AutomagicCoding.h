@@ -100,6 +100,7 @@ typedef enum
 
 #pragma mark Encode/Save
 
+/** Encodes object and returns it's dictionary representation, that can be writed to PLIST. */
 - (NSDictionary *) dictionaryRepresentation;
 
 /** Used in dictionaryRepresentation to encode value with given key.
@@ -132,7 +133,7 @@ typedef enum
 
 @end
 
-#pragma mark Helper Functions
+#pragma mark Encode/Decode Helper Functions
 
 /** Returns value, prepared for setValue:forKey: based on it's fieldType 
  * Recursively uses itself for objects in collections. */
@@ -141,6 +142,7 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass);
 /** Returns object that can be added to dictionary for dictionaryRepresentation. */
 id AMCEncodeObject (id value, AMCFieldType fieldType);
 
+#pragma mark Property Info Helper Functions
 /** Returns Class of given property if it is a Objective-C object.
 * Otherwise returns nil.
 */
@@ -150,6 +152,8 @@ id AMCPropertyClass (objc_property_t property);
  * Otherwise returns nil.
  */
 NSString *AMCPropertyStructName(objc_property_t property);
+
+#pragma mark Field Type Info Helper Functions
 
 /** Tries to guess fieldType for given encoded object. Used in collections decoding to create objects in collections. */
 AMCFieldType AMCFieldTypeForEncodedObject(id object);
