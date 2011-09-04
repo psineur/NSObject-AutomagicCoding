@@ -100,25 +100,6 @@
 
 #pragma mark Encode/Save
 
-- (id) AMCEncodeFieldWithKey: (NSString *) aKey
-{
-    id value = [self valueForKey: aKey];
-    
-    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: aKey]; 
-    
-    if ( kAMCFieldTypeStructure == fieldType)
-    {
-        objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
-        value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
-    }
-    else
-    {
-        value = AMCEncodeObject(value, fieldType);
-    }
-    
-    return value;
-}
-
 - (NSDictionary *) dictionaryRepresentation
 {
     NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
@@ -126,7 +107,19 @@
        
     for (NSString *key in keysForValues)
     {
-        id value = [self AMCEncodeFieldWithKey: key];
+        id value = [self valueForKey: key];
+        
+        AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
+        
+        if ( kAMCFieldTypeStructure == fieldType)
+        {
+            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+            value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
+        }
+        else
+        {
+            value = AMCEncodeObject(value, fieldType);
+        }
         
         // Scalar or struct - simply use KVC.                       
         [aDict setValue:value forKey: key];
