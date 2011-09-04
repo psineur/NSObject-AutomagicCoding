@@ -8,6 +8,26 @@
 
 #import "NSObject+AutomagicCoding.h"
 
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+#define NSPoint CGPoint
+#define NSSize CGSize
+#define NSRect CGRect
+
+#define NSPointFromString CGPointFromString
+#define NSSizeFromString CGSizeFromString
+#define NSRectFromString CGRectFromString
+
+#define pointValue CGPointValue
+#define sizeValue CGSizeValue
+#define rectValue CGRectValue
+
+#define NSStringFromPoint NSStringFromCGPoint
+#define NSStringFromSize NSStringFromCGSize
+#define NSStringFromRect NSStringFromCGRect
+
+#endif
+
 
 #define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
 
@@ -210,6 +230,7 @@
     if ([structName isEqualToString:@"CGPoint"])
     {
         NSPoint p = NSPointFromString(value);
+
         hackishObject->_nsPoint = p;
         
         [self setValue:[hackishObject valueForKey:@"nsPoint"] forKey:key];
