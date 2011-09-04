@@ -102,7 +102,7 @@ typedef enum
  * automagic coding.
  * By default - uses list of all available properties in the object via runtime methods.
  * You can expand it with your custom non-property ivars, by appending your keys to returned in super. */
-- (NSArray *) keysForValuesInDictionaryRepresentation;
+- (NSArray *) AMCKeysForDictionaryRepresentation;
 
 /** Returns field type for given key to save/load it in dictionaryRepresentation
  * as Scalar, CustomObject, Collection, etc...

@@ -39,9 +39,9 @@
     return [super AMCFieldTypeForValueWithKey: aKey];
 }
 
-- (NSArray *) keysForValuesInDictionaryRepresentation
+- (NSArray *) AMCKeysForDictionaryRepresentation
 {
-    NSArray *array = [super keysForValuesInDictionaryRepresentation];
+    NSArray *array = [super AMCKeysForDictionaryRepresentation];
     return [array arrayByAddingObject:@"privateBar"];
 }
 

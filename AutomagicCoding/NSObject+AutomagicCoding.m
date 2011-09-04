@@ -43,7 +43,7 @@
 {
     if ( (self =  [self init]) )
     {
-        NSArray *keysForValues = [self keysForValuesInDictionaryRepresentation];
+        NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
         for (NSString *key in keysForValues)
         {
             id value = [aDict valueForKey: key];
@@ -64,7 +64,7 @@
 
 - (NSDictionary *) dictionaryRepresentation
 {
-    NSArray *keysForValues = [self keysForValuesInDictionaryRepresentation];
+    NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
     NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count] + 1];
        
     for (NSString *key in keysForValues)
@@ -87,7 +87,7 @@
 
 #pragma Info for Serialization
 
-- (NSArray *) keysForValuesInDictionaryRepresentation
+- (NSArray *) AMCKeysForDictionaryRepresentation
 {
     id class = [self class];
     
