@@ -251,7 +251,7 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
             for (unsigned int i = 0; i < [srcCollection count]; ++i)
             {
                 id curEncodedObjectInCollection = [srcCollection objectAtIndex: i];
-                id curDecodedObjectInCollection = AMCDecodeObject( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                id curDecodedObjectInCollection = AMCDecodeObject( curEncodedObjectInCollection, AMCFieldTypeForEncodedObject(curEncodedObjectInCollection), nil );
                 [dstCollection addObject: curDecodedObjectInCollection];
             }
             
@@ -282,7 +282,7 @@ id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
             for (NSString *curKey in [srcCollection allKeys])
             {
                 id curEncodedObjectInCollection = [srcCollection valueForKey: curKey];
-                id curDecodedObjectInCollection = AMCDecodeObject( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                id curDecodedObjectInCollection = AMCDecodeObject( curEncodedObjectInCollection, AMCFieldTypeForEncodedObject(curEncodedObjectInCollection), nil );
                 [dstCollection setObject: curDecodedObjectInCollection forKey: curKey];
             }
             
@@ -318,7 +318,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
     switch (fieldType) 
     {
             
-            // Object as it's representation - create new.
+        // Object as it's representation - create new.
         case kAMCObjectFieldTypeCustom:
         {
             if ([value respondsToSelector:@selector(dictionaryRepresentation)])
@@ -336,7 +336,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
             for (unsigned int i = 0; i < [collection count]; ++i)
             {
                 NSObject *curObjectInCollection = [collection objectAtIndex: i];
-                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeToEncodeForObject(curObjectInCollection) );
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeForObjectToEncode(curObjectInCollection) );
                 
                 [tmpArray addObject: curObjectInCollectionEncoded];
             }
@@ -354,7 +354,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
             for (NSString *curKey in [collection allKeys])
             {
                 NSObject *curObjectInCollection = [collection valueForKey: curKey];
-                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeToEncodeForObject(curObjectInCollection));
+                NSObject *curObjectInCollectionEncoded = AMCEncodeObject (curObjectInCollection, AMCFieldTypeForObjectToEncode(curObjectInCollection));
                 
                 [tmpDict setObject:curObjectInCollectionEncoded forKey:curKey];
             }
@@ -374,7 +374,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
     return value;
 }
 
-AMCObjectFieldType AMCFieldTypeForObject(id object)
+AMCObjectFieldType AMCFieldTypeForEncodedObject(id object)
 {    
     id class = [object class];
     
@@ -420,7 +420,7 @@ AMCObjectFieldType AMCFieldTypeForObject(id object)
 
 
 
-AMCObjectFieldType AMCFieldTypeToEncodeForObject(id object)
+AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object)
 {    
     id class = [object class];
     
