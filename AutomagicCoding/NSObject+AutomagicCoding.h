@@ -121,7 +121,7 @@ typedef enum
 
 /** Returns value, prepared for setValue:forKey: based on it's fieldType 
  * Recursively uses itself for objects in collections. */
-id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass);
+id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass);
 
 /** Returns object that can be added to dictionary for dictionaryRepresentation. */
 id AMCEncodeObject (id value, AMCObjectFieldType fieldType);

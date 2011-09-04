@@ -51,7 +51,7 @@
             AMCObjectFieldType fieldType = [self fieldTypeForValueWithKey: key];
             objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
             id class = AMCPropertyClass(property);
-            value = AMCFieldValueFromEncodedStateAndFieldType(value, fieldType, class);            
+            value = AMCDecodeObject(value, fieldType, class);            
                                    
             [self setValue:value forKey: key];
         }
@@ -205,7 +205,7 @@ BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
     return YES;
 }
 
-id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType fieldType, id collectionClass )
+id AMCDecodeObject (id value, AMCObjectFieldType fieldType, id collectionClass )
 {
     switch (fieldType) 
     {
@@ -230,7 +230,7 @@ id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType field
             for (unsigned int i = 0; i < [srcCollection count]; ++i)
             {
                 id curEncodedObjectInCollection = [srcCollection objectAtIndex: i];
-                id curDecodedObjectInCollection = AMCFieldValueFromEncodedStateAndFieldType( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                id curDecodedObjectInCollection = AMCDecodeObject( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
                 [dstCollection addObject: curDecodedObjectInCollection];
             }
             
@@ -261,7 +261,7 @@ id AMCFieldValueFromEncodedStateAndFieldType (id value, AMCObjectFieldType field
             for (NSString *curKey in [srcCollection allKeys])
             {
                 id curEncodedObjectInCollection = [srcCollection valueForKey: curKey];
-                id curDecodedObjectInCollection = AMCFieldValueFromEncodedStateAndFieldType( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
+                id curDecodedObjectInCollection = AMCDecodeObject( curEncodedObjectInCollection, AMCFieldTypeForObject(curEncodedObjectInCollection), nil );
                 [dstCollection setObject: curDecodedObjectInCollection forKey: curKey];
             }
             
