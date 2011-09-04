@@ -58,7 +58,7 @@ typedef enum
 {
     kAMCFieldTypeScalar, //< Scalar value.
     
-    kAMCFieldTypeCustom,                   // Your own object, that will be saved as it's dictionaryRepresentation
+    kAMCFieldTypeCustomObject,                   // Your own object, that will be saved as it's dictionaryRepresentation
     kAMCFieldTypeCollectionHash,           //< NSDictionary-like objects.
     kAMCFieldTypeCollectionHashMutable,    //< NSMutableDictionary-like objects.
     kAMCFieldTypeCollectionArray,          //< NSArray-like objects.

@@ -475,7 +475,7 @@
     if ( kAMCFieldTypeScalar != [one AMCFieldTypeForValueWithKey:@"integerValue"])
         STFail(@"fieldTypeForValueWithKey: doesn't recognize int as scalar/struct!");
     
-    if ( kAMCFieldTypeCustom != [one AMCFieldTypeForValueWithKey:@"publicBar"])
+    if ( kAMCFieldTypeCustomObject != [one AMCFieldTypeForValueWithKey:@"publicBar"])
         STFail(@"fieldTypeForValueWithKey: doesn't recognize Bar as Custom!");
 }
 

@@ -114,7 +114,7 @@
     id class = AMCPropertyClass(property);
     
     if ([class isAutomagicCodingEnabled])
-        return kAMCFieldTypeCustom;
+        return kAMCFieldTypeCustomObject;
     
     // Is it ordered collection?
     if ( classInstancesRespondsToAllSelectorsInProtocol(class, @protocol(AMCArrayProtocol) ) )
@@ -236,7 +236,7 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
     {
             
         // Object as it's representation - create new.
-        case kAMCFieldTypeCustom:
+        case kAMCFieldTypeCustomObject:
         {
             id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
             
@@ -323,7 +323,7 @@ id AMCEncodeObject (id value, AMCFieldType fieldType)
     {
             
         // Object as it's representation - create new.
-        case kAMCFieldTypeCustom:
+        case kAMCFieldTypeCustomObject:
         {
             if ([value respondsToSelector:@selector(dictionaryRepresentation)])
                 value = [(NSObject *) value dictionaryRepresentation];
@@ -406,7 +406,7 @@ AMCFieldType AMCFieldTypeForEncodedObject(id object)
                 id encodedObjectClass = NSClassFromString(className);
                 
                 if ([encodedObjectClass isAutomagicCodingEnabled])
-                    return kAMCFieldTypeCustom;
+                    return kAMCFieldTypeCustomObject;
             }
         }        
         
@@ -433,7 +433,7 @@ AMCFieldType AMCFieldTypeForObjectToEncode(id object)
         && ([object respondsToSelector:@selector(dictionaryRepresentation)]))
         )
     {
-        return kAMCFieldTypeCustom;
+        return kAMCFieldTypeCustomObject;
     }
     
     // Is it ordered collection?

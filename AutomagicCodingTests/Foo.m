@@ -33,7 +33,7 @@
 {
     if ([aKey isEqualToString:@"privateBar"])
     {
-        return kAMCFieldTypeCustom;
+        return kAMCFieldTypeCustomObject;
     }
     
     return [super AMCFieldTypeForValueWithKey: aKey];
