@@ -56,13 +56,15 @@
 
 typedef enum 
 {
-    kAMCObjectFieldTypeSimple, //< Scalar value or Struct.
+    kAMCObjectFieldTypeSimple, //< Scalar value.
     
     kAMCObjectFieldTypeCustom,                   // Your own object, that will be saved as it's dictionaryRepresentation
     kAMCObjectFieldTypeCollectionHash,           //< NSDictionary-like objects.
     kAMCObjectFieldTypeCollectionHashMutable,    //< NSMutableDictionary-like objects.
     kAMCObjectFieldTypeCollectionArray,          //< NSArray-like objects.
     kAMCObjectFieldTypeCollectionArrayMutable,   //< NSMutableArray-like objects.
+    
+    kAMCObjectFieldTypeStructure, //< Struct
 } AMCObjectFieldType;
 
 @interface NSObject (AutomagicCoding)

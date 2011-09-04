@@ -138,6 +138,10 @@
         return kAMCObjectFieldTypeCollectionHash;
     }
     
+    // Is it a structure?
+    NSString *structName = AMCPropertyStructName(property);
+    if (structName)
+        return kAMCObjectFieldTypeStructure;
     
     return kAMCObjectFieldTypeSimple;
 }
@@ -324,7 +328,7 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType)
             if ([value respondsToSelector:@selector(dictionaryRepresentation)])
                 value = [(NSObject *) value dictionaryRepresentation];
         }
-            break;
+        break;
             
         case kAMCObjectFieldTypeCollectionArray:
         case kAMCObjectFieldTypeCollectionArrayMutable:
@@ -452,8 +456,7 @@ AMCObjectFieldType AMCFieldTypeForObjectToEncode(id object)
         
         // Not Mutable.
         return kAMCObjectFieldTypeCollectionHash;
-    }
-    
+    }    
     
     return kAMCObjectFieldTypeSimple;
 }
