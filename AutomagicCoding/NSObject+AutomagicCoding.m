@@ -187,6 +187,27 @@ id AMCPropertyClass (objc_property_t property)
     return nil;
 }
 
+NSString *AMCPropertyStructName(objc_property_t property)
+{
+    if (!property)
+        return nil;
+    
+    const char *attributes = property_getAttributes(property);
+    char *structNameCString = strstr(attributes, "T{");
+    if ( structNameCString )
+    {
+        structNameCString += 2; //< skip T{ substring
+        NSString *structNameString = [NSString stringWithCString:structNameCString encoding:NSUTF8StringEncoding];
+        NSRange range = [structNameString rangeOfString:@"="];
+        
+        structNameString = [structNameString substringToIndex: range.location];
+        
+        return structNameString;
+    }
+    
+    return nil;
+}
+
 BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
 {
     unsigned int outCount = 0;

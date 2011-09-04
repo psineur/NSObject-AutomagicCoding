@@ -184,4 +184,26 @@
     [newFoo release];
 }
 
+- (void) testStructTypeDetection
+{
+    FooWithSctructs *foo = [FooWithSctructs new];
+    
+    
+    objc_property_t propertyPoint = class_getProperty([foo class], [@"point" cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSString *structNamePoint = AMCPropertyStructName(propertyPoint);
+    
+    objc_property_t propertyRect = class_getProperty([foo class], [@"rect" cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSString *structNameRect = AMCPropertyStructName(propertyRect);
+    
+    objc_property_t propertySize = class_getProperty([foo class], [@"size" cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSString *structNameSize = AMCPropertyStructName(propertySize);
+    
+    
+    STAssertTrue([structNamePoint isEqualToString: @"CGPoint"], @"structNamePoint = %@", structNamePoint );
+    STAssertTrue([structNameSize isEqualToString: @"CGSize"], @"structNameSize = %@", structNameSize );
+    STAssertTrue([structNameRect isEqualToString: @"CGRect"], @"structNameSize = %@", structNameRect );
+    
+    [foo release];
+}
+
 @end

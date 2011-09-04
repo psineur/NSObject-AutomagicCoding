@@ -131,6 +131,11 @@ id AMCEncodeObject (id value, AMCObjectFieldType fieldType);
 */
 id AMCPropertyClass (objc_property_t property);
 
+/** Returns name of struct, if given property type is struct.
+ * Otherwise returns nil.
+ */
+NSString *AMCPropertyStructName(objc_property_t property);
+
 /** Tries to guess fieldType for given encoded object. Used in collections decoding to create objects in collections. */
 AMCObjectFieldType AMCFieldTypeForObject(id object);
 
