@@ -143,7 +143,7 @@
     if (structName)
         return kAMCFieldTypeStructure;
     
-    return kAMCFieldTypeSimple;
+    return kAMCFieldTypeScalar;
 }
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
@@ -308,7 +308,7 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
         }            break;     
             
             // Scalar or struct - simply use KVC.
-        case kAMCFieldTypeSimple:
+        case kAMCFieldTypeScalar:
             break;                    
         default:
             break;
@@ -369,7 +369,7 @@ id AMCEncodeObject (id value, AMCFieldType fieldType)
             
             
             // Scalar or struct - simply use KVC.
-        case kAMCFieldTypeSimple:
+        case kAMCFieldTypeScalar:
             break;                    
         default:
             break;
@@ -419,7 +419,7 @@ AMCFieldType AMCFieldTypeForEncodedObject(id object)
     }
     
     
-    return kAMCFieldTypeSimple;
+    return kAMCFieldTypeScalar;
 }
 
 
@@ -458,7 +458,7 @@ AMCFieldType AMCFieldTypeForObjectToEncode(id object)
         return kAMCFieldTypeCollectionHash;
     }    
     
-    return kAMCFieldTypeSimple;
+    return kAMCFieldTypeScalar;
 }
 
 

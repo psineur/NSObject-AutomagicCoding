@@ -472,7 +472,7 @@
     if ( kAMCFieldTypeCollectionHashMutable != [self.fooWithCollections AMCFieldTypeForValueWithKey: @"dict"] )
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSDictionary as hash collection!");
     
-    if ( kAMCFieldTypeSimple != [one AMCFieldTypeForValueWithKey:@"integerValue"])
+    if ( kAMCFieldTypeScalar != [one AMCFieldTypeForValueWithKey:@"integerValue"])
         STFail(@"fieldTypeForValueWithKey: doesn't recognize int as scalar/struct!");
     
     if ( kAMCFieldTypeCustom != [one AMCFieldTypeForValueWithKey:@"publicBar"])
