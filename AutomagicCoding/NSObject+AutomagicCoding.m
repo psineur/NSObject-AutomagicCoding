@@ -131,7 +131,7 @@
 }
 
 
-#pragma Info for Serialization
+#pragma mark Info for Serialization
 
 - (NSArray *) AMCKeysForDictionaryRepresentation
 {

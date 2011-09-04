@@ -73,7 +73,7 @@ typedef enum
  * Returns NO by default. */
 + (BOOL) AMCEnabled;
 
-#pragma Decode/Create/Init
+#pragma mark Decode/Create/Init
 
 /** Creates autoreleased object with given dictionary representation.
  * Returns nil, if object there's no such class name or aDict is nil.
@@ -125,7 +125,7 @@ typedef enum
 - (void) AMCSetStructWithName: (NSString *) structName decodedFromString: (NSString *)value forKey: (NSString *)key;
 
 
-#pragma Info for Serialization
+#pragma mark Info for Serialization
 
 /** Returns array of keys, that will used get dictionaryWithValuesForKeys: for
  * automagic coding.
