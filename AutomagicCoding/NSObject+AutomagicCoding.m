@@ -75,22 +75,27 @@
 {
     if ( (self =  [self init]) )
     {
-        NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
-        for (NSString *key in keysForValues)
+        if (aDict)
         {
-            id value = [aDict valueForKey: key];
-            
-            AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
-            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
-            if ( kAMCFieldTypeStructure == fieldType)
+            NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
+            for (NSString *key in keysForValues)
             {
-                [self AMCSetStructWithName: AMCPropertyStructName(property) decodedFromString: (NSString *)value forKey: key];
-            }
-            else
-            {
-                id class = AMCPropertyClass(property);
-                value = AMCDecodeObject(value, fieldType, class);
-                [self setValue:value forKey: key];
+                id value = [aDict valueForKey: key];
+                if (value)
+                {
+                    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
+                    objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+                    if ( kAMCFieldTypeStructure == fieldType)
+                    {
+                        [self AMCSetStructWithName: AMCPropertyStructName(property) decodedFromString: (NSString *)value forKey: key];
+                    }
+                    else
+                    {
+                        id class = AMCPropertyClass(property);
+                        value = AMCDecodeObject(value, fieldType, class);
+                        [self setValue:value forKey: key];
+                    }
+                }
             }
         }
         
