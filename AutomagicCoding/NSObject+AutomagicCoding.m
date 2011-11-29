@@ -43,22 +43,20 @@
 #define NSStringFromSize NSStringFromCGSize
 #define NSStringFromRect NSStringFromCGRect
 
+#define NSVALUE_ENCODE_POINT(__P__) [NSValue valueWithCGPoint:__P__]
+#define NSVALUE_ENCODE_SIZE(__S__) [NSValue valueWithCGSize:__S__]
+#define NSVALUE_ENCODE_RECT(__R__) [NSValue valueWithCGRect:__R__]
+
+#else
+
+#define NSVALUE_ENCODE_POINT(__P__) [NSValue valueWithPoint:__P__]
+#define NSVALUE_ENCODE_SIZE(__S__) [NSValue valueWithSize:__S__]
+#define NSVALUE_ENCODE_RECT(__R__) [NSValue valueWithRect:__R__]
+
 #endif
 
 
 #define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
-
-@interface AMCStructHackishObject : NSObject 
-{
-    @public
-    NSPoint _nsPoint;
-    NSSize  _nsSize;
-    NSRect  _nsRect;
-}
-@end
-
-@implementation AMCStructHackishObject  
-@end
 
 @implementation NSObject (AutomagicCoding)
 
@@ -240,53 +238,24 @@
     // valueForKey: never returns CGPoint, CGRect, etc - it returns NSPoint, NSRect stored in NSValue instead.
     // This is why here was made no difference between struct names such CGP
     
-    AMCStructHackishObject *hackishObject = [AMCStructHackishObject new];
-    
-    if ([structName isEqualToString:@"CGPoint"])
+    if ([structName isEqualToString:@"CGPoint"] || [structName isEqualToString:@"NSPoint"])
     {
         NSPoint p = NSPointFromString(value);
-
-        hackishObject->_nsPoint = p;
         
-        [self setValue:[hackishObject valueForKey:@"nsPoint"] forKey:key];
+        [self setValue:NSVALUE_ENCODE_POINT(p) forKey:key];
     }
-    else if ([structName isEqualToString:@"NSPoint"])
-    {
-        NSPoint p = NSPointFromString(value);
-        hackishObject->_nsPoint = p;
-        
-        [self setValue:[hackishObject valueForKey:@"nsPoint"] forKey:key];
-    }
-    else if ([structName isEqualToString:@"CGSize"])
+    else if ([structName isEqualToString:@"CGSize"] || [structName isEqualToString:@"NSSize"])
     {
         NSSize s = NSSizeFromString(value);
-        hackishObject->_nsSize = s;
         
-        [self setValue:[hackishObject valueForKey:@"nsSize"] forKey:key];
+        [self setValue:NSVALUE_ENCODE_SIZE(s) forKey:key];
     }
-    else if ([structName isEqualToString:@"NSSize"])
-    {
-        NSSize s = NSSizeFromString(value);
-        hackishObject->_nsSize = s;
-        
-        [self setValue:[hackishObject valueForKey:@"nsSize"] forKey:key];
-    }
-    else if ([structName isEqualToString:@"CGRect"])
+    else if ([structName isEqualToString:@"CGRect"] || [structName isEqualToString:@"NSRect"])
     {
         NSRect r = NSRectFromString(value);
-        hackishObject->_nsRect = r;
         
-        [self setValue:[hackishObject valueForKey:@"nsRect"] forKey:key];   
+        [self setValue:NSVALUE_ENCODE_RECT(r) forKey:key];
     }
-    else if ([structName isEqualToString:@"NSRect"])
-    {
-        NSRect r = NSRectFromString(value);
-        hackishObject->_nsRect = r;
-        
-        [self setValue:[hackishObject valueForKey:@"nsRect"] forKey:key];
-    }
-    
-    [hackishObject release];
 }
 
 - (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName
