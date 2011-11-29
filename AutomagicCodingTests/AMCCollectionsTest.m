@@ -477,7 +477,7 @@
         STFail(@"fieldTypeForValueWithKey: doesn't recognize NSDictionary as hash collection!");
     
     // Test mutable collection detection.
-    self.fooWithCollections = [[FooWithMutableCollections new] autorelease];
+    self.fooWithCollections = (FooWithCollections *)[[FooWithMutableCollections new] autorelease];
     self.fooWithCollections.array =[NSMutableArray arrayWithObjects: one, two, nil];
     [(NSMutableArray *)self.fooWithCollections.array addObject: three ];
     self.fooWithCollections.dict = [NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects: obj1, obj2, nil] 
@@ -500,7 +500,7 @@
 - (void) testMutableCollections
 {
     // Set-up code here.
-    self.fooWithCollections = [[FooWithMutableCollections new] autorelease];
+    self.fooWithCollections = (FooWithCollections *)[[FooWithMutableCollections new] autorelease];
     
     // Prepare custom objects for collections.
     Foo *one = [[Foo new] autorelease];
@@ -595,7 +595,7 @@
 - (void) testCustomCollection
 {
     // Set-up code here.
-    self.fooWithCollections = [[FooWithCustomCollection new] autorelease];
+    self.fooWithCollections = (FooWithCollections *)[[FooWithCustomCollection new] autorelease];
     
     // Prepare custom objects for collections.
     Foo *one = [[Foo new] autorelease];
