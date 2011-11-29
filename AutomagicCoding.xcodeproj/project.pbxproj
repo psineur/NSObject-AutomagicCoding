@@ -31,6 +31,16 @@
 		6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FD41F3DA1484E48C00F9B341 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D6B9884140E162600835E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D6B98AD140E162700835E88;
+			remoteInfo = AutomagicCodingTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6D299759141398A3005F486B /* FooWithSctructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithSctructs.h; sourceTree = "<group>"; };
 		6D29975A141398A3005F486B /* FooWithSctructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithSctructs.m; sourceTree = "<group>"; };
@@ -64,7 +74,6 @@
 		6D6B98CA140E173E00835E88 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
 		6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
-		6D6B98D5140E402600835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6D6D28A01410B03200B7EA19 /* FooWithCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCollections.h; sourceTree = "<group>"; };
 		6D6D28A11410B03200B7EA19 /* FooWithCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCollections.m; sourceTree = "<group>"; };
 		6D6D28A31410B12000B7EA19 /* AMCCollectionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCCollectionsTest.h; sourceTree = "<group>"; };
@@ -99,7 +108,6 @@
 		6D6B9882140E162600835E88 = {
 			isa = PBXGroup;
 			children = (
-				6D6B98D5140E402600835E88 /* SenTestingKit.framework */,
 				6D6B9897140E162700835E88 /* AutomagicCoding */,
 				6D6B98B4140E162700835E88 /* AutomagicCodingTests */,
 				6D6B9890140E162700835E88 /* Frameworks */,
@@ -221,6 +229,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FD41F3DB1484E48C00F9B341 /* PBXTargetDependency */,
 			);
 			name = AutomagicCoding;
 			productName = AutomagicCoding;
@@ -234,7 +243,7 @@
 				6D6B98A9140E162700835E88 /* Sources */,
 				6D6B98AA140E162700835E88 /* Frameworks */,
 				6D6B98AB140E162700835E88 /* Resources */,
-				6D6B98AC140E162700835E88 /* ShellScript */,
+				FD41F3DC1484E49700F9B341 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -250,6 +259,9 @@
 /* Begin PBXProject section */
 		6D6B9884140E162600835E88 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 6D6B9887140E162600835E88 /* Build configuration list for PBXProject "AutomagicCoding" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -291,7 +303,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6D6B98AC140E162700835E88 /* ShellScript */ = {
+		FD41F3DC1484E49700F9B341 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,7 +314,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -336,6 +348,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FD41F3DB1484E48C00F9B341 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D6B98AD140E162700835E88 /* AutomagicCodingTests */;
+			targetProxy = FD41F3DA1484E48C00F9B341 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D6B989A140E162700835E88 /* InfoPlist.strings */ = {
@@ -396,6 +416,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				TEST_AFTER_BUILD = YES;
 			};
 			name = Debug;
 		};
@@ -415,6 +436,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
+				TEST_AFTER_BUILD = YES;
 			};
 			name = Release;
 		};
@@ -429,6 +451,7 @@
 				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -444,6 +467,7 @@
 				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
