@@ -93,16 +93,19 @@ typedef enum
 #pragma mark Decode/Create/Init
 
 /** Creates autoreleased object with given dictionary representation.
- * Returns nil, if object there's no such class name or aDict is nil.
- * Doesn't catch any exceptions, that can be thrown by KVC methods.
+ * Returns nil, aDict is nil or there's no class in your programm with name
+ * provided in valueForKey: NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY .
  *
- * @param aDict Dictionary that contains @"class" NSString with name of class & all other
+ * ATTENTION: Doesn't catch any exceptions, that can be thrown by KVC methods.
+ *
+ * @param aDict Dictionary that contains name of class NSString for
+ * NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY key & all other
  * values for keys in the saved object.
  */
 + (id) objectWithDictionaryRepresentation: (NSDictionary *) aDict;
 
 /** Inits object with key values from given dictionary.
- * Doesn't test className to be equal with self className.
+ * Doesn't test className to be equal with [self className].
  * Reimplement this method to add your custom init behavior while initing from saved state.
  */
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict;
@@ -117,8 +120,9 @@ typedef enum
 
 /** Returns NSString representation of structure given in NSValue.
  * Reimplement this method to support your own custom structs.
+ *
  * Default implementation encodes NS/CG Point, Size & Rect & returns nil if
- * structName is different then @"NSPoint", @"NSSize", @"NSRect", @"CGpoint", 
+ * structName is not equal to @"NSPoint", @"NSSize", @"NSRect", @"CGPoint", 
  * @"CGSize" or @"CGRect".
  *
  * @param structValue NSValue that holds structure to encode.
