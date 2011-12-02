@@ -56,8 +56,6 @@
 #endif
 
 
-#define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
-
 @implementation NSObject (AutomagicCoding)
 
 + (BOOL) AMCEnabled
