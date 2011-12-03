@@ -86,8 +86,8 @@
 
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict
 {
-    if ( (self =  [self init]) )
-    {
+    // NSObject#init simply returns self, so we don't need to call any init here.
+    // See NSObject Class Reference if you don't trust me ;)
         if (aDict)
         {
             NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
@@ -112,8 +112,7 @@
                 }
             }
         }
-        
-    }
+    
     return self;
 }
 
