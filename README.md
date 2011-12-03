@@ -42,10 +42,10 @@ How To Use
  Reimplement this method choose manually, what properties should be encoded in NSDictionary.
  See tests in AutomagicCodingTests for more info & usage examples.
  
- Custom Struct   
- ==================  
+Custom Struct   
+==================  
  
- TODO
+ __TODO__
  See Unit Tests for Examples of Usage.
  
 
