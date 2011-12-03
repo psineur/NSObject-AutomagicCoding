@@ -24,10 +24,52 @@
 //  THE SOFTWARE.
 
 #import "FooWithSctructs.h"
+#import "NSObject+AutomagicCoding.h"
+
+NSString *NSStringFromCustomStruct(CustomStruct custom)
+{
+    return [NSString stringWithFormat:@"ui=%d, f=%f, d=%f, i=%d", custom.ui, custom.f, custom.d, custom.i];
+}
+
+CustomStruct CustomStructFromNSString(NSString *string)
+{
+    CustomStruct result;
+    
+    NSArray *components = [string componentsSeparatedByString:@", "];
+    for (NSString *component in components)
+    {
+        NSArray *keyValue = [component componentsSeparatedByString:@"="];
+        if ([keyValue count] > 1)
+        {
+            NSString *key = [keyValue objectAtIndex: 0];
+            NSString *value = [keyValue objectAtIndex:1];
+            
+            if ([key isEqualToString:@"ui"])
+            {
+                result.ui = [value integerValue];
+            }
+            else if ([key isEqualToString:@"f"])
+            {
+                result.f = [value floatValue];
+            }
+            else if ([key isEqualToString:@"d"])
+            {
+                result.d = [value doubleValue];
+            }
+            else if ([key isEqualToString:@"i"])
+            {
+                result.i = [value integerValue];
+            }
+        }
+    }
+    
+    return result;
+}
 
 @implementation FooWithSctructs
 
 @synthesize rect = _rect, point = _point, size = _size;
+@synthesize customStruct = _customStruct;
 
 + (BOOL) AMCEnabled
 {
@@ -42,6 +84,32 @@
     }
     
     return self;
+}
+
+#pragma mark Custom Struct Support
+
+- (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName
+{
+    if ([structName isEqualToString: @"CustomStruct" ])
+    {
+        CustomStruct custom;
+        [structValue getValue: &custom]; 
+        
+        return NSStringFromCustomStruct(custom);
+    }
+    
+    return [super AMCEncodeStructWithValue: structValue withName: structName];
+}
+
+- (NSValue *) AMCDecodeStructFromString: (NSString *)value withName: (NSString *) structName
+{
+    if ([structName isEqualToString: @"CustomStruct" ])
+    {
+        CustomStruct custom = CustomStructFromNSString(value);
+        return [NSValue valueWithBytes: &custom objCType:@encode(CustomStruct)];
+    }
+    
+    return [super AMCDecodeStructFromString: value withName: structName];
 }
 
 @end

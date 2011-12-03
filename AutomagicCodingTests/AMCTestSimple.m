@@ -215,12 +215,86 @@
     objc_property_t propertySize = class_getProperty([foo class], [@"size" cStringUsingEncoding:NSUTF8StringEncoding]);
     NSString *structNameSize = AMCPropertyStructName(propertySize);
     
+    objc_property_t propertyCustomStruct = class_getProperty([foo class], [@"customStruct" cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSString *structNameCustom = AMCPropertyStructName(propertyCustomStruct);
+    
     
     STAssertTrue([structNamePoint isEqualToString: @"CGPoint"], @"structNamePoint = %@", structNamePoint );
     STAssertTrue([structNameSize isEqualToString: @"CGSize"], @"structNameSize = %@", structNameSize );
     STAssertTrue([structNameRect isEqualToString: @"CGRect"], @"structNameSize = %@", structNameRect );
+    STAssertTrue([structNameCustom isEqualToString: @"CustomStruct"], @"structNameCustom = %@", structNameCustom );
     
     [foo release];
+}
+
+- (void) testCustomStructInMemory
+{
+    FooWithSctructs *foo = [FooWithSctructs new];
+    foo.point = CGPointMake(15.0f, 16.0f);
+    foo.size = CGSizeMake(154.45f, 129.0f);
+    foo.rect = CGRectMake(39.0f, 235.0f, 1233.09f, 124.0f);
+    
+    CustomStruct custom;
+    custom.d = 0.578;
+    custom.f = 0.3456f;
+    custom.i = -20;
+    custom.ui = 55;
+    foo.customStruct = custom;
+    
+    NSDictionary *fooDict = [foo dictionaryRepresentation];
+    
+    
+    FooWithSctructs *newFoo = [[NSObject objectWithDictionaryRepresentation: fooDict] retain];
+    
+    STAssertTrue(newFoo.customStruct.ui == foo.customStruct.ui, 
+                 @"newFoo.customStruct.ui should be %d, but it's %d", foo.customStruct.ui, newFoo.customStruct.ui );
+    
+    STAssertTrue(newFoo.customStruct.d == foo.customStruct.d, 
+                 @"newFoo.customStruct.d should be %f, but it's %f", foo.customStruct.d, newFoo.customStruct.d );
+    
+    STAssertTrue(newFoo.customStruct.f == foo.customStruct.f, 
+                 @"newFoo.customStruct.f should be %f, but it's %f", foo.customStruct.f, newFoo.customStruct.f );
+    
+    STAssertTrue(newFoo.customStruct.i == foo.customStruct.i, 
+                 @"newFoo.customStruct.i should be %d, but it's %d", foo.customStruct.i, newFoo.customStruct.i );
+    
+    [newFoo release];
+}
+
+- (void) testCustomStructInFile
+{
+    FooWithSctructs *foo = [FooWithSctructs new];
+    foo.point = CGPointMake(15.0f, 16.0f);
+    foo.size = CGSizeMake(154.45f, 129.0f);
+    foo.rect = CGRectMake(39.0f, 235.0f, 1233.09f, 124.0f);
+    
+    CustomStruct custom;
+    custom.d = 0.578;
+    custom.f = 0.3456f;
+    custom.i = -20;
+    custom.ui = 55;
+    foo.customStruct = custom;
+    
+    NSDictionary *fooDict = [foo dictionaryRepresentation];
+    NSString *path = [self testFilePathWithSuffix:@"CustomStruct"];
+    [fooDict writeToFile: path atomically:YES];
+   
+    // Load newFoo from dict
+    FooWithSctructs *newFoo = [[FooWithSctructs objectWithDictionaryRepresentation: [NSDictionary dictionaryWithContentsOfFile: path]] retain];
+    
+    STAssertTrue(newFoo.customStruct.ui == foo.customStruct.ui, 
+                 @"newFoo.customStruct.ui should be %d, but it's %d", foo.customStruct.ui, newFoo.customStruct.ui );
+    
+    STAssertTrue(newFoo.customStruct.d == foo.customStruct.d, 
+                 @"newFoo.customStruct.d should be %f, but it's %f", foo.customStruct.d, newFoo.customStruct.d );
+    
+    STAssertTrue(newFoo.customStruct.f == foo.customStruct.f, 
+                 @"newFoo.customStruct.f should be %f, but it's %f", foo.customStruct.f, newFoo.customStruct.f );
+    
+    STAssertTrue(newFoo.customStruct.i == foo.customStruct.i, 
+                 @"newFoo.customStruct.i should be %d, but it's %d", foo.customStruct.i, newFoo.customStruct.i );
+    
+    [newFoo release];
 }
 
 @end

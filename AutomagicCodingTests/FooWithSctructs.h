@@ -25,15 +25,29 @@
 
 #import <Foundation/Foundation.h>
 
+struct CustomStruct {
+    NSUInteger ui;
+    float f;
+    double d;
+    NSInteger i;
+};
+typedef struct CustomStruct CustomStruct;
+
+NSString *NSStringFromCustomStruct(CustomStruct custom);
+CustomStruct CustomStructFromNSString(NSString *string);
+
 @interface FooWithSctructs : NSObject
 {
     CGPoint _point;
     CGSize _size;
     CGRect _rect;
+    
+    CustomStruct _customStruct;
 }
 
 @property CGPoint point;
 @property CGSize size;
 @property CGRect rect;
+@property CustomStruct customStruct;
 
 @end
