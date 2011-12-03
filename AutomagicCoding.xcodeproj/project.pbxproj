@@ -29,6 +29,7 @@
 		6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
 		6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
 		6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
+		FDCE7BEC148A8214009A6DCB /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		6D6D28A81410B7F500B7EA19 /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
 		6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithMutableCollections.h; sourceTree = "<group>"; };
 		6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
+		FDCE7BEA148A8213009A6DCB /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCExceptionsTest.h; sourceTree = "<group>"; };
+		FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCExceptionsTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,8 @@
 				6D6B98BC140E162700835E88 /* AMCTestSimple.m */,
 				6D6D28A31410B12000B7EA19 /* AMCCollectionsTest.h */,
 				6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */,
+				FDCE7BEA148A8213009A6DCB /* AMCExceptionsTest.h */,
+				FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */,
 			);
 			path = AutomagicCodingTests;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				6D29975B141398A3005F486B /* FooWithSctructs.m in Sources */,
 				6D2997631413DD9A005F486B /* CCArray.m in Sources */,
 				6D2997691413DDC9005F486B /* FooWithCustomCollection.m in Sources */,
+				FDCE7BEC148A8214009A6DCB /* AMCExceptionsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
