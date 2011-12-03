@@ -29,7 +29,7 @@
 @implementation AMCExceptionsTest
 
 // All code under test must be linked into the Unit Test bundle
-- (void)testEncodeCrash
+- (void)testUnsupportedStructEncodeCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
     
@@ -46,7 +46,7 @@
     STAssertTrue(crashed, @"");
 }
 
-- (void)testDecodeCrash
+- (void)testUnsupportedStructDecodeCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
     
