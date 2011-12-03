@@ -55,6 +55,8 @@
 
 #endif
 
+static NSString *const AMCEncodeException = @"AMCEncodeException";
+static NSString *const AMCDecodeException = @"AMCDecodeException";
 
 @implementation NSObject (AutomagicCoding)
 
@@ -255,6 +257,8 @@
         return NSVALUE_ENCODE_RECT(r);
     }
     
+    NSException *exception = [NSException exceptionWithName: AMCDecodeException reason:@"Unsupported struct." userInfo:[NSDictionary dictionaryWithObject: structName forKey:@"structName"]];
+    @throw exception;
     return nil;
 }
 
@@ -282,7 +286,8 @@
         return NSStringFromRect(rect);
     }
     
-    NSAssert(NO, @"AMCEncodeStructWithValue: withName: %@ - unhandled struct name", structName);
+    NSException *exception = [NSException exceptionWithName: AMCEncodeException reason:@"Unsupported struct." userInfo:[NSDictionary dictionaryWithObject: structName forKey:@"structName"]];
+    @throw exception;
     return nil;
 }
 
