@@ -33,16 +33,18 @@ How To Use
  as fields for AMC. (ATTENTION: It's recommended to avoid using iVars without properties in AMC due to
  harder memory management, need to write more code, unsupported custom structs & possible future restrictions)
  
- AMCKeysForDictionaryRepresentation
- ==================
+ AMCKeysForDictionaryRepresentation  
+==================  
+
  -AMCKeysForDictionaryRepresentation returns NSArray of NSStrings, thar are passed to KVC methods
  to get & set fields of AMCEnabled objects.
  Default implementation returns complete set of all object properties (both readonly & readwrite).
  Reimplement this method choose manually, what properties should be encoded in NSDictionary.
  See tests in AutomagicCodingTests for more info & usage examples.
  
- Custom Struct 
- ==================
+ Custom Struct   
+ ==================  
+ 
  TODO
  See Unit Tests for Examples of Usage.
  
