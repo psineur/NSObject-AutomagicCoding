@@ -90,30 +90,30 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 {
     // NSObject#init simply returns self, so we don't need to call any init here.
     // See NSObject Class Reference if you don't trust me ;)
-        if (aDict)
+    if (aDict)
+    {
+        NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
+        for (NSString *key in keysForValues)
         {
-            NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
-            for (NSString *key in keysForValues)
+            id value = [aDict valueForKey: key];
+            if (value)
             {
-                id value = [aDict valueForKey: key];
-                if (value)
+                AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
+                objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+                if ( kAMCFieldTypeStructure == fieldType)
                 {
-                    AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
-                    objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
-                    if ( kAMCFieldTypeStructure == fieldType)
-                    {
-                        NSValue *structValue = [self AMCDecodeStructFromString: (NSString *)value withName: AMCPropertyStructName(property)];
-                        [self setValue: structValue forKey: key];
-                    }
-                    else
-                    {
-                        id class = AMCPropertyClass(property);
-                        value = AMCDecodeObject(value, fieldType, class);
-                        [self setValue:value forKey: key];
-                    }
+                    NSValue *structValue = [self AMCDecodeStructFromString: (NSString *)value withName: AMCPropertyStructName(property)];
+                    [self setValue: structValue forKey: key];
+                }
+                else
+                {
+                    id class = AMCPropertyClass(property);
+                    value = AMCDecodeObject(value, fieldType, class);
+                    [self setValue:value forKey: key];
                 }
             }
         }
+    }
     
     return self;
 }
