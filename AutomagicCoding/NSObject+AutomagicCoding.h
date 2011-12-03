@@ -26,6 +26,9 @@
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
 
+extern NSString *const AMCEncodeException;
+extern NSString *const AMCDecodeException;
+
 #pragma mark Collection Protocols
 
 
