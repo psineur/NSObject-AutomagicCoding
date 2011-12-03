@@ -90,6 +90,7 @@
 		6D6D29161411611400B7EA19 /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMCCollectionsTest.m; path = ../../AutomagicCodingTests/AMCCollectionsTest.m; sourceTree = "<group>"; };
 		6D6D291A1411613500B7EA19 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+AutomagicCoding.h"; path = "../../AutomagicCoding/NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6D291B1411613500B7EA19 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AutomagicCoding.m"; path = "../../AutomagicCoding/NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
+		FDCE7BF2148A97F1009A6DCB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +121,7 @@
 		6D6D28AD1411608600B7EA19 = {
 			isa = PBXGroup;
 			children = (
+				FDCE7BF2148A97F1009A6DCB /* README.md */,
 				6D6D28C21411608600B7EA19 /* AutoMagicCoding-iOS */,
 				6D6D28E91411608600B7EA19 /* AutoMagicCoding-iOSTests */,
 				6D6D28BB1411608600B7EA19 /* Frameworks */,

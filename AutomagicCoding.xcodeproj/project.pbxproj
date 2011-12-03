@@ -85,6 +85,7 @@
 		6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
 		FDCE7BEA148A8213009A6DCB /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCExceptionsTest.h; sourceTree = "<group>"; };
 		FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCExceptionsTest.m; sourceTree = "<group>"; };
+		FDCE7BF1148A97C9009A6DCB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 		6D6B9882140E162600835E88 = {
 			isa = PBXGroup;
 			children = (
+				FDCE7BF1148A97C9009A6DCB /* README.md */,
 				6D6B9897140E162700835E88 /* AutomagicCoding */,
 				6D6B98B4140E162700835E88 /* AutomagicCodingTests */,
 				6D6B9890140E162700835E88 /* Frameworks */,
