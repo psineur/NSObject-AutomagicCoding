@@ -48,7 +48,24 @@
 
 - (void)testDecodeCrash
 {
-    STFail(@"Not implemented");
+    BOOL crashed = NO; //< should be YES to pass the test.
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjects: 
+                          [NSArray arrayWithObjects: @"BadClass", @"i=5", nil ]
+                                                     forKeys: 
+                          [NSArray arrayWithObjects: @"class", @"struct", nil]
+                          ];
+    @try {
+        [NSObject objectWithDictionaryRepresentation: dict];
+    }
+    @catch (NSException *exception) {
+        crashed = YES;
+        STAssertTrue([[exception name] isEqualToString: AMCDecodeException], 
+                     @"Wrong exception name, should be %@ but is %@ instead", AMCDecodeException, [exception name] );
+    }
+    
+    STAssertTrue(crashed, @"");
+    
 }
 
 @end
