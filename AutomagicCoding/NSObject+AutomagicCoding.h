@@ -134,18 +134,20 @@ typedef enum
  */
 - (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName;
 
-/** Decodes structure from given string & sets it's value for given key.
- * Reimplement this method to support your own custom structs. 
- * ATTENTION: This method must use setValue:forKey: to set value of struct!
+/** Decodes structure from given string & returns NSValue that is ready to be set 
+ * with setValue:forKey:.
  *
- * @param structName Name of structure type to decode.
+ * Reimplement this method to support your own custom structs.
+ * When reimplementing - use structName to detect you custom struct & 
+ * & return [super AMCDecodeStructFromString: value withName: structName] for 
+ * all other struct names.
  *
  * @param value NSString repreentation of structure.
  *
- * @param key Key/Name of your property to be set.
+ * @param structName Name of structure type to decode.
  *
  **/
-- (void) AMCSetStructWithName: (NSString *) structName decodedFromString: (NSString *)value forKey: (NSString *)key;
+- (NSValue *) AMCDecodeStructFromString: (NSString *)value withName: (NSString *) structName;
 
 
 #pragma mark Info for Serialization

@@ -100,7 +100,8 @@
                     objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
                     if ( kAMCFieldTypeStructure == fieldType)
                     {
-                        [self AMCSetStructWithName: AMCPropertyStructName(property) decodedFromString: (NSString *)value forKey: key];
+                        NSValue *structValue = [self AMCDecodeStructFromString: (NSString *)value withName: AMCPropertyStructName(property)];
+                        [self setValue: structValue forKey: key];
                     }
                     else
                     {
@@ -231,8 +232,8 @@
 
 #pragma mark Structure Support
 
-- (void) AMCSetStructWithName: (NSString *) structName decodedFromString: (NSString *)value forKey: (NSString *)key
-{
+- (NSValue *) AMCDecodeStructFromString: (NSString *)value withName: (NSString *) structName 
+{    
     // valueForKey: never returns CGPoint, CGRect, etc - it returns NSPoint, NSRect stored in NSValue instead.
     // This is why here was made no difference between struct names such CGP
     
@@ -240,20 +241,22 @@
     {
         NSPoint p = NSPointFromString(value);
         
-        [self setValue:NSVALUE_ENCODE_POINT(p) forKey:key];
+        return NSVALUE_ENCODE_POINT(p);
     }
     else if ([structName isEqualToString:@"CGSize"] || [structName isEqualToString:@"NSSize"])
     {
         NSSize s = NSSizeFromString(value);
         
-        [self setValue:NSVALUE_ENCODE_SIZE(s) forKey:key];
+        return NSVALUE_ENCODE_SIZE(s);
     }
     else if ([structName isEqualToString:@"CGRect"] || [structName isEqualToString:@"NSRect"])
     {
         NSRect r = NSRectFromString(value);
         
-        [self setValue:NSVALUE_ENCODE_RECT(r) forKey:key];
+        return NSVALUE_ENCODE_RECT(r);
     }
+    
+    return nil;
 }
 
 - (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName
