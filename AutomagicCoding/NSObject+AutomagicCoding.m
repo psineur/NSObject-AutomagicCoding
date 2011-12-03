@@ -282,6 +282,7 @@
         return NSStringFromRect(rect);
     }
     
+    NSAssert(NO, @"AMCEncodeStructWithValue: withName: %@ - unhandled struct name", structName);
     return nil;
 }
 
