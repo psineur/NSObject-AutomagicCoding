@@ -48,6 +48,15 @@ Custom Struct
  __TODO__
  See Unit Tests for Examples of Usage.
  
+ 
+File Format
+==================  
+
+AMC saves object to NSDictionary, that can be saved to PLIST (or JSON).   
+Keys simply are ivars names and/or properties names.   
+One special key ( "class" ) used to hold name of the object's class.   
+Run unit tests on Mac & go look to your documents folder - there will be a lot of PLISTs.   
+They are test objects saved to PLIST files.  
 
 License
 ==================
