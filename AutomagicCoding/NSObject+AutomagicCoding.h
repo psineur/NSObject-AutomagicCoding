@@ -87,7 +87,7 @@ typedef enum
     kAMCFieldTypeStructure, //< Struct
 } AMCFieldType;
 
-#define NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY @"class"
+#define kAMCDictionaryKeyClassName @"class"
 
 @interface NSObject (AutomagicCoding)
 

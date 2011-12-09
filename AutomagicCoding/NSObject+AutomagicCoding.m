@@ -72,7 +72,7 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     if (![aDict isKindOfClass:[NSDictionary class]])
         return nil;
     
-    NSString *className = [aDict objectForKey: NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
+    NSString *className = [aDict objectForKey: kAMCDictionaryKeyClassName];
     if( ![className isKindOfClass:[NSString class]] )
         return nil;
     
@@ -145,7 +145,7 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
         [aDict setValue:value forKey: key];
     }
     
-    [aDict setValue:[self className] forKey: NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
+    [aDict setValue:[self className] forKey: kAMCDictionaryKeyClassName];
     
     return aDict;
 }
@@ -531,7 +531,7 @@ AMCFieldType AMCFieldTypeForEncodedObject(id object)
         // Maybe it's custom object encoded in NSDictionary?
         if ([object respondsToSelector:@selector(objectForKey:)])
         {
-            NSString *className = [object objectForKey:NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY];
+            NSString *className = [object objectForKey:kAMCDictionaryKeyClassName];
             if ([className isKindOfClass:[NSString class]])
             {
                 id encodedObjectClass = NSClassFromString(className);
