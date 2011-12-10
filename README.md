@@ -35,6 +35,8 @@ How To Use
  inherited from NSObject.
  2. Import NSObject+AutomagicCoding.h where you need it.
  3. Reimplement +(BOOL)AMCEnabled and return YES to enable AMC for you class.
+ 4. Reimplement -(id)initWithDictionaryRepresentation: and use [super initWithDictionaryRepresentation] inside of it. Ensure that all collections & other fields are created
+ after calling super initWithDictionaryRepresentation. Do your own init routines after.
  4. Use -dictionaryRepresentation to encode your object to NSDictionary & NSObject::objectWithDictionaryRepresentation: to decode.
  * Additionaly: reimplement -AMCKeysForDictionaryRepresentation to change amount & order of encoded/decoded fields. (See AMCKeysForDictionaryRepresentation below for more info ).
  * Additionaly: reimplement -AMCEncodeStructWithValue: withName: /-AMCDecodeStructWithValue: withName:  to support custom structs (See Custom Struct below for more info).
