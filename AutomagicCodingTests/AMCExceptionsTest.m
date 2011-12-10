@@ -26,6 +26,7 @@
 #import "AMCExceptionsTest.h"
 #import "NSObject+AutomagicCoding.h"
 #import "Bar.h"
+#import "Foo.h"
 
 @implementation AMCExceptionsTest
 
@@ -112,6 +113,93 @@
     @catch (NSException *exception) {
         STFail(@"+objectWithDictionaryRepresentation crashed with Exception = %@ (%@).", [exception name], [exception reason] );
     }
+}
+
+// Changed Foo's dictionaryRepresentation to have Object dictionaryRepresentation 
+// in one property instead of simple int value.
+// Should crash in KVC's methods with NSInvalidArgumentException
+- (void) testObjectToIntDecode
+{
+    BOOL crashed = NO; //< Should be YES to pass the test.
+    
+    // Prepare Foo class - that we will serialize & deserialize in-memory.
+    Foo *foo = [[Foo new] autorelease];
+    foo.publicBar = [[Bar new] autorelease];
+    foo.integerValue = 17;
+    
+    Bar *privateBarInFoo = [[Bar new]autorelease];
+    [foo setValue: privateBarInFoo forKey:@"privateBar"];
+    
+    // Prepare inside bar objects in Foo.
+    foo.publicBar.someString = @"Some Randooooom String! =)";
+    privateBarInFoo.someString = @"Some another random string - this time it's in private bar!";
+    
+    // Retain Foo.
+    [foo retain];
+    
+    // Save object representation in mutable NSDictionary.
+    NSMutableDictionary *fooDict = [NSMutableDictionary dictionaryWithDictionary: [foo dictionaryRepresentation] ];
+    
+    // Change integerValue representation with Bar representation in dictionary representation.
+    NSDictionary *newBarDict = [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: @"Bar", @"New Bar to set as Int!", nil]
+                                                            forKeys: [NSArray arrayWithObjects: kAMCDictionaryKeyClassName, @"someString", nil]
+                                 ];
+    [fooDict setObject: newBarDict forKey:@"integerValue"];
+    
+    
+    @try {  
+        // Try to create new object from that dictionary.
+        Foo *newFoo = [[Foo objectWithDictionaryRepresentation: fooDict] retain];
+        [newFoo release];
+    }
+    @catch (NSException *exception) {
+        crashed = YES;
+        STAssertTrue( [[exception name] isEqualToString:NSInvalidArgumentException], @"Exception name should be %@, but its %@ ( %@ )", NSInvalidArgumentException, [exception name], [exception reason]);
+    }    
+    
+    STAssertTrue(crashed, @"Did not crashed.");
+}
+
+// Changed Foo's dictionaryRepresentation to have simple intValue in
+// one property instead of object's (Bar) dictionaryRepresentation.
+// Shouldn't crash, but publicBar should be nil.
+- (void) testIntToObjectDecode
+{
+    // Prepare Foo class - that we will serialize & deserialize in-memory.
+    Foo *foo = [[Foo new] autorelease];
+    foo.publicBar = [[Bar new] autorelease];
+    foo.integerValue = 17;
+    
+    Bar *privateBarInFoo = [[Bar new]autorelease];
+    [foo setValue: privateBarInFoo forKey:@"privateBar"];
+    
+    // Prepare inside bar objects in Foo.
+    foo.publicBar.someString = @"Some Randooooom String! =)";
+    privateBarInFoo.someString = @"Some another random string - this time it's in private bar!";
+    
+    // Retain Foo.
+    [foo retain];
+    
+    // Save object representation in mutable NSDictionary.
+    NSMutableDictionary *fooDict = [NSMutableDictionary dictionaryWithDictionary: [foo dictionaryRepresentation] ];
+    
+    // Change publicBar representation with integerValue representation in dictionary representation.
+    [fooDict setObject: [NSNumber numberWithInt: 19] forKey:@"publicBar"];
+    
+    @try {
+        // Try to create new object from that dictionary.
+        Foo *newFoo = [[Foo objectWithDictionaryRepresentation: fooDict] retain];
+        STAssertTrue([newFoo isKindOfClass: [Foo class]], @"foo class should be Foo but it is %@ instead.", [Foo className]);
+        
+        STAssertNil(newFoo.publicBar, @"publicBar can't init from int representation. It should be nil, but it's %@ instead", newFoo.publicBar );
+        
+        STAssertFalse([newFoo.publicBar isKindOfClass: [NSNumber class]], @"PublicBar is an NSNumber!");
+        
+        [newFoo release];
+    }
+    @catch (NSException *exception) {
+        STFail(@"Crashed %@ %@", [exception name], [exception reason]);
+    }    
 }
 
 @end
