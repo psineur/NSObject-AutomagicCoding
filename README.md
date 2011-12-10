@@ -57,7 +57,35 @@ Custom Struct Support
 To enable your own custom struct support you must do following:
 
 1. Your custom structs should be used __ONLY AS PROPERTIES__ in your class. iVars custom structs are not supported.
-2. Reimplement -AMCEncodeStructWithValue:withName: & AMCDecodeStructFromString:withName: like this:   
+2. Reimplement -AMCEncodeStructWithValue:withName: & AMCDecodeStructFromString:withName: like this: 
+
+```
+- (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName
+{
+    if ([structName isEqualToString: @"CustomStruct" ])
+    {
+        CustomStruct custom;
+        [structValue getValue: &custom]; 
+        
+        return NSStringFromCustomStruct(custom);
+    }
+    
+    return [super AMCEncodeStructWithValue: structValue withName: structName];
+}
+
+- (NSValue *) AMCDecodeStructFromString: (NSString *)value withName: (NSString *) structName
+{
+    if ([structName isEqualToString: @"CustomStruct" ])
+    {
+        CustomStruct custom = CustomStructFromNSString(value);
+        return [NSValue valueWithBytes: &custom objCType:@encode(CustomStruct)];
+    }
+    
+    return [super AMCDecodeStructFromString: value withName: structName];
+}
+```
+
+See FooWithStructs & AMCTestSimple for working example.
 
  
 
