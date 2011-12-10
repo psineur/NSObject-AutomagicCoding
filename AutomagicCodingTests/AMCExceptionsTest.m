@@ -29,7 +29,8 @@
 
 @implementation AMCExceptionsTest
 
-// All code under test must be linked into the Unit Test bundle
+// BadClass have UnsupportedByAMCStruct ivar.
+// -dictionaryRepresentation should crash with AMCEncodeException
 - (void)testUnsupportedStructEncodeCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
@@ -47,6 +48,9 @@
     STAssertTrue(crashed, @"");
 }
 
+// BadClass have UnsupportedByAMCStruct ivar, that's name is added to 
+// AMCKeysForDictionaryRepresentation.
+// +objectWithDictionaryRepresentation should crash with AMCDecodeException
 - (void)testUnsupportedStructDecodeCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
