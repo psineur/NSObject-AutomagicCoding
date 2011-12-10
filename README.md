@@ -87,6 +87,25 @@ To enable your own custom struct support you must do following:
 
 See FooWithStructs & AMCTestSimple for working example.
 
+
+Exceptions
+==================
+
+All exceptions, bad-data & unwanted behaviour tests are located in AMCExceptions.m. 
+
+Here's a list of bad things, that can happen with AMC:   
+
+* __Encoding__ ( calling -dictionaryRepresentation )
+   1. **Unsupported struct**:throws AMCEncodeException on  (See Custom Struct Support above)
+   2. **Wrong keys in -AMCKeysForDictionaryRepresentation**: Throws NSUnkownKeyException.( Wrong key = no such property, ivar or method - see KVC programming guide for details).
+* __Decoding__ ( calling -objectWithDictionaryRepresentation: )
+   1. **Unsupported struct**: Throws AMCDecodeException (See Custom Struct Support above).
+   2. **Mismatch between -AMCKeysForDictionaryRepresentation & Dictionary Representation Keys**: No exceptions gets thrown. Only intersect of keys in 
+   dictionary representation & -AMCKeysForDictionaryRepresentation are used to set values for decoding object's fields. So always check for neccessary fields in your -initWithDictionaryRepresentation - create them if they are nil.
+   3. **Object for Scalar key in Dictionary Representation**: KVC will throw NSInvalidArgumentException i.e. if you're trying to set Object with it's own dictionary representation as simple int.
+   4. **Scalar for Object key in Dictionary Representation**: No exception gets thrown. Object will not be set - so your property will still handle nil.
+   5. **Object with different class name for Object Key in Dictinoary Representation**: No exception gets thrown. It's possible to set Foo for Bar property with AMC. Their own properties can be set with AMC or remain nil. Do [self.foo isKindOfClass: [Foo class]] checks in -initWithDictinoaryRepresentation: after calling super if it's necessary.
+
  
 
 License
