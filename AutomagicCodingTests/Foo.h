@@ -30,7 +30,7 @@
 @interface Foo : NSObject
 {
     int _integerValue;
-    Bar *_bar;
+    Bar *_publicBar;
     
     Bar *_privateBar;
 }
