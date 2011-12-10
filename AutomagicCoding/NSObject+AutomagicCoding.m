@@ -371,8 +371,22 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
         {
             id object = [NSObject objectWithDictionaryRepresentation: (NSDictionary *) value];
             
-            if (object)
-                value = object;
+            // Here was following code:
+            // if (object)
+            //    value = object;
+            //
+            // It was replaced with this one:
+            
+            value = object;
+            
+            // To pass -testIntToObjectDecode added in b5522b23a4b484359dca32ddfd38e9dff51bc853
+            // In that test dictionaryRepresentation was modified and NSNumber (kAMCFieldTypeScalar)
+            // was set to field with type kAMCFieldTypeCustomObject.
+            // So there was NSNumber object set instead of Bar in that test.
+            // It's possible to modify dictionaryRepresentation so, that one custom object
+            // will be set instead of other custom object, but if -objectWithDictionaryRepresentation 
+            // returns nil - that definetly can't be set as customObject.
+            
         }
         break;
             
