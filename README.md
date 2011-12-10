@@ -14,6 +14,15 @@ Supported properties types
  * Custom Collections (Mutable/Not-Mutable, that can be used as keyValue(Dictionary) or Ordered(Array) collections )
  * Common Structures (NSRect/CGRect, NSSize/CGSize, NSPoint/CGPoint).
  * Custom Structures (You will need to write additional code to encode/decode them to/from NSString).
+ 
+File Format
+-------------------------------------  
+
+AMC saves object to NSDictionary, that can be saved to PLIST (or JSON).   
+Keys simply are ivars names and/or properties names.   
+One special key ( "class" ) used to hold name of the object's class.   
+Run unit tests on Mac & go look to your documents folder - there will be a lot of PLISTs.   
+They are test objects saved to PLIST files. 
 
 Known Issues
 ==================
@@ -48,15 +57,6 @@ Custom Struct
  __TODO__
  See Unit Tests for Examples of Usage.
  
- 
-File Format
-==================  
-
-AMC saves object to NSDictionary, that can be saved to PLIST (or JSON).   
-Keys simply are ivars names and/or properties names.   
-One special key ( "class" ) used to hold name of the object's class.   
-Run unit tests on Mac & go look to your documents folder - there will be a lot of PLISTs.   
-They are test objects saved to PLIST files.  
 
 License
 ==================
