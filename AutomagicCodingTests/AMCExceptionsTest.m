@@ -72,7 +72,7 @@
 // -AMCKeysForDictionaryRepresentation return value as an array of keys.
 // AMC Uses KVC's -valueForKey: method to retreive values.
 // If it's impossible to get value - KVC throws NSUnkownKeyException
-- (void) testEncodeWrongKeyInAMCKeys
+- (void) testEncodeWrongKeyInAMCKeysCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
     
