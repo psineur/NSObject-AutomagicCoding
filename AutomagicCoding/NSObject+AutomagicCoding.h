@@ -98,13 +98,13 @@ typedef enum
 #pragma mark Decode/Create/Init
 
 /** Creates autoreleased object with given dictionary representation.
- * Returns nil, aDict is nil or there's no class in your programm with name
- * provided in valueForKey: NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY .
+ * Returns nil, if aDict is nil or there's no class in your programm with name
+ * provided in valueForKey: kAMCDictionaryKeyClassName .
  *
  * ATTENTION: Doesn't catch any exceptions, that can be thrown by KVC methods.
  *
  * @param aDict Dictionary that contains name of class NSString for
- * NSOBJECT_AUTOMAGICCODING_CLASSNAMEKEY key & all other
+ * kAMCDictionaryKeyClassName key & all other
  * values for keys in the saved object.
  */
 + (id) objectWithDictionaryRepresentation: (NSDictionary *) aDict;
