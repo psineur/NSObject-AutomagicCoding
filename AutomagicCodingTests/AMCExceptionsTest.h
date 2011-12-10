@@ -30,6 +30,8 @@
 
 @end
 
+#pragma mark Unsupported Custom Struct
+
 struct UnsupportedByAMCStruct {
     int i;
     int g;
@@ -39,5 +41,11 @@ typedef struct UnsupportedByAMCStruct UnsupportedByAMCStruct;
 @interface BadClass : NSObject {
 
     UnsupportedByAMCStruct _struct;
+}
+@end
+
+#pragma mark Object with bad AMCKeysForDictionaryRepresentation
+
+@interface Foobar : NSObject {
 }
 @end

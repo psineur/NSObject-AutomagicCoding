@@ -25,6 +25,7 @@
 
 #import "AMCExceptionsTest.h"
 #import "NSObject+AutomagicCoding.h"
+#import "Bar.h"
 
 @implementation AMCExceptionsTest
 
@@ -65,7 +66,48 @@
     }
     
     STAssertTrue(crashed, @"");
+}
+
+// Each time when AMC creates dictionary representation of an object - it uses
+// -AMCKeysForDictionaryRepresentation return value as an array of keys.
+// AMC Uses KVC's -valueForKey: method to retreive values.
+// If it's impossible to get value - KVC throws NSUnkownKeyException
+- (void) testEncodeWrongKeyInAMCKeys
+{
+    BOOL crashed = NO; //< should be YES to pass the test.
     
+    Foobar *object = [Foobar new];
+    @try {
+        [object dictionaryRepresentation];
+    }
+    @catch (NSException *exception) {
+        crashed = YES;
+        STAssertTrue([[exception name] isEqualToString: @"NSUnknownKeyException" ], 
+                     @"Wrong exception name, should be %@ but is %@ instead", @"NSUnknownKeyException", [exception name] );
+    }
+    
+    STAssertTrue(crashed, @"");
+}
+
+
+// Each time when object is created from dictionary representation - it uses
+// className to create an instance, and then uses
+// -AMCKeysForDictionaryRepresentation return value as an array of keys.
+// If there's no such key in given dict - AMC will skip it &
+// no crash will occur.
+- (void) testDecodeUnnecessaryKeyInDict
+{ 
+    NSDictionary *dict = [[NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: @"Foobar", @"wrongString", nil]
+                                                     forKeys: [NSArray arrayWithObjects: kAMCDictionaryKeyClassName, @"wrongKeyThatDoesntExist", nil]
+                          ] retain];
+    
+    @try {
+        id object = [[NSObject objectWithDictionaryRepresentation: dict] retain];
+        [object release];
+    }
+    @catch (NSException *exception) {
+        STFail(@"+objectWithDictionaryRepresentation crashed with Exception = %@ (%@).", [exception name], [exception reason] );
+    }
 }
 
 @end
@@ -97,5 +139,14 @@
     return [super AMCFieldTypeForValueWithKey: aKey];
 }
 
+
+@end
+
+@implementation Foobar
+
+- (NSArray *) AMCKeysForDictionaryRepresentation
+{
+    return [NSArray arrayWithObjects: @"noSuchKey", @"anotherWrongKey", nil];
+}
 
 @end
