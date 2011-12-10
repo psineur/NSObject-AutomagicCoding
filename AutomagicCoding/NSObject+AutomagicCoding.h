@@ -2,7 +2,7 @@
 //  NSObject+AutomagicCoding.h
 //  AutomagicCoding
 //
-//   31.08.11.
+//  31.08.11.
 //  Copyright 2011 Stepan Generalov.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,6 +26,7 @@
 #import <Foundation/Foundation.h>
 #import "objc/runtime.h"
 
+#define kAMCDictionaryKeyClassName @"class"
 extern NSString *const AMCEncodeException;
 extern NSString *const AMCDecodeException;
 
@@ -33,7 +34,8 @@ extern NSString *const AMCDecodeException;
 
 
 /** Protocol that describes selectors, which object must respond to in order to
- * be detected as Ordered Collection. */
+ * be detected as Ordered Collection. 
+ */
 @protocol AMCArrayProtocol
 
 - (NSUInteger)count;
@@ -53,7 +55,8 @@ extern NSString *const AMCDecodeException;
 @end
 
 /** Protocol that describes selectors, which object must respond to in order to
- * be detected as Hash(NSDictionary-Like Key-Value) Collection. */
+ * be detected as Hash(NSDictionary-Like Key-Value) Collection. 
+ */
 @protocol AMCHashProtocol
 
 - (NSUInteger)count;
@@ -73,12 +76,12 @@ extern NSString *const AMCDecodeException;
 @end
 
 
-
+// Object's fields types, that AMC recognizes.
 typedef enum 
 {
     kAMCFieldTypeScalar, //< Scalar value.
     
-    kAMCFieldTypeCustomObject,                   // Your own object, that will be saved as it's dictionaryRepresentation
+    kAMCFieldTypeCustomObject,             //< Your own object, that will be saved as it's dictionaryRepresentation
     kAMCFieldTypeCollectionHash,           //< NSDictionary-like objects.
     kAMCFieldTypeCollectionHashMutable,    //< NSMutableDictionary-like objects.
     kAMCFieldTypeCollectionArray,          //< NSArray-like objects.
@@ -87,44 +90,56 @@ typedef enum
     kAMCFieldTypeStructure, //< Struct
 } AMCFieldType;
 
-#define kAMCDictionaryKeyClassName @"class"
 
-@interface NSObject (AutomagicCoding)
+/** @category AutoMagicCoding AMC Public Interface.
+ */
+@interface NSObject (AutoMagicCoding)
 
-/** Reimplement this method in your classes and return YES if you want to enable AutomagicCoding.
- * Returns NO by default. */
+/** Reimplement this method in your classes and return YES if you want to enable AutoMagicCoding.
+ * Returns NO by default. 
+ */
 + (BOOL) AMCEnabled;
 
 #pragma mark Decode/Create/Init
 
 /** Creates autoreleased object with given dictionary representation.
  * Returns nil, if aDict is nil or there's no class in your programm with name
- * provided in valueForKey: kAMCDictionaryKeyClassName .
+ * provided in valueForKey: kAMCDictionaryKeyClassName.
  *
- * ATTENTION: Doesn't catch any exceptions, that can be thrown by KVC methods.
+ * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
  *
  * @param aDict Dictionary that contains name of class NSString for
- * kAMCDictionaryKeyClassName key & all other
- * values for keys in the saved object.
+ * kAMCDictionaryKeyClassName key & all other values for keys in the saved object.
  */
 + (id) objectWithDictionaryRepresentation: (NSDictionary *) aDict;
 
-/** Inits object with key values from given dictionary.
+/** Designated initializer for AMC. Use it as something like -initWithCoder:
+ * Inits object with key values from given dictionary.
  * Doesn't test className to be equal with [self className].
  * Reimplement this method to add your custom init behavior while initing from saved state.
+ *
+ * @param aDict Dictionary that contains name of class NSString for
+ * kAMCDictionaryKeyClassName key & all other values for keys in the saved object.
  */
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict;
 
 
 #pragma mark Encode/Save
 
-/** Encodes object and returns it's dictionary representation, that can be writed to PLIST. */
+/** Encodes object and returns it's dictionary representation, that can be writed to PLIST.
+ *
+ * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ */
 - (NSDictionary *) dictionaryRepresentation;
 
 #pragma mark Structure Support
 
 /** Returns NSString representation of structure given in NSValue.
  * Reimplement this method to support your own custom structs.
+ * When reimplementing - use structName to detect you custom struct & 
+ * & return [super AMCEncodeStructWithValue: value withName: structName] for 
+ * all other struct names.
+ * (See README.md "Custom Struct Support" part for details).
  *
  * Default implementation encodes NS/CG Point, Size & Rect & returns nil if
  * structName is not equal to @"NSPoint", @"NSSize", @"NSRect", @"CGPoint", 
@@ -144,6 +159,7 @@ typedef enum
  * When reimplementing - use structName to detect you custom struct & 
  * & return [super AMCDecodeStructFromString: value withName: structName] for 
  * all other struct names.
+ * (See README.md "Custom Struct Support" part for details).
  *
  * @param value NSString repreentation of structure.
  *
@@ -155,20 +171,24 @@ typedef enum
 
 #pragma mark Info for Serialization
 
-/** Returns array of keys, that will used get dictionaryWithValuesForKeys: for
- * automagic coding.
- * By default - uses list of all available properties in the object via runtime methods.
- * You can expand it with your custom non-property ivars, by appending your keys to returned in super. */
+/** Returns array of keys, that will used to create dictionaryWithValuesForKeys: .
+ * By default - uses list of all available properties in the object 
+ * provided by Objective-C Runtime methods.
+ * You can expand it with your custom non-property ivars, by appending your  own
+ * keys to keys that were returned by [super AMCKeysForDictionaryRepresentation].  
+ */
 - (NSArray *) AMCKeysForDictionaryRepresentation;
 
 /** Returns field type for given key to save/load it in dictionaryRepresentation
  * as Scalar, CustomObject, Collection, etc...
- * Reimplement this method to add your custom ivar without properties.
+ * Reimplement this method to add your custom ivar without properties. If you will not
+ * reimplement this method for your custom ivars - they will treated as kAMCFieldTypeScalar .
  */
 - (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey;
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
+/** Declared by AMC when building for iOS, on Mac exists by default. */
 - (NSString *) className;
 + (NSString *) className;
 
@@ -179,13 +199,15 @@ typedef enum
 #pragma mark Encode/Decode Helper Functions
 
 /** Returns value, prepared for setValue:forKey: based on it's fieldType 
- * Recursively uses itself for objects in collections. */
+ * Recursively uses itself for objects in collections. 
+ */
 id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass);
 
 /** Returns object that can be added to dictionary for dictionaryRepresentation. */
 id AMCEncodeObject (id value, AMCFieldType fieldType);
 
 #pragma mark Property Info Helper Functions
+
 /** Returns Class of given property if it is a Objective-C object.
 * Otherwise returns nil.
 */
