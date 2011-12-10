@@ -32,7 +32,7 @@
 
 // BadClass have UnsupportedByAMCStruct ivar.
 // -dictionaryRepresentation should crash with AMCEncodeException
-- (void)testUnsupportedStructEncodeCrash
+- (void)testEncodeUnsupportedStructCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
     
@@ -52,7 +52,7 @@
 // BadClass have UnsupportedByAMCStruct ivar, that's name is added to 
 // AMCKeysForDictionaryRepresentation.
 // +objectWithDictionaryRepresentation should crash with AMCDecodeException
-- (void)testUnsupportedStructDecodeCrash
+- (void)testDecodeUnsupportedStructCrash
 {
     BOOL crashed = NO; //< should be YES to pass the test.
     
@@ -118,7 +118,7 @@
 // Changed Foo's dictionaryRepresentation to have Object dictionaryRepresentation 
 // in one property instead of simple int value.
 // Should crash in KVC's methods with NSInvalidArgumentException
-- (void) testObjectToIntDecode
+- (void) testDecodeObjectToInt
 {
     BOOL crashed = NO; //< Should be YES to pass the test.
     
@@ -163,7 +163,7 @@
 // Changed Foo's dictionaryRepresentation to have simple intValue in
 // one property instead of object's (Bar) dictionaryRepresentation.
 // Shouldn't crash, but publicBar should be nil.
-- (void) testIntToObjectDecode
+- (void) testDecodeIntToObject
 {
     // Prepare Foo class - that we will serialize & deserialize in-memory.
     Foo *foo = [[Foo new] autorelease];
