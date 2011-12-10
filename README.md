@@ -42,7 +42,7 @@ How To Use
  as fields for AMC. (ATTENTION: It's recommended to avoid using iVars without properties in AMC due to
  harder memory management, need to write more code, unsupported custom structs & possible future restrictions)
  
- AMCKeysForDictionaryRepresentation  
+AMCKeysForDictionaryRepresentation  
 ==================  
 
  -AMCKeysForDictionaryRepresentation returns NSArray of NSStrings, thar are passed to KVC methods
@@ -51,11 +51,14 @@ How To Use
  Reimplement this method choose manually, what properties should be encoded in NSDictionary.
  See tests in AutomagicCodingTests for more info & usage examples.
  
-Custom Struct   
+Custom Struct Support   
 ==================  
  
- __TODO__
- See Unit Tests for Examples of Usage.
+To enable your own custom struct support you must do following:
+
+1. Your custom structs should be used __ONLY AS PROPERTIES__ in your class. iVars custom structs are not supported.
+2. Reimplement -AMCEncodeStructWithValue:withName: & AMCDecodeStructFromString:withName: like this:   
+
  
 
 License
