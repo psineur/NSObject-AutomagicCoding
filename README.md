@@ -12,6 +12,7 @@ Supported properties types
  * AMC Enabled Objects.
  * Common Collections (NSArray, NSMutableArray, NSDictionary, NSMutableDictionary)
  * Custom Collections (Mutable/Not-Mutable, that can be used as keyValue(Dictionary) or Ordered(Array) collections )
+    * Note: Custom and/or Mutable Collections will not be recognized inside of collections itself. Ordered collections will be treated as NSArray, keyValue collections will be treated as NSDictionary.
  * Common Structures (NSRect/CGRect, NSSize/CGSize, NSPoint/CGPoint).
  * Custom Structures (You will need to write additional code to encode/decode them to/from NSString).
  
