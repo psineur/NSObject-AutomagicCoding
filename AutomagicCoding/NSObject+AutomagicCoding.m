@@ -90,6 +90,10 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 {
     // NSObject#init simply returns self, so we don't need to call any init here.
     // See NSObject Class Reference if you don't trust me ;)
+    
+    @try
+    {
+        
     if (aDict)
     {
         NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
@@ -113,6 +117,13 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
                 }
             }
         }
+    }
+        
+    }
+    
+    @catch (NSException *exception) {
+        [self release];
+        @throw exception;
     }
     
     return self;
@@ -169,6 +180,9 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
         NSString *propertyKey = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
         [array addObject: propertyKey];        
     }
+    
+    if (properties)
+        free(properties);
     
     return array;
 }
@@ -354,9 +368,18 @@ BOOL classInstancesRespondsToAllSelectorsInProtocol(id class, Protocol *p )
     {
         SEL selector = methods[i].name;
         if (![class instancesRespondToSelector: selector])
+        {
+            if (methods)
+                free(methods);
+            methods = NULL;
+            
             return NO;
+        }
     }
         
+    if (methods)
+        free(methods);
+    methods = NULL;
     
     return YES;
 }
@@ -415,7 +438,13 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
             }
             
             id <AMCArrayProtocol> object = (id <AMCArrayProtocol> )[class alloc];
+            @try 
+            {
             object = [object initWithArray: dstCollection];
+            }
+            @finally {
+                [object autorelease];
+            }
             
             if (object)
                 value = object;
@@ -446,7 +475,13 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
             }
             
             id <AMCHashProtocol> object = (id <AMCHashProtocol> )[class alloc];
+            @try 
+            {
             object = [object initWithDictionary: dstCollection];
+            }
+            @finally {
+                [object autorelease];
+            }
             
             if (object)
                 value = object;

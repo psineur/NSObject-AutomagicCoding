@@ -36,7 +36,7 @@ extern NSString *const AMCDecodeException;
 /** Protocol that describes selectors, which object must respond to in order to
  * be detected as Ordered Collection. 
  */
-@protocol AMCArrayProtocol
+@protocol AMCArrayProtocol <NSObject>
 
 - (NSUInteger)count;
 - (id) objectAtIndex:(NSUInteger) index; 
@@ -57,7 +57,7 @@ extern NSString *const AMCDecodeException;
 /** Protocol that describes selectors, which object must respond to in order to
  * be detected as Hash(NSDictionary-Like Key-Value) Collection. 
  */
-@protocol AMCHashProtocol
+@protocol AMCHashProtocol <NSObject>
 
 - (NSUInteger)count;
 - (NSArray *) allKeys;
