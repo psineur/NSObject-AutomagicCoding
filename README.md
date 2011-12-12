@@ -100,7 +100,7 @@ Here's a list of bad things, that can happen with AMC:
 * __Encoding__ ( calling -dictionaryRepresentation )
    1. **Unsupported struct**:throws AMCEncodeException on  (See Custom Struct Support above)
    2. **Wrong keys in -AMCKeysForDictionaryRepresentation**: Throws NSUnkownKeyException.( Wrong key = no such property, ivar or method - see KVC programming guide for details).
-* __Decoding__ ( calling -objectWithDictionaryRepresentation: )
+* __Decoding__ ( calling +objectWithDictionaryRepresentation: & -initWithDictionaryRepresentation: )
    1. **Unsupported struct**: Throws AMCDecodeException (See Custom Struct Support above).
    2. **Mismatch between -AMCKeysForDictionaryRepresentation & Dictionary Representation Keys**: No exceptions gets thrown. Only intersect of keys in 
    dictionary representation & -AMCKeysForDictionaryRepresentation are used to set values for decoding object's fields. So always check for neccessary fields in your -initWithDictionaryRepresentation - create them if they are nil.
