@@ -34,11 +34,35 @@
 		6D6D29191411611400B7EA19 /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D29161411611400B7EA19 /* AMCCollectionsTest.m */; };
 		6D6D291C1411613500B7EA19 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D291B1411613500B7EA19 /* NSObject+AutomagicCoding.m */; };
 		6D6D291D1411613500B7EA19 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D291B1411613500B7EA19 /* NSObject+AutomagicCoding.m */; };
+		FDB80CFF149E268F001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D29061411610700B7EA19 /* FooWithMutableCollections.m */; };
+		FDB80D00149E268F001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D29081411610700B7EA19 /* FooWithCollections.m */; };
+		FDB80D01149E268F001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D290A1411610700B7EA19 /* Foo.m */; };
+		FDB80D02149E268F001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D290C1411610700B7EA19 /* Bar.m */; };
+		FDB80D03149E268F001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D29121411611400B7EA19 /* AMCTest.m */; };
+		FDB80D04149E268F001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D29141411611400B7EA19 /* AMCTestSimple.m */; };
+		FDB80D05149E268F001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D29161411611400B7EA19 /* AMCCollectionsTest.m */; };
+		FDB80D06149E268F001E95AA /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D291B1411613500B7EA19 /* NSObject+AutomagicCoding.m */; };
+		FDB80D07149E268F001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D299756141397C4005F486B /* FooWithSctructs.m */; };
+		FDB80D08149E268F001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29975D1413DD6F005F486B /* CCArray.m */; };
+		FDB80D09149E268F001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997651413DDB3005F486B /* FooWithCustomCollection.m */; };
+		FDB80D0A149E268F001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD23D114938DAF00D02BB3 /* AMCExceptionsTest.m */; };
+		FDB80D0C149E268F001E95AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28E21411608600B7EA19 /* SenTestingKit.framework */; };
+		FDB80D0D149E268F001E95AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
+		FDB80D0E149E268F001E95AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
+		FDB80D0F149E268F001E95AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
+		FDB80D11149E268F001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6D28EC1411608600B7EA19 /* InfoPlist.strings */; };
 		FDDD23D414938DDD00D02BB3 /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD23D114938DAF00D02BB3 /* AMCExceptionsTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6D6D28E71411608600B7EA19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D6D28AF1411608600B7EA19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D6D28B71411608600B7EA19;
+			remoteInfo = "AutoMagicCoding-iOS";
+		};
+		FDB80CFD149E268F001E95AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6D6D28AF1411608600B7EA19 /* Project object */;
 			proxyType = 1;
@@ -91,6 +115,7 @@
 		6D6D29161411611400B7EA19 /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMCCollectionsTest.m; path = ../../AutomagicCodingTests/AMCCollectionsTest.m; sourceTree = "<group>"; };
 		6D6D291A1411613500B7EA19 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+AutomagicCoding.h"; path = "../../AutomagicCoding/NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6D291B1411613500B7EA19 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AutomagicCoding.m"; path = "../../AutomagicCoding/NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
+		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoMagicCoding-iOSTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCE7BF2148A97F1009A6DCB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FDDD23D014938DAF00D02BB3 /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMCExceptionsTest.h; path = ../../AutomagicCodingTests/AMCExceptionsTest.h; sourceTree = "<group>"; };
 		FDDD23D114938DAF00D02BB3 /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMCExceptionsTest.m; path = ../../AutomagicCodingTests/AMCExceptionsTest.m; sourceTree = "<group>"; };
@@ -118,6 +143,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDB80D0B149E268F001E95AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80D0C149E268F001E95AA /* SenTestingKit.framework in Frameworks */,
+				FDB80D0D149E268F001E95AA /* UIKit.framework in Frameworks */,
+				FDB80D0E149E268F001E95AA /* Foundation.framework in Frameworks */,
+				FDB80D0F149E268F001E95AA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -137,6 +173,7 @@
 			children = (
 				6D6D28B81411608600B7EA19 /* AutoMagicCoding-iOS.app */,
 				6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */,
+				FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,6 +322,25 @@
 			productReference = 6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		FDB80CFB149E268F001E95AA /* AutoMagicCoding-iOSTests AMC_NO_THROW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDB80D13149E268F001E95AA /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOSTests AMC_NO_THROW" */;
+			buildPhases = (
+				FDB80CFE149E268F001E95AA /* Sources */,
+				FDB80D0B149E268F001E95AA /* Frameworks */,
+				FDB80D10149E268F001E95AA /* Resources */,
+				FDB80D12149E268F001E95AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDB80CFC149E268F001E95AA /* PBXTargetDependency */,
+			);
+			name = "AutoMagicCoding-iOSTests AMC_NO_THROW";
+			productName = "AutoMagicCoding-iOSTests";
+			productReference = FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -307,6 +363,7 @@
 			targets = (
 				6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */,
 				6D6D28E01411608600B7EA19 /* AutoMagicCoding-iOSTests */,
+				FDB80CFB149E268F001E95AA /* AutoMagicCoding-iOSTests AMC_NO_THROW */,
 			);
 		};
 /* End PBXProject section */
@@ -330,10 +387,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDB80D10149E268F001E95AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80D11149E268F001E95AA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		6D6D28DF1411608600B7EA19 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		FDB80D12149E268F001E95AA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,6 +458,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDB80CFE149E268F001E95AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80CFF149E268F001E95AA /* FooWithMutableCollections.m in Sources */,
+				FDB80D00149E268F001E95AA /* FooWithCollections.m in Sources */,
+				FDB80D01149E268F001E95AA /* Foo.m in Sources */,
+				FDB80D02149E268F001E95AA /* Bar.m in Sources */,
+				FDB80D03149E268F001E95AA /* AMCTest.m in Sources */,
+				FDB80D04149E268F001E95AA /* AMCTestSimple.m in Sources */,
+				FDB80D05149E268F001E95AA /* AMCCollectionsTest.m in Sources */,
+				FDB80D06149E268F001E95AA /* NSObject+AutomagicCoding.m in Sources */,
+				FDB80D07149E268F001E95AA /* FooWithSctructs.m in Sources */,
+				FDB80D08149E268F001E95AA /* CCArray.m in Sources */,
+				FDB80D09149E268F001E95AA /* FooWithCustomCollection.m in Sources */,
+				FDB80D0A149E268F001E95AA /* AMCExceptionsTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -387,6 +484,11 @@
 			isa = PBXTargetDependency;
 			target = 6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */;
 			targetProxy = 6D6D28E71411608600B7EA19 /* PBXContainerItemProxy */;
+		};
+		FDB80CFC149E268F001E95AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */;
+			targetProxy = FDB80CFD149E268F001E95AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -531,6 +633,48 @@
 			};
 			name = Release;
 		};
+		FDB80D14149E268F001E95AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoMagicCoding-iOS.app/AutoMagicCoding-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoMagicCoding-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					AMC_NO_THROW,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "AutoMagicCoding-iOSTests/AutoMagicCoding-iOSTests-Info.plist";
+				PRODUCT_NAME = "AutoMagicCoding-iOSTests copy";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FDB80D15149E268F001E95AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoMagicCoding-iOS.app/AutoMagicCoding-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoMagicCoding-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = AMC_NO_THROW;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "AutoMagicCoding-iOSTests/AutoMagicCoding-iOSTests-Info.plist";
+				PRODUCT_NAME = "AutoMagicCoding-iOSTests copy";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,6 +701,15 @@
 			buildConfigurations = (
 				6D6D28F91411608600B7EA19 /* Debug */,
 				6D6D28FA1411608600B7EA19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDB80D13149E268F001E95AA /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOSTests AMC_NO_THROW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDB80D14149E268F001E95AA /* Debug */,
+				FDB80D15149E268F001E95AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
