@@ -1,0 +1,734 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D6D28BD1411608600B7EA19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
+		6D6D28BF1411608600B7EA19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
+		6D6D28C11411608600B7EA19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
+		6D6D28E31411608600B7EA19 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28E21411608600B7EA19 /* SenTestingKit.framework */; };
+		6D6D28E41411608600B7EA19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
+		6D6D28E51411608600B7EA19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
+		6D6D28E61411608600B7EA19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
+		FD8C3CE3149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */; };
+		FD8C3CE4149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */; };
+		FD8C3CE5149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */; };
+		FDB80D0C149E268F001E95AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28E21411608600B7EA19 /* SenTestingKit.framework */; };
+		FDB80D0D149E268F001E95AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
+		FDB80D0E149E268F001E95AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
+		FDB80D0F149E268F001E95AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
+		FDB80E02149E3010001E95AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DBE149E300F001E95AA /* README.md */; };
+		FDB80E03149E3010001E95AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DBE149E300F001E95AA /* README.md */; };
+		FDB80E04149E3010001E95AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DBE149E300F001E95AA /* README.md */; };
+		FDB80E08149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DC4149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate.m */; };
+		FDB80E0B149E3010001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DC5149E300F001E95AA /* InfoPlist.strings */; };
+		FDB80E0E149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DC9149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.m */; };
+		FDB80E11149E3010001E95AA /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DCA149E300F001E95AA /* MainWindow_iPad.xib */; };
+		FDB80E14149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DCE149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.m */; };
+		FDB80E17149E3010001E95AA /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DCF149E3010001E95AA /* MainWindow_iPhone.xib */; };
+		FDB80E1A149E3010001E95AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DD1149E3010001E95AA /* main.m */; };
+		FDB80E33149E3010001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DE0149E3010001E95AA /* InfoPlist.strings */; };
+		FDB80E34149E3010001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DE0149E3010001E95AA /* InfoPlist.strings */; };
+		FDB80E3C149E3010001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DE8149E3010001E95AA /* AMCCollectionsTest.m */; };
+		FDB80E3D149E3010001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DE8149E3010001E95AA /* AMCCollectionsTest.m */; };
+		FDB80E3F149E3010001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DEA149E3010001E95AA /* AMCExceptionsTest.m */; };
+		FDB80E40149E3010001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DEA149E3010001E95AA /* AMCExceptionsTest.m */; };
+		FDB80E42149E3010001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DEC149E3010001E95AA /* AMCTest.m */; };
+		FDB80E43149E3010001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DEC149E3010001E95AA /* AMCTest.m */; };
+		FDB80E45149E3010001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DEE149E3010001E95AA /* AMCTestSimple.m */; };
+		FDB80E46149E3010001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DEE149E3010001E95AA /* AMCTestSimple.m */; };
+		FDB80E48149E3010001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF1149E3010001E95AA /* Bar.m */; };
+		FDB80E49149E3010001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF1149E3010001E95AA /* Bar.m */; };
+		FDB80E4B149E3010001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF3149E3010001E95AA /* CCArray.m */; };
+		FDB80E4C149E3010001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF3149E3010001E95AA /* CCArray.m */; };
+		FDB80E4E149E3010001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF6149E3010001E95AA /* Foo.m */; };
+		FDB80E4F149E3010001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF6149E3010001E95AA /* Foo.m */; };
+		FDB80E51149E3010001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF8149E3010001E95AA /* FooWithCollections.m */; };
+		FDB80E52149E3010001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DF8149E3010001E95AA /* FooWithCollections.m */; };
+		FDB80E54149E3010001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DFA149E3010001E95AA /* FooWithCustomCollection.m */; };
+		FDB80E55149E3010001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DFA149E3010001E95AA /* FooWithCustomCollection.m */; };
+		FDB80E57149E3010001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DFC149E3010001E95AA /* FooWithMutableCollections.m */; };
+		FDB80E58149E3010001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DFC149E3010001E95AA /* FooWithMutableCollections.m */; };
+		FDB80E5A149E3010001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DFE149E3010001E95AA /* FooWithSctructs.m */; };
+		FDB80E5B149E3010001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DFE149E3010001E95AA /* FooWithSctructs.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D6D28E71411608600B7EA19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D6D28AF1411608600B7EA19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D6D28B71411608600B7EA19;
+			remoteInfo = "AutoMagicCoding-iOS";
+		};
+		FDB80CFD149E268F001E95AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D6D28AF1411608600B7EA19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D6D28B71411608600B7EA19;
+			remoteInfo = "AutoMagicCoding-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D6D28B81411608600B7EA19 /* AutoMagicCoding-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutoMagicCoding-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6D28BC1411608600B7EA19 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6D6D28BE1411608600B7EA19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6D6D28C01411608600B7EA19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoMagicCoding-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6D28E21411608600B7EA19 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FD8C3CE1149E366200FAA45D /* NSObject+AutoMagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoMagicCoding.h"; sourceTree = "<group>"; };
+		FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoMagicCoding.m"; sourceTree = "<group>"; };
+		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "AutoMagicCoding-iOSTests copy.octest"; path = "AutoMagicCoding-iOSTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDB80DBE149E300F001E95AA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FDB80DC1149E300F001E95AA /* AutoMagicCoding-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutoMagicCoding-iOS-Info.plist"; sourceTree = "<group>"; };
+		FDB80DC2149E300F001E95AA /* AutoMagicCoding-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AutoMagicCoding-iOS-Prefix.pch"; sourceTree = "<group>"; };
+		FDB80DC3149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoMagicCoding_iOSAppDelegate.h; sourceTree = "<group>"; };
+		FDB80DC4149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoMagicCoding_iOSAppDelegate.m; sourceTree = "<group>"; };
+		FDB80DC6149E300F001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDB80DC8149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoMagicCoding_iOSAppDelegate_iPad.h; sourceTree = "<group>"; };
+		FDB80DC9149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoMagicCoding_iOSAppDelegate_iPad.m; sourceTree = "<group>"; };
+		FDB80DCB149E300F001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		FDB80DCD149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoMagicCoding_iOSAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		FDB80DCE149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoMagicCoding_iOSAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		FDB80DD0149E3010001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		FDB80DD1149E3010001E95AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FDB80DDF149E3010001E95AA /* AutoMagicCoding-iOSTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutoMagicCoding-iOSTests-Info.plist"; sourceTree = "<group>"; };
+		FDB80DE1149E3010001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDB80DE7149E3010001E95AA /* AMCCollectionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCCollectionsTest.h; sourceTree = "<group>"; };
+		FDB80DE8149E3010001E95AA /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCCollectionsTest.m; sourceTree = "<group>"; };
+		FDB80DE9149E3010001E95AA /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCExceptionsTest.h; sourceTree = "<group>"; };
+		FDB80DEA149E3010001E95AA /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCExceptionsTest.m; sourceTree = "<group>"; };
+		FDB80DEB149E3010001E95AA /* AMCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTest.h; sourceTree = "<group>"; };
+		FDB80DEC149E3010001E95AA /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
+		FDB80DED149E3010001E95AA /* AMCTestSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTestSimple.h; sourceTree = "<group>"; };
+		FDB80DEE149E3010001E95AA /* AMCTestSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTestSimple.m; sourceTree = "<group>"; };
+		FDB80DF0149E3010001E95AA /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
+		FDB80DF1149E3010001E95AA /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
+		FDB80DF2149E3010001E95AA /* CCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCArray.h; sourceTree = "<group>"; };
+		FDB80DF3149E3010001E95AA /* CCArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCArray.m; sourceTree = "<group>"; };
+		FDB80DF4149E3010001E95AA /* ccCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccCArray.h; sourceTree = "<group>"; };
+		FDB80DF5149E3010001E95AA /* Foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foo.h; sourceTree = "<group>"; };
+		FDB80DF6149E3010001E95AA /* Foo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foo.m; sourceTree = "<group>"; };
+		FDB80DF7149E3010001E95AA /* FooWithCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCollections.h; sourceTree = "<group>"; };
+		FDB80DF8149E3010001E95AA /* FooWithCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCollections.m; sourceTree = "<group>"; };
+		FDB80DF9149E3010001E95AA /* FooWithCustomCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCustomCollection.h; sourceTree = "<group>"; };
+		FDB80DFA149E3010001E95AA /* FooWithCustomCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCustomCollection.m; sourceTree = "<group>"; };
+		FDB80DFB149E3010001E95AA /* FooWithMutableCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithMutableCollections.h; sourceTree = "<group>"; };
+		FDB80DFC149E3010001E95AA /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
+		FDB80DFD149E3010001E95AA /* FooWithSctructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithSctructs.h; sourceTree = "<group>"; };
+		FDB80DFE149E3010001E95AA /* FooWithSctructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithSctructs.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D6D28B51411608600B7EA19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6D28BD1411608600B7EA19 /* UIKit.framework in Frameworks */,
+				6D6D28BF1411608600B7EA19 /* Foundation.framework in Frameworks */,
+				6D6D28C11411608600B7EA19 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D6D28DD1411608600B7EA19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6D28E31411608600B7EA19 /* SenTestingKit.framework in Frameworks */,
+				6D6D28E41411608600B7EA19 /* UIKit.framework in Frameworks */,
+				6D6D28E51411608600B7EA19 /* Foundation.framework in Frameworks */,
+				6D6D28E61411608600B7EA19 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDB80D0B149E268F001E95AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80D0C149E268F001E95AA /* SenTestingKit.framework in Frameworks */,
+				FDB80D0D149E268F001E95AA /* UIKit.framework in Frameworks */,
+				FDB80D0E149E268F001E95AA /* Foundation.framework in Frameworks */,
+				FDB80D0F149E268F001E95AA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D6D28AD1411608600B7EA19 = {
+			isa = PBXGroup;
+			children = (
+				FDB80DBE149E300F001E95AA /* README.md */,
+				FD8C3CE0149E366200FAA45D /* AutoMagicCoding */,
+				FDB80DE6149E3010001E95AA /* Tests */,
+				FDB80DBF149E300F001E95AA /* SupportingFiles */,
+				6D6D28BB1411608600B7EA19 /* Frameworks */,
+				6D6D28B91411608600B7EA19 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6D6D28B91411608600B7EA19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D6D28B81411608600B7EA19 /* AutoMagicCoding-iOS.app */,
+				6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */,
+				FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D6D28BB1411608600B7EA19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D6D28BC1411608600B7EA19 /* UIKit.framework */,
+				6D6D28BE1411608600B7EA19 /* Foundation.framework */,
+				6D6D28C01411608600B7EA19 /* CoreGraphics.framework */,
+				6D6D28E21411608600B7EA19 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD8C3CE0149E366200FAA45D /* AutoMagicCoding */ = {
+			isa = PBXGroup;
+			children = (
+				FD8C3CE1149E366200FAA45D /* NSObject+AutoMagicCoding.h */,
+				FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */,
+			);
+			path = AutoMagicCoding;
+			sourceTree = "<group>";
+		};
+		FDB80DBF149E300F001E95AA /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DC0149E300F001E95AA /* SupportingFiles-iOS */,
+				FDB80DDE149E3010001E95AA /* SupportingFiles-Tests-iOS */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FDB80DC0149E300F001E95AA /* SupportingFiles-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DC1149E300F001E95AA /* AutoMagicCoding-iOS-Info.plist */,
+				FDB80DC2149E300F001E95AA /* AutoMagicCoding-iOS-Prefix.pch */,
+				FDB80DC3149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate.h */,
+				FDB80DC4149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate.m */,
+				FDB80DC5149E300F001E95AA /* InfoPlist.strings */,
+				FDB80DC7149E300F001E95AA /* iPad */,
+				FDB80DCC149E300F001E95AA /* iPhone */,
+				FDB80DD1149E3010001E95AA /* main.m */,
+			);
+			path = "SupportingFiles-iOS";
+			sourceTree = "<group>";
+		};
+		FDB80DC7149E300F001E95AA /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DC8149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.h */,
+				FDB80DC9149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.m */,
+				FDB80DCA149E300F001E95AA /* MainWindow_iPad.xib */,
+			);
+			path = iPad;
+			sourceTree = "<group>";
+		};
+		FDB80DCC149E300F001E95AA /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DCD149E300F001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.h */,
+				FDB80DCE149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.m */,
+				FDB80DCF149E3010001E95AA /* MainWindow_iPhone.xib */,
+			);
+			path = iPhone;
+			sourceTree = "<group>";
+		};
+		FDB80DDE149E3010001E95AA /* SupportingFiles-Tests-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DDF149E3010001E95AA /* AutoMagicCoding-iOSTests-Info.plist */,
+				FDB80DE0149E3010001E95AA /* InfoPlist.strings */,
+			);
+			path = "SupportingFiles-Tests-iOS";
+			sourceTree = "<group>";
+		};
+		FDB80DE6149E3010001E95AA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DE7149E3010001E95AA /* AMCCollectionsTest.h */,
+				FDB80DE8149E3010001E95AA /* AMCCollectionsTest.m */,
+				FDB80DE9149E3010001E95AA /* AMCExceptionsTest.h */,
+				FDB80DEA149E3010001E95AA /* AMCExceptionsTest.m */,
+				FDB80DEB149E3010001E95AA /* AMCTest.h */,
+				FDB80DEC149E3010001E95AA /* AMCTest.m */,
+				FDB80DED149E3010001E95AA /* AMCTestSimple.h */,
+				FDB80DEE149E3010001E95AA /* AMCTestSimple.m */,
+				FDB80DEF149E3010001E95AA /* ObjectsForTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		FDB80DEF149E3010001E95AA /* ObjectsForTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80DF0149E3010001E95AA /* Bar.h */,
+				FDB80DF1149E3010001E95AA /* Bar.m */,
+				FDB80DF2149E3010001E95AA /* CCArray.h */,
+				FDB80DF3149E3010001E95AA /* CCArray.m */,
+				FDB80DF4149E3010001E95AA /* ccCArray.h */,
+				FDB80DF5149E3010001E95AA /* Foo.h */,
+				FDB80DF6149E3010001E95AA /* Foo.m */,
+				FDB80DF7149E3010001E95AA /* FooWithCollections.h */,
+				FDB80DF8149E3010001E95AA /* FooWithCollections.m */,
+				FDB80DF9149E3010001E95AA /* FooWithCustomCollection.h */,
+				FDB80DFA149E3010001E95AA /* FooWithCustomCollection.m */,
+				FDB80DFB149E3010001E95AA /* FooWithMutableCollections.h */,
+				FDB80DFC149E3010001E95AA /* FooWithMutableCollections.m */,
+				FDB80DFD149E3010001E95AA /* FooWithSctructs.h */,
+				FDB80DFE149E3010001E95AA /* FooWithSctructs.m */,
+			);
+			path = ObjectsForTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D6D28F51411608600B7EA19 /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOS" */;
+			buildPhases = (
+				6D6D28B41411608600B7EA19 /* Sources */,
+				6D6D28B51411608600B7EA19 /* Frameworks */,
+				6D6D28B61411608600B7EA19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AutoMagicCoding-iOS";
+			productName = "AutoMagicCoding-iOS";
+			productReference = 6D6D28B81411608600B7EA19 /* AutoMagicCoding-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D6D28E01411608600B7EA19 /* AutoMagicCoding-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D6D28F81411608600B7EA19 /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOSTests" */;
+			buildPhases = (
+				6D6D28DC1411608600B7EA19 /* Sources */,
+				6D6D28DD1411608600B7EA19 /* Frameworks */,
+				6D6D28DE1411608600B7EA19 /* Resources */,
+				6D6D28DF1411608600B7EA19 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D6D28E81411608600B7EA19 /* PBXTargetDependency */,
+			);
+			name = "AutoMagicCoding-iOSTests";
+			productName = "AutoMagicCoding-iOSTests";
+			productReference = 6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		FDB80CFB149E268F001E95AA /* AutoMagicCoding-iOSTests AMC_NO_THROW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDB80D13149E268F001E95AA /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOSTests AMC_NO_THROW" */;
+			buildPhases = (
+				FDB80CFE149E268F001E95AA /* Sources */,
+				FDB80D0B149E268F001E95AA /* Frameworks */,
+				FDB80D10149E268F001E95AA /* Resources */,
+				FDB80D12149E268F001E95AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDB80CFC149E268F001E95AA /* PBXTargetDependency */,
+			);
+			name = "AutoMagicCoding-iOSTests AMC_NO_THROW";
+			productName = "AutoMagicCoding-iOSTests";
+			productReference = FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D6D28AF1411608600B7EA19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 6D6D28B21411608600B7EA19 /* Build configuration list for PBXProject "AutoMagicCoding-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				ru,
+			);
+			mainGroup = 6D6D28AD1411608600B7EA19;
+			productRefGroup = 6D6D28B91411608600B7EA19 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */,
+				6D6D28E01411608600B7EA19 /* AutoMagicCoding-iOSTests */,
+				FDB80CFB149E268F001E95AA /* AutoMagicCoding-iOSTests AMC_NO_THROW */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D6D28B61411608600B7EA19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80E02149E3010001E95AA /* README.md in Resources */,
+				FDB80E0B149E3010001E95AA /* InfoPlist.strings in Resources */,
+				FDB80E11149E3010001E95AA /* MainWindow_iPad.xib in Resources */,
+				FDB80E17149E3010001E95AA /* MainWindow_iPhone.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D6D28DE1411608600B7EA19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80E03149E3010001E95AA /* README.md in Resources */,
+				FDB80E33149E3010001E95AA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDB80D10149E268F001E95AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80E04149E3010001E95AA /* README.md in Resources */,
+				FDB80E34149E3010001E95AA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D6D28DF1411608600B7EA19 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		FDB80D12149E268F001E95AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D6D28B41411608600B7EA19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80E08149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate.m in Sources */,
+				FDB80E0E149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.m in Sources */,
+				FDB80E14149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.m in Sources */,
+				FDB80E1A149E3010001E95AA /* main.m in Sources */,
+				FD8C3CE3149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D6D28DC1411608600B7EA19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80E3C149E3010001E95AA /* AMCCollectionsTest.m in Sources */,
+				FDB80E3F149E3010001E95AA /* AMCExceptionsTest.m in Sources */,
+				FDB80E42149E3010001E95AA /* AMCTest.m in Sources */,
+				FDB80E45149E3010001E95AA /* AMCTestSimple.m in Sources */,
+				FDB80E48149E3010001E95AA /* Bar.m in Sources */,
+				FDB80E4B149E3010001E95AA /* CCArray.m in Sources */,
+				FDB80E4E149E3010001E95AA /* Foo.m in Sources */,
+				FDB80E51149E3010001E95AA /* FooWithCollections.m in Sources */,
+				FDB80E54149E3010001E95AA /* FooWithCustomCollection.m in Sources */,
+				FDB80E57149E3010001E95AA /* FooWithMutableCollections.m in Sources */,
+				FDB80E5A149E3010001E95AA /* FooWithSctructs.m in Sources */,
+				FD8C3CE4149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDB80CFE149E268F001E95AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80E3D149E3010001E95AA /* AMCCollectionsTest.m in Sources */,
+				FDB80E40149E3010001E95AA /* AMCExceptionsTest.m in Sources */,
+				FDB80E43149E3010001E95AA /* AMCTest.m in Sources */,
+				FDB80E46149E3010001E95AA /* AMCTestSimple.m in Sources */,
+				FDB80E49149E3010001E95AA /* Bar.m in Sources */,
+				FDB80E4C149E3010001E95AA /* CCArray.m in Sources */,
+				FDB80E4F149E3010001E95AA /* Foo.m in Sources */,
+				FDB80E52149E3010001E95AA /* FooWithCollections.m in Sources */,
+				FDB80E55149E3010001E95AA /* FooWithCustomCollection.m in Sources */,
+				FDB80E58149E3010001E95AA /* FooWithMutableCollections.m in Sources */,
+				FDB80E5B149E3010001E95AA /* FooWithSctructs.m in Sources */,
+				FD8C3CE5149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D6D28E81411608600B7EA19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */;
+			targetProxy = 6D6D28E71411608600B7EA19 /* PBXContainerItemProxy */;
+		};
+		FDB80CFC149E268F001E95AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D6D28B71411608600B7EA19 /* AutoMagicCoding-iOS */;
+			targetProxy = FDB80CFD149E268F001E95AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FDB80DC5149E300F001E95AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDB80DC6149E300F001E95AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FDB80DCA149E300F001E95AA /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDB80DCB149E300F001E95AA /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		FDB80DCF149E3010001E95AA /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDB80DD0149E3010001E95AA /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		FDB80DE0149E3010001E95AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDB80DE1149E3010001E95AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D6D28F31411608600B7EA19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6D6D28F41411608600B7EA19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6D6D28F61411608600B7EA19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6D6D28F71411608600B7EA19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6D6D28F91411608600B7EA19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoMagicCoding-iOS.app/AutoMagicCoding-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-iOS/AutoMagicCoding-iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6D6D28FA1411608600B7EA19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoMagicCoding-iOS.app/AutoMagicCoding-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-iOS/AutoMagicCoding-iOSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		FDB80D14149E268F001E95AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoMagicCoding-iOS.app/AutoMagicCoding-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					AMC_NO_THROW,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-iOS/AutoMagicCoding-iOSTests-Info.plist";
+				PRODUCT_NAME = "AutoMagicCoding-iOSTests-NO_THROW";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FDB80D15149E268F001E95AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutoMagicCoding-iOS.app/AutoMagicCoding-iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = AMC_NO_THROW;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-iOS/AutoMagicCoding-iOSTests-Info.plist";
+				PRODUCT_NAME = "AutoMagicCoding-iOSTests-NO_THROW";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D6D28B21411608600B7EA19 /* Build configuration list for PBXProject "AutoMagicCoding-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6D28F31411608600B7EA19 /* Debug */,
+				6D6D28F41411608600B7EA19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D6D28F51411608600B7EA19 /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6D28F61411608600B7EA19 /* Debug */,
+				6D6D28F71411608600B7EA19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D6D28F81411608600B7EA19 /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6D28F91411608600B7EA19 /* Debug */,
+				6D6D28FA1411608600B7EA19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDB80D13149E268F001E95AA /* Build configuration list for PBXNativeTarget "AutoMagicCoding-iOSTests AMC_NO_THROW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDB80D14149E268F001E95AA /* Debug */,
+				FDB80D15149E268F001E95AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D6D28AF1411608600B7EA19 /* Project object */;
+}
