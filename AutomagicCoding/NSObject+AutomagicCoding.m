@@ -1,6 +1,6 @@
 //
-//  NSObject+AutomagicCoding.m
-//  AutomagicCoding
+//  NSObject+AutoMagicCoding.m
+//  AutoMagicCoding
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -23,7 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NSObject+AutomagicCoding.h"
+#import "NSObject+AutoMagicCoding.h"
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
@@ -58,7 +58,7 @@
 NSString *const AMCEncodeException = @"AMCEncodeException";
 NSString *const AMCDecodeException = @"AMCDecodeException";
 
-@implementation NSObject (AutomagicCoding)
+@implementation NSObject (AutoMagicCoding)
 
 + (BOOL) AMCEnabled
 {
@@ -205,7 +205,7 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 
 - (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
 {
-    // isAutomagicCodingEnabled == YES? Then it's custom object.
+    // isAutoMagicCodingEnabled == YES? Then it's custom object.
     objc_property_t property = class_getProperty([self class], [aKey cStringUsingEncoding:NSUTF8StringEncoding]);
     id class = AMCPropertyClass(property);
     

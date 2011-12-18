@@ -1,6 +1,6 @@
 //
 //  AMCTestSimple.h
-//  AutomagicCodingTests
+//  AutoMagicCodingTests
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.

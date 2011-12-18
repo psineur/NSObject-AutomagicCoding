@@ -1,6 +1,6 @@
 //
-//  AutomagicCodingAppDelegate.h
-//  AutomagicCoding
+//  AutoMagicCodingAppDelegate.h
+//  AutoMagicCoding
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AutomagicCodingAppDelegate : NSObject <NSApplicationDelegate> {
+@interface AutoMagicCodingAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
 }
 

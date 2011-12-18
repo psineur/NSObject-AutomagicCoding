@@ -1,6 +1,6 @@
 //
 //  Bar.h
-//  AutomagicCoding
+//  AutoMagicCoding
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.

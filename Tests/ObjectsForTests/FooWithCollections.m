@@ -1,6 +1,6 @@
 //
 //  FooWithCollections.m
-//  AutomagicCoding
+//  AutoMagicCoding
 //
 //   02.09.11.
 //  Copyright 2011 Stepan Generalov.

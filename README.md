@@ -32,9 +32,9 @@ Known Issues
 
 How To Use
 ==================
- 1. Drag'n'Drop NSObject+AutomagicCoding.h | m to your project. This will add AMC methods to all objects
+ 1. Drag'n'Drop NSObject+AutoMagicCoding.h | m to your project. This will add AMC methods to all objects
  inherited from NSObject.
- 2. Import NSObject+AutomagicCoding.h where you need it.
+ 2. Import NSObject+AutoMagicCoding.h where you need it.
  3. Reimplement +(BOOL)AMCEnabled and return YES to enable AMC for you class.
  4. Reimplement -(id)initWithDictionaryRepresentation: and use [super initWithDictionaryRepresentation] inside of it. Ensure that all collections & other fields are created
  after calling super initWithDictionaryRepresentation. Do your own init routines after.
@@ -52,7 +52,7 @@ AMCKeysForDictionaryRepresentation
  to get & set fields of AMCEnabled objects.
  Default implementation returns complete set of all object properties (both readonly & readwrite).
  Reimplement this method choose manually, what properties should be encoded in NSDictionary.
- See tests in AutomagicCodingTests for more info & usage examples.
+ See tests in AutoMagicCodingTests for more info & usage examples.
  
 Custom Struct Support   
 ==================  

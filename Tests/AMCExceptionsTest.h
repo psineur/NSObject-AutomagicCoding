@@ -1,6 +1,6 @@
 //
 //  AMCExceptionsTest.h
-//  AutomagicCoding
+//  AutoMagicCoding
 //
 //  03.12.11.
 //  Copyright 2011 Stepan Generalov.

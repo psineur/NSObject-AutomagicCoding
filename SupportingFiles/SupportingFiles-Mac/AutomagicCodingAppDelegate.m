@@ -1,14 +1,14 @@
 //
-//  AutomagicCodingAppDelegate.m
-//  AutomagicCoding
+//  AutoMagicCodingAppDelegate.m
+//  AutoMagicCoding
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
 //
 
-#import "AutomagicCodingAppDelegate.h"
+#import "AutoMagicCodingAppDelegate.h"
 
-@implementation AutomagicCodingAppDelegate
+@implementation AutoMagicCodingAppDelegate
 
 @synthesize window;
 

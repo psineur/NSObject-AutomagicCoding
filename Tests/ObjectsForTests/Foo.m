@@ -1,6 +1,6 @@
 //
 //  Foo.m
-//  AutomagicCoding
+//  AutoMagicCoding
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 
 #import "Foo.h"
-#import "NSObject+AutomagicCoding.h"
+#import "NSObject+AutoMagicCoding.h"
 
 @implementation Foo
 

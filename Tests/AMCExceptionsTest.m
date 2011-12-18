@@ -1,6 +1,6 @@
 //
 //  AMCExceptionsTest.h
-//  AutomagicCoding
+//  AutoMagicCoding
 //
 //  03.12.11.
 //  Copyright 2011 Stepan Generalov.
@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 
 #import "AMCExceptionsTest.h"
-#import "NSObject+AutomagicCoding.h"
+#import "NSObject+AutoMagicCoding.h"
 #import "Bar.h"
 #import "Foo.h"
 

@@ -1,6 +1,6 @@
 //
 //  Foo.h
-//  AutomagicCoding
+//  AutoMagicCoding
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Bar.h"
-#import "NSObject+AutomagicCoding.h"
+#import "NSObject+AutoMagicCoding.h"
 
 @interface Foo : NSObject
 {

@@ -14,12 +14,13 @@
 		6D6D28E41411608600B7EA19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
 		6D6D28E51411608600B7EA19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
 		6D6D28E61411608600B7EA19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
+		FD8C3CE3149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */; };
+		FD8C3CE4149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */; };
+		FD8C3CE5149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */; };
 		FDB80D0C149E268F001E95AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28E21411608600B7EA19 /* SenTestingKit.framework */; };
 		FDB80D0D149E268F001E95AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BC1411608600B7EA19 /* UIKit.framework */; };
 		FDB80D0E149E268F001E95AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28BE1411608600B7EA19 /* Foundation.framework */; };
 		FDB80D0F149E268F001E95AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6D28C01411608600B7EA19 /* CoreGraphics.framework */; };
-		FDB80E00149E3010001E95AA /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DBD149E300F001E95AA /* NSObject+AutomagicCoding.m */; };
-		FDB80E01149E3010001E95AA /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80DBD149E300F001E95AA /* NSObject+AutomagicCoding.m */; };
 		FDB80E02149E3010001E95AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DBE149E300F001E95AA /* README.md */; };
 		FDB80E03149E3010001E95AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DBE149E300F001E95AA /* README.md */; };
 		FDB80E04149E3010001E95AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB80DBE149E300F001E95AA /* README.md */; };
@@ -80,9 +81,9 @@
 		6D6D28C01411608600B7EA19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoMagicCoding-iOSTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6D28E21411608600B7EA19 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoMagicCoding-iOSTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDB80DBC149E300F001E95AA /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
-		FDB80DBD149E300F001E95AA /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
+		FD8C3CE1149E366200FAA45D /* NSObject+AutoMagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoMagicCoding.h"; sourceTree = "<group>"; };
+		FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoMagicCoding.m"; sourceTree = "<group>"; };
+		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "AutoMagicCoding-iOSTests copy.octest"; path = "AutoMagicCoding-iOSTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB80DBE149E300F001E95AA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FDB80DC1149E300F001E95AA /* AutoMagicCoding-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutoMagicCoding-iOS-Info.plist"; sourceTree = "<group>"; };
 		FDB80DC2149E300F001E95AA /* AutoMagicCoding-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AutoMagicCoding-iOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -163,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				FDB80DBE149E300F001E95AA /* README.md */,
-				FDB80DBB149E300F001E95AA /* AutoMagicCoding */,
+				FD8C3CE0149E366200FAA45D /* AutoMagicCoding */,
 				FDB80DE6149E3010001E95AA /* Tests */,
 				FDB80DBF149E300F001E95AA /* SupportingFiles */,
 				6D6D28BB1411608600B7EA19 /* Frameworks */,
@@ -192,11 +193,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FDB80DBB149E300F001E95AA /* AutoMagicCoding */ = {
+		FD8C3CE0149E366200FAA45D /* AutoMagicCoding */ = {
 			isa = PBXGroup;
 			children = (
-				FDB80DBC149E300F001E95AA /* NSObject+AutomagicCoding.h */,
-				FDB80DBD149E300F001E95AA /* NSObject+AutomagicCoding.m */,
+				FD8C3CE1149E366200FAA45D /* NSObject+AutoMagicCoding.h */,
+				FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */,
 			);
 			path = AutoMagicCoding;
 			sourceTree = "<group>";
@@ -448,6 +449,7 @@
 				FDB80E0E149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPad.m in Sources */,
 				FDB80E14149E3010001E95AA /* AutoMagicCoding_iOSAppDelegate_iPhone.m in Sources */,
 				FDB80E1A149E3010001E95AA /* main.m in Sources */,
+				FD8C3CE3149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +457,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDB80E00149E3010001E95AA /* NSObject+AutomagicCoding.m in Sources */,
 				FDB80E3C149E3010001E95AA /* AMCCollectionsTest.m in Sources */,
 				FDB80E3F149E3010001E95AA /* AMCExceptionsTest.m in Sources */,
 				FDB80E42149E3010001E95AA /* AMCTest.m in Sources */,
@@ -467,6 +468,7 @@
 				FDB80E54149E3010001E95AA /* FooWithCustomCollection.m in Sources */,
 				FDB80E57149E3010001E95AA /* FooWithMutableCollections.m in Sources */,
 				FDB80E5A149E3010001E95AA /* FooWithSctructs.m in Sources */,
+				FD8C3CE4149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +476,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDB80E01149E3010001E95AA /* NSObject+AutomagicCoding.m in Sources */,
 				FDB80E3D149E3010001E95AA /* AMCCollectionsTest.m in Sources */,
 				FDB80E40149E3010001E95AA /* AMCExceptionsTest.m in Sources */,
 				FDB80E43149E3010001E95AA /* AMCTest.m in Sources */,
@@ -486,6 +487,7 @@
 				FDB80E55149E3010001E95AA /* FooWithCustomCollection.m in Sources */,
 				FDB80E58149E3010001E95AA /* FooWithMutableCollections.m in Sources */,
 				FDB80E5B149E3010001E95AA /* FooWithSctructs.m in Sources */,
+				FD8C3CE5149E366200FAA45D /* NSObject+AutoMagicCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

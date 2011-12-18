@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 
 #import "FooWithSctructs.h"
-#import "NSObject+AutomagicCoding.h"
+#import "NSObject+AutoMagicCoding.h"
 
 NSString *NSStringFromCustomStruct(CustomStruct custom)
 {

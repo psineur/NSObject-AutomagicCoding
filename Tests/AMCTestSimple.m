@@ -1,6 +1,6 @@
 //
 //  AMCTestSimple.m
-//  AutomagicCodingTests
+//  AutoMagicCodingTests
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -26,7 +26,7 @@
 #import "AMCTestSimple.h"
 #import "Foo.h"
 #import "Bar.h"
-#import "NSObject+AutomagicCoding.h"
+#import "NSObject+AutoMagicCoding.h"
 #import "FooWithSctructs.h"
 
 #ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
