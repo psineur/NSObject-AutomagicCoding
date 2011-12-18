@@ -273,7 +273,7 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     
     if (!structName)
         structName = @"(null)";
-    NSException *exception = [NSException exceptionWithName: AMCDecodeException reason:@"Unsupported struct." userInfo:[NSDictionary dictionaryWithObject: structName forKey:@"structName"]];
+    NSException *exception = [NSException exceptionWithName: AMCDecodeException reason:@"AMCDecodeException: Unsupported struct." userInfo:[NSDictionary dictionaryWithObject: structName forKey:@"structName"]];
     @throw exception;
     return nil;
 }
@@ -304,7 +304,7 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     
     if (!structName)
         structName = @"(null)";
-    NSException *exception = [NSException exceptionWithName: AMCEncodeException reason:@"Unsupported struct." userInfo:[NSDictionary dictionaryWithObject: structName forKey:@"structName"]];
+    NSException *exception = [NSException exceptionWithName: AMCEncodeException reason:@"AMCEncodeException: Unsupported struct." userInfo:[NSDictionary dictionaryWithObject: structName forKey:@"structName"]];
     @throw exception;
     return nil;
 }
