@@ -107,6 +107,8 @@ typedef enum
  * provided in valueForKey: kAMCDictionaryKeyClassName.
  *
  * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ * Define AMC_NO_THROW to disable throwing exceptions by this method and make
+ * it return nil instead.
  *
  * @param aDict Dictionary that contains name of class NSString for
  * kAMCDictionaryKeyClassName key & all other values for keys in the saved object.
@@ -116,7 +118,10 @@ typedef enum
 /** Designated initializer for AMC. Use it as something like -initWithCoder:
  * Inits object with key values from given dictionary.
  * Doesn't test className to be equal with [self className].
- * Reimplement this method to add your custom init behavior while initing from saved state.
+ *
+ * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ * Define AMC_NO_THROW to disable throwing exceptions by this method and make
+ * it return nil instead.
  *
  * @param aDict Dictionary that contains name of class NSString for
  * kAMCDictionaryKeyClassName key & all other values for keys in the saved object.
@@ -129,6 +134,8 @@ typedef enum
 /** Encodes object and returns it's dictionary representation, that can be writed to PLIST.
  *
  * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ * Define AMC_NO_THROW to disable throwing exceptions by this method and make
+ * it return nil instead.
  */
 - (NSDictionary *) dictionaryRepresentation;
 
@@ -149,6 +156,10 @@ typedef enum
  *
  * @param structName Name of structure type to encode. 
  *
+ * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ * Even if AMC_NO_THROW is defined - this method can throw exceptions, that will 
+ * be caught in -dictionaryRepresentation.
+ *
  */
 - (NSString *) AMCEncodeStructWithValue: (NSValue *) structValue withName: (NSString *) structName;
 
@@ -165,7 +176,10 @@ typedef enum
  *
  * @param structName Name of structure type to decode.
  *
- **/
+ * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ * Even if AMC_NO_THROW is defined - this method can throw exceptions, that will 
+ * be caught in -initWithDictionaryRepresentation.
+ */
 - (NSValue *) AMCDecodeStructFromString: (NSString *)value withName: (NSString *) structName;
 
 
