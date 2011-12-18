@@ -123,7 +123,12 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     
     @catch (NSException *exception) {
         [self release];
+        
+#ifdef AMC_NO_THROW
+        return nil;
+#else
         @throw exception;
+#endif
     }
     
     return self;
@@ -136,6 +141,9 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
     NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count] + 1];
        
+    
+    @try
+    {
     for (NSString *key in keysForValues)
     {
         id value = [self valueForKey: key];
@@ -157,6 +165,14 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     }
     
     [aDict setValue:[self className] forKey: kAMCDictionaryKeyClassName];
+    }
+    @catch (NSException *exception) {
+#ifdef AMC_NO_THROW
+        return nil;
+#else
+        @throw exception;
+#endif
+    }
     
     return aDict;
 }
@@ -270,13 +286,15 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
         
         return NSVALUE_ENCODE_RECT(r);
     }
-    
+   
     if (!structName)
         structName = @"(null)";
     NSException *exception = [NSException exceptionWithName: AMCDecodeException 
                                                      reason: [NSString stringWithFormat:@"AMCDecodeException: %@ is unsupported struct.", structName]
                                                    userInfo: nil ];
+    
     @throw exception;
+    
     return nil;
 }
 
@@ -309,7 +327,9 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     NSException *exception = [NSException exceptionWithName: AMCEncodeException 
                                                      reason: [NSString stringWithFormat:@"AMCEncodeException: %@ is unsupported struct.", structName] 
                                                    userInfo: nil ];
+    
     @throw exception;
+    
     return nil;
 }
 
