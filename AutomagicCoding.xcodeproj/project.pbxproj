@@ -7,45 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D29975B141398A3005F486B /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29975A141398A3005F486B /* FooWithSctructs.m */; };
-		6D2997631413DD9A005F486B /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997621413DD9A005F486B /* CCArray.m */; };
-		6D2997691413DDC9005F486B /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997681413DDC9005F486B /* FooWithCustomCollection.m */; };
 		6D6B9892140E162700835E88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
-		6D6B989C140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B989A140E162700835E88 /* InfoPlist.strings */; };
-		6D6B989E140E162700835E88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B989D140E162700835E88 /* main.m */; };
-		6D6B98A2140E162700835E88 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98A0140E162700835E88 /* Credits.rtf */; };
-		6D6B98A5140E162700835E88 /* AutomagicCodingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */; };
-		6D6B98A8140E162700835E88 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98A6140E162700835E88 /* MainMenu.xib */; };
 		6D6B98B0140E162700835E88 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B98AF140E162700835E88 /* SenTestingKit.framework */; };
 		6D6B98B1140E162700835E88 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
-		6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98B7140E162700835E88 /* InfoPlist.strings */; };
-		6D6B98BB140E162700835E88 /* AMCTestSimple.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AMCTestSimple.h */; };
-		6D6B98BD140E162700835E88 /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AMCTestSimple.m */; };
-		6D6B98C8140E16F200835E88 /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
-		6D6B98CB140E173E00835E88 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
 		6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
 		6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
-		6D6D28A21410B03200B7EA19 /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A11410B03200B7EA19 /* FooWithCollections.m */; };
-		6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
-		6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
-		6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
 		FDB80CC5149D3089001E95AA /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
-		FDB80CC6149D3089001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AMCTestSimple.m */; };
-		FDB80CC7149D3089001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
-		FDB80CC8149D3089001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
-		FDB80CC9149D3089001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A11410B03200B7EA19 /* FooWithCollections.m */; };
-		FDB80CCA149D3089001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
-		FDB80CCB149D3089001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
-		FDB80CCC149D3089001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
-		FDB80CCD149D3089001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29975A141398A3005F486B /* FooWithSctructs.m */; };
-		FDB80CCE149D3089001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997621413DD9A005F486B /* CCArray.m */; };
-		FDB80CCF149D3089001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997681413DDC9005F486B /* FooWithCustomCollection.m */; };
-		FDB80CD0149D3089001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */; };
 		FDB80CD2149D3089001E95AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B98AF140E162700835E88 /* SenTestingKit.framework */; };
 		FDB80CD3149D3089001E95AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
-		FDB80CD5149D3089001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98B7140E162700835E88 /* InfoPlist.strings */; };
-		FDB80CD6149D3089001E95AA /* AMCTestSimple.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AMCTestSimple.h */; };
-		FDCE7BEC148A8214009A6DCB /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */; };
+		FDB80D6C149E2AF8001E95AA /* AutomagicCodingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D41149E2AF8001E95AA /* AutomagicCodingAppDelegate.m */; };
+		FDB80D6F149E2AF8001E95AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FDB80D42149E2AF8001E95AA /* Credits.rtf */; };
+		FDB80D72149E2AF8001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB80D44149E2AF8001E95AA /* InfoPlist.strings */; };
+		FDB80D75149E2AF8001E95AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDB80D46149E2AF8001E95AA /* MainMenu.xib */; };
+		FDB80D78149E2AF8001E95AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D48149E2AF8001E95AA /* main.m */; };
+		FDB80D85149E2AF8001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB80D4F149E2AF8001E95AA /* InfoPlist.strings */; };
+		FDB80D86149E2AF8001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDB80D4F149E2AF8001E95AA /* InfoPlist.strings */; };
+		FDB80DA0149E2B5E001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D89149E2B5E001E95AA /* AMCCollectionsTest.m */; };
+		FDB80DA1149E2B5E001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D89149E2B5E001E95AA /* AMCCollectionsTest.m */; };
+		FDB80DA2149E2B5E001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D8B149E2B5E001E95AA /* AMCExceptionsTest.m */; };
+		FDB80DA3149E2B5E001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D8B149E2B5E001E95AA /* AMCExceptionsTest.m */; };
+		FDB80DA4149E2B5E001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D8D149E2B5E001E95AA /* AMCTest.m */; };
+		FDB80DA5149E2B5E001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D8D149E2B5E001E95AA /* AMCTest.m */; };
+		FDB80DA6149E2B5E001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D8F149E2B5E001E95AA /* AMCTestSimple.m */; };
+		FDB80DA7149E2B5E001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D8F149E2B5E001E95AA /* AMCTestSimple.m */; };
+		FDB80DA8149E2B5E001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D92149E2B5E001E95AA /* Bar.m */; };
+		FDB80DA9149E2B5E001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D92149E2B5E001E95AA /* Bar.m */; };
+		FDB80DAA149E2B5E001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D94149E2B5E001E95AA /* CCArray.m */; };
+		FDB80DAB149E2B5E001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D94149E2B5E001E95AA /* CCArray.m */; };
+		FDB80DAC149E2B5E001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D97149E2B5E001E95AA /* Foo.m */; };
+		FDB80DAD149E2B5E001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D97149E2B5E001E95AA /* Foo.m */; };
+		FDB80DAE149E2B5E001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D99149E2B5E001E95AA /* FooWithCollections.m */; };
+		FDB80DAF149E2B5E001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D99149E2B5E001E95AA /* FooWithCollections.m */; };
+		FDB80DB0149E2B5E001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D9B149E2B5E001E95AA /* FooWithCustomCollection.m */; };
+		FDB80DB1149E2B5E001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D9B149E2B5E001E95AA /* FooWithCustomCollection.m */; };
+		FDB80DB2149E2B5E001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D9D149E2B5E001E95AA /* FooWithMutableCollections.m */; };
+		FDB80DB3149E2B5E001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D9D149E2B5E001E95AA /* FooWithMutableCollections.m */; };
+		FDB80DB4149E2B5E001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D9F149E2B5E001E95AA /* FooWithSctructs.m */; };
+		FDB80DB5149E2B5E001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB80D9F149E2B5E001E95AA /* FooWithSctructs.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,49 +64,49 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6D299759141398A3005F486B /* FooWithSctructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithSctructs.h; sourceTree = "<group>"; };
-		6D29975A141398A3005F486B /* FooWithSctructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithSctructs.m; sourceTree = "<group>"; };
-		6D2997601413DD9A005F486B /* ccCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccCArray.h; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/ccCArray.h"; sourceTree = "<group>"; };
-		6D2997611413DD9A005F486B /* CCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCArray.h; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/CCArray.h"; sourceTree = "<group>"; };
-		6D2997621413DD9A005F486B /* CCArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCArray.m; path = "../AutoMagicCoding-iOS/AutoMagicCoding-iOSTests/CCArray.m"; sourceTree = "<group>"; };
-		6D2997671413DDC9005F486B /* FooWithCustomCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCustomCollection.h; sourceTree = "<group>"; };
-		6D2997681413DDC9005F486B /* FooWithCustomCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCustomCollection.m; sourceTree = "<group>"; };
 		6D6B988D140E162700835E88 /* AutomagicCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomagicCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B9891140E162700835E88 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6D6B9894140E162700835E88 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		6D6B9895140E162700835E88 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6D6B9896140E162700835E88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
-		6D6B989B140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6D6B989D140E162700835E88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D6B989F140E162700835E88 /* AutomagicCoding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutomagicCoding-Prefix.pch"; sourceTree = "<group>"; };
-		6D6B98A1140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingAppDelegate.h; sourceTree = "<group>"; };
-		6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingAppDelegate.m; sourceTree = "<group>"; };
-		6D6B98A7140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomagicCodingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6B98AF140E162700835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutomagicCodingTests-Info.plist"; sourceTree = "<group>"; };
-		6D6B98B8140E162700835E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6D6B98BA140E162700835E88 /* AMCTestSimple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMCTestSimple.h; sourceTree = "<group>"; };
-		6D6B98BC140E162700835E88 /* AMCTestSimple.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMCTestSimple.m; sourceTree = "<group>"; };
-		6D6B98C6140E16F200835E88 /* Foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foo.h; sourceTree = "<group>"; };
-		6D6B98C7140E16F200835E88 /* Foo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foo.m; sourceTree = "<group>"; };
-		6D6B98C9140E173E00835E88 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
-		6D6B98CA140E173E00835E88 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
 		6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
-		6D6D28A01410B03200B7EA19 /* FooWithCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCollections.h; sourceTree = "<group>"; };
-		6D6D28A11410B03200B7EA19 /* FooWithCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCollections.m; sourceTree = "<group>"; };
-		6D6D28A31410B12000B7EA19 /* AMCCollectionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCCollectionsTest.h; sourceTree = "<group>"; };
-		6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCCollectionsTest.m; sourceTree = "<group>"; };
-		6D6D28A71410B7F500B7EA19 /* AMCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTest.h; sourceTree = "<group>"; };
-		6D6D28A81410B7F500B7EA19 /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
-		6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithMutableCollections.h; sourceTree = "<group>"; };
-		6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
 		FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutomagicCodingTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDCE7BEA148A8213009A6DCB /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCExceptionsTest.h; sourceTree = "<group>"; };
-		FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCExceptionsTest.m; sourceTree = "<group>"; };
+		FDB80D3E149E2AF8001E95AA /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
+		FDB80D3F149E2AF8001E95AA /* AutomagicCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AutomagicCoding-Prefix.pch"; sourceTree = "<group>"; };
+		FDB80D40149E2AF8001E95AA /* AutomagicCodingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingAppDelegate.h; sourceTree = "<group>"; };
+		FDB80D41149E2AF8001E95AA /* AutomagicCodingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutomagicCodingAppDelegate.m; sourceTree = "<group>"; };
+		FDB80D43149E2AF8001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FDB80D45149E2AF8001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDB80D47149E2AF8001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FDB80D48149E2AF8001E95AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FDB80D4E149E2AF8001E95AA /* AutomagicCodingTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutomagicCodingTests-Info.plist"; sourceTree = "<group>"; };
+		FDB80D50149E2AF8001E95AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDB80D88149E2B5E001E95AA /* AMCCollectionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCCollectionsTest.h; sourceTree = "<group>"; };
+		FDB80D89149E2B5E001E95AA /* AMCCollectionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCCollectionsTest.m; sourceTree = "<group>"; };
+		FDB80D8A149E2B5E001E95AA /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCExceptionsTest.h; sourceTree = "<group>"; };
+		FDB80D8B149E2B5E001E95AA /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCExceptionsTest.m; sourceTree = "<group>"; };
+		FDB80D8C149E2B5E001E95AA /* AMCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTest.h; sourceTree = "<group>"; };
+		FDB80D8D149E2B5E001E95AA /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
+		FDB80D8E149E2B5E001E95AA /* AMCTestSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCTestSimple.h; sourceTree = "<group>"; };
+		FDB80D8F149E2B5E001E95AA /* AMCTestSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTestSimple.m; sourceTree = "<group>"; };
+		FDB80D91149E2B5E001E95AA /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
+		FDB80D92149E2B5E001E95AA /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
+		FDB80D93149E2B5E001E95AA /* CCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCArray.h; sourceTree = "<group>"; };
+		FDB80D94149E2B5E001E95AA /* CCArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCArray.m; sourceTree = "<group>"; };
+		FDB80D95149E2B5E001E95AA /* ccCArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccCArray.h; sourceTree = "<group>"; };
+		FDB80D96149E2B5E001E95AA /* Foo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foo.h; sourceTree = "<group>"; };
+		FDB80D97149E2B5E001E95AA /* Foo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foo.m; sourceTree = "<group>"; };
+		FDB80D98149E2B5E001E95AA /* FooWithCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCollections.h; sourceTree = "<group>"; };
+		FDB80D99149E2B5E001E95AA /* FooWithCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCollections.m; sourceTree = "<group>"; };
+		FDB80D9A149E2B5E001E95AA /* FooWithCustomCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithCustomCollection.h; sourceTree = "<group>"; };
+		FDB80D9B149E2B5E001E95AA /* FooWithCustomCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithCustomCollection.m; sourceTree = "<group>"; };
+		FDB80D9C149E2B5E001E95AA /* FooWithMutableCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithMutableCollections.h; sourceTree = "<group>"; };
+		FDB80D9D149E2B5E001E95AA /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
+		FDB80D9E149E2B5E001E95AA /* FooWithSctructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithSctructs.h; sourceTree = "<group>"; };
+		FDB80D9F149E2B5E001E95AA /* FooWithSctructs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithSctructs.m; sourceTree = "<group>"; };
 		FDCE7BF1148A97C9009A6DCB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,8 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				FDCE7BF1148A97C9009A6DCB /* README.md */,
-				6D6B9897140E162700835E88 /* AutomagicCoding */,
-				6D6B98B4140E162700835E88 /* AutomagicCodingTests */,
+				6D6B9897140E162700835E88 /* AutoMagicCoding */,
+				FDB80D87149E2B5E001E95AA /* Tests */,
+				FDB80D2A149E2AF8001E95AA /* SupportingFiles */,
 				6D6B9890140E162700835E88 /* Frameworks */,
 				6D6B988E140E162700835E88 /* Products */,
 			);
@@ -183,77 +182,85 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		6D6B9897140E162700835E88 /* AutomagicCoding */ = {
+		6D6B9897140E162700835E88 /* AutoMagicCoding */ = {
 			isa = PBXGroup;
 			children = (
 				6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */,
 				6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */,
-				6D6B9898140E162700835E88 /* Supporting Files */,
 			);
+			name = AutoMagicCoding;
 			path = AutomagicCoding;
 			sourceTree = "<group>";
 		};
-		6D6B9898140E162700835E88 /* Supporting Files */ = {
+		FDB80D2A149E2AF8001E95AA /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				6D6B98A3140E162700835E88 /* AutomagicCodingAppDelegate.h */,
-				6D6B98A4140E162700835E88 /* AutomagicCodingAppDelegate.m */,
-				6D6B98A6140E162700835E88 /* MainMenu.xib */,
-				6D6B9899140E162700835E88 /* AutomagicCoding-Info.plist */,
-				6D6B989A140E162700835E88 /* InfoPlist.strings */,
-				6D6B989D140E162700835E88 /* main.m */,
-				6D6B989F140E162700835E88 /* AutomagicCoding-Prefix.pch */,
-				6D6B98A0140E162700835E88 /* Credits.rtf */,
+				FDB80D3D149E2AF8001E95AA /* SupportingFiles-Mac */,
+				FDB80D4D149E2AF8001E95AA /* SupportingFiles-Tests-Mac */,
 			);
-			name = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		6D6B98B4140E162700835E88 /* AutomagicCodingTests */ = {
+		FDB80D3D149E2AF8001E95AA /* SupportingFiles-Mac */ = {
 			isa = PBXGroup;
 			children = (
-				6D6B98B5140E162700835E88 /* Supporting Files */,
-				6D6D28A61410B1E400B7EA19 /* ObjectsForTests */,
-				6D6D28A71410B7F500B7EA19 /* AMCTest.h */,
-				6D6D28A81410B7F500B7EA19 /* AMCTest.m */,
-				6D6B98BA140E162700835E88 /* AMCTestSimple.h */,
-				6D6B98BC140E162700835E88 /* AMCTestSimple.m */,
-				6D6D28A31410B12000B7EA19 /* AMCCollectionsTest.h */,
-				6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */,
-				FDCE7BEA148A8213009A6DCB /* AMCExceptionsTest.h */,
-				FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */,
+				FDB80D3E149E2AF8001E95AA /* AutomagicCoding-Info.plist */,
+				FDB80D3F149E2AF8001E95AA /* AutomagicCoding-Prefix.pch */,
+				FDB80D40149E2AF8001E95AA /* AutomagicCodingAppDelegate.h */,
+				FDB80D41149E2AF8001E95AA /* AutomagicCodingAppDelegate.m */,
+				FDB80D42149E2AF8001E95AA /* Credits.rtf */,
+				FDB80D44149E2AF8001E95AA /* InfoPlist.strings */,
+				FDB80D46149E2AF8001E95AA /* MainMenu.xib */,
+				FDB80D48149E2AF8001E95AA /* main.m */,
 			);
-			path = AutomagicCodingTests;
+			path = "SupportingFiles-Mac";
 			sourceTree = "<group>";
 		};
-		6D6B98B5140E162700835E88 /* Supporting Files */ = {
+		FDB80D4D149E2AF8001E95AA /* SupportingFiles-Tests-Mac */ = {
 			isa = PBXGroup;
 			children = (
-				6D6B98B6140E162700835E88 /* AutomagicCodingTests-Info.plist */,
-				6D6B98B7140E162700835E88 /* InfoPlist.strings */,
+				FDB80D4E149E2AF8001E95AA /* AutomagicCodingTests-Info.plist */,
+				FDB80D4F149E2AF8001E95AA /* InfoPlist.strings */,
 			);
-			name = "Supporting Files";
+			path = "SupportingFiles-Tests-Mac";
 			sourceTree = "<group>";
 		};
-		6D6D28A61410B1E400B7EA19 /* ObjectsForTests */ = {
+		FDB80D87149E2B5E001E95AA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6D2997601413DD9A005F486B /* ccCArray.h */,
-				6D2997611413DD9A005F486B /* CCArray.h */,
-				6D2997621413DD9A005F486B /* CCArray.m */,
-				6D2997671413DDC9005F486B /* FooWithCustomCollection.h */,
-				6D2997681413DDC9005F486B /* FooWithCustomCollection.m */,
-				6D299759141398A3005F486B /* FooWithSctructs.h */,
-				6D29975A141398A3005F486B /* FooWithSctructs.m */,
-				6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */,
-				6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */,
-				6D6D28A01410B03200B7EA19 /* FooWithCollections.h */,
-				6D6D28A11410B03200B7EA19 /* FooWithCollections.m */,
-				6D6B98C6140E16F200835E88 /* Foo.h */,
-				6D6B98C7140E16F200835E88 /* Foo.m */,
-				6D6B98C9140E173E00835E88 /* Bar.h */,
-				6D6B98CA140E173E00835E88 /* Bar.m */,
+				FDB80D88149E2B5E001E95AA /* AMCCollectionsTest.h */,
+				FDB80D89149E2B5E001E95AA /* AMCCollectionsTest.m */,
+				FDB80D8A149E2B5E001E95AA /* AMCExceptionsTest.h */,
+				FDB80D8B149E2B5E001E95AA /* AMCExceptionsTest.m */,
+				FDB80D8C149E2B5E001E95AA /* AMCTest.h */,
+				FDB80D8D149E2B5E001E95AA /* AMCTest.m */,
+				FDB80D8E149E2B5E001E95AA /* AMCTestSimple.h */,
+				FDB80D8F149E2B5E001E95AA /* AMCTestSimple.m */,
+				FDB80D90149E2B5E001E95AA /* ObjectsForTests */,
 			);
-			name = ObjectsForTests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		FDB80D90149E2B5E001E95AA /* ObjectsForTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDB80D91149E2B5E001E95AA /* Bar.h */,
+				FDB80D92149E2B5E001E95AA /* Bar.m */,
+				FDB80D93149E2B5E001E95AA /* CCArray.h */,
+				FDB80D94149E2B5E001E95AA /* CCArray.m */,
+				FDB80D95149E2B5E001E95AA /* ccCArray.h */,
+				FDB80D96149E2B5E001E95AA /* Foo.h */,
+				FDB80D97149E2B5E001E95AA /* Foo.m */,
+				FDB80D98149E2B5E001E95AA /* FooWithCollections.h */,
+				FDB80D99149E2B5E001E95AA /* FooWithCollections.m */,
+				FDB80D9A149E2B5E001E95AA /* FooWithCustomCollection.h */,
+				FDB80D9B149E2B5E001E95AA /* FooWithCustomCollection.m */,
+				FDB80D9C149E2B5E001E95AA /* FooWithMutableCollections.h */,
+				FDB80D9D149E2B5E001E95AA /* FooWithMutableCollections.m */,
+				FDB80D9E149E2B5E001E95AA /* FooWithSctructs.h */,
+				FDB80D9F149E2B5E001E95AA /* FooWithSctructs.m */,
+			);
+			path = ObjectsForTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,9 +353,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D6B989C140E162700835E88 /* InfoPlist.strings in Resources */,
-				6D6B98A2140E162700835E88 /* Credits.rtf in Resources */,
-				6D6B98A8140E162700835E88 /* MainMenu.xib in Resources */,
+				FDB80D6F149E2AF8001E95AA /* Credits.rtf in Resources */,
+				FDB80D72149E2AF8001E95AA /* InfoPlist.strings in Resources */,
+				FDB80D75149E2AF8001E95AA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D6B98B9140E162700835E88 /* InfoPlist.strings in Resources */,
-				6D6B98BB140E162700835E88 /* AMCTestSimple.h in Resources */,
+				FDB80D85149E2AF8001E95AA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,8 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDB80CD5149D3089001E95AA /* InfoPlist.strings in Resources */,
-				FDB80CD6149D3089001E95AA /* AMCTestSimple.h in Resources */,
+				FDB80D86149E2AF8001E95AA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,9 +411,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D6B989E140E162700835E88 /* main.m in Sources */,
-				6D6B98A5140E162700835E88 /* AutomagicCodingAppDelegate.m in Sources */,
 				6D6B98CE140E2A3B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
+				FDB80D6C149E2AF8001E95AA /* AutomagicCodingAppDelegate.m in Sources */,
+				FDB80D78149E2AF8001E95AA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,17 +422,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D6B98DB140E671B00835E88 /* NSObject+AutomagicCoding.m in Sources */,
-				6D6B98BD140E162700835E88 /* AMCTestSimple.m in Sources */,
-				6D6B98C8140E16F200835E88 /* Foo.m in Sources */,
-				6D6B98CB140E173E00835E88 /* Bar.m in Sources */,
-				6D6D28A21410B03200B7EA19 /* FooWithCollections.m in Sources */,
-				6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */,
-				6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */,
-				6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */,
-				6D29975B141398A3005F486B /* FooWithSctructs.m in Sources */,
-				6D2997631413DD9A005F486B /* CCArray.m in Sources */,
-				6D2997691413DDC9005F486B /* FooWithCustomCollection.m in Sources */,
-				FDCE7BEC148A8214009A6DCB /* AMCExceptionsTest.m in Sources */,
+				FDB80DA0149E2B5E001E95AA /* AMCCollectionsTest.m in Sources */,
+				FDB80DA2149E2B5E001E95AA /* AMCExceptionsTest.m in Sources */,
+				FDB80DA4149E2B5E001E95AA /* AMCTest.m in Sources */,
+				FDB80DA6149E2B5E001E95AA /* AMCTestSimple.m in Sources */,
+				FDB80DA8149E2B5E001E95AA /* Bar.m in Sources */,
+				FDB80DAA149E2B5E001E95AA /* CCArray.m in Sources */,
+				FDB80DAC149E2B5E001E95AA /* Foo.m in Sources */,
+				FDB80DAE149E2B5E001E95AA /* FooWithCollections.m in Sources */,
+				FDB80DB0149E2B5E001E95AA /* FooWithCustomCollection.m in Sources */,
+				FDB80DB2149E2B5E001E95AA /* FooWithMutableCollections.m in Sources */,
+				FDB80DB4149E2B5E001E95AA /* FooWithSctructs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,17 +441,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDB80CC5149D3089001E95AA /* NSObject+AutomagicCoding.m in Sources */,
-				FDB80CC6149D3089001E95AA /* AMCTestSimple.m in Sources */,
-				FDB80CC7149D3089001E95AA /* Foo.m in Sources */,
-				FDB80CC8149D3089001E95AA /* Bar.m in Sources */,
-				FDB80CC9149D3089001E95AA /* FooWithCollections.m in Sources */,
-				FDB80CCA149D3089001E95AA /* AMCCollectionsTest.m in Sources */,
-				FDB80CCB149D3089001E95AA /* AMCTest.m in Sources */,
-				FDB80CCC149D3089001E95AA /* FooWithMutableCollections.m in Sources */,
-				FDB80CCD149D3089001E95AA /* FooWithSctructs.m in Sources */,
-				FDB80CCE149D3089001E95AA /* CCArray.m in Sources */,
-				FDB80CCF149D3089001E95AA /* FooWithCustomCollection.m in Sources */,
-				FDB80CD0149D3089001E95AA /* AMCExceptionsTest.m in Sources */,
+				FDB80DA1149E2B5E001E95AA /* AMCCollectionsTest.m in Sources */,
+				FDB80DA3149E2B5E001E95AA /* AMCExceptionsTest.m in Sources */,
+				FDB80DA5149E2B5E001E95AA /* AMCTest.m in Sources */,
+				FDB80DA7149E2B5E001E95AA /* AMCTestSimple.m in Sources */,
+				FDB80DA9149E2B5E001E95AA /* Bar.m in Sources */,
+				FDB80DAB149E2B5E001E95AA /* CCArray.m in Sources */,
+				FDB80DAD149E2B5E001E95AA /* Foo.m in Sources */,
+				FDB80DAF149E2B5E001E95AA /* FooWithCollections.m in Sources */,
+				FDB80DB1149E2B5E001E95AA /* FooWithCustomCollection.m in Sources */,
+				FDB80DB3149E2B5E001E95AA /* FooWithMutableCollections.m in Sources */,
+				FDB80DB5149E2B5E001E95AA /* FooWithSctructs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,34 +471,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6D6B989A140E162700835E88 /* InfoPlist.strings */ = {
+		FDB80D42149E2AF8001E95AA /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6D6B989B140E162700835E88 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		6D6B98A0140E162700835E88 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D6B98A1140E162700835E88 /* en */,
+				FDB80D43149E2AF8001E95AA /* en */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		6D6B98A6140E162700835E88 /* MainMenu.xib */ = {
+		FDB80D44149E2AF8001E95AA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6D6B98A7140E162700835E88 /* en */,
+				FDB80D45149E2AF8001E95AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FDB80D46149E2AF8001E95AA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDB80D47149E2AF8001E95AA /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		6D6B98B7140E162700835E88 /* InfoPlist.strings */ = {
+		FDB80D4F149E2AF8001E95AA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6D6B98B8140E162700835E88 /* en */,
+				FDB80D50149E2AF8001E95AA /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -559,8 +564,8 @@
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
-				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = YES;
 				TEST_HOST = "";
@@ -577,8 +582,8 @@
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
-				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = YES;
 				TEST_HOST = "";
@@ -594,8 +599,8 @@
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
-				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-Mac/AutomagicCodingTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
@@ -609,8 +614,8 @@
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
-				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-Mac/AutomagicCodingTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
@@ -623,13 +628,13 @@
 				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					AMC_NO_THROW,
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-Mac/AutomagicCodingTests-Info.plist";
 				PRODUCT_NAME = "AutomagicCodingTests copy";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
@@ -642,9 +647,9 @@
 				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = AMC_NO_THROW;
-				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-Mac/AutomagicCodingTests-Info.plist";
 				PRODUCT_NAME = "AutomagicCodingTests copy";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;

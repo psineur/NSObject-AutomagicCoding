@@ -65,6 +65,13 @@
 
 - (void) testInMemory
 {
+    STFail(@"1");
+    #ifdef AMC_NO_THROW
+    STFail(@"2");
+    #else
+    STFail(@"3");
+    #endif
+    
     // Save object representation in NSDictionary.
     NSDictionary *fooDict = [self.foo dictionaryRepresentation];
     
