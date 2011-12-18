@@ -35,7 +35,16 @@
 - (void)testEncodeUnsupportedStructCrash
 {    
     BadClass *object = [BadClass new];
+    
+#ifdef AMC_NO_THROW
+    
+    STAssertTrueNoThrow(nil == [object dictionaryRepresentation], @"On AMC_NO_THROW AMC should return nil instead of throwing exceptions!");
+    
+#else
+    
     STAssertThrowsSpecificNamed([object dictionaryRepresentation] , NSException, AMCEncodeException, @"");
+
+#endif
 }
 
 // BadClass have UnsupportedByAMCStruct ivar, that's name is added to 
@@ -50,8 +59,16 @@
                           [NSArray arrayWithObjects: @"class", @"struct", nil]
                           ];
     
+#ifdef AMC_NO_THROW
+    
+    STAssertTrueNoThrow( nil == [NSObject objectWithDictionaryRepresentation: dict], @"On AMC_NO_THROW AMC should return nil instead of throwing exceptions!");
+    
+#else
+    
     // Crash on decode.
     STAssertThrowsSpecificNamed([NSObject objectWithDictionaryRepresentation: dict] , NSException, AMCDecodeException,@"");
+    
+#endif
 }
 
 // Each time when AMC creates dictionary representation of an object - it uses
@@ -60,8 +77,17 @@
 // If it's impossible to get value - KVC throws NSUnkownKeyException
 - (void) testEncodeWrongKeyInAMCKeysCrash
 {
-    Foobar *object = [Foobar new];    
+    Foobar *object = [Foobar new]; 
+    
+#ifdef AMC_NO_THROW
+    
+    STAssertTrueNoThrow( nil == [object dictionaryRepresentation], @"On AMC_NO_THROW AMC should return nil instead of throwing exceptions!");
+    
+#else
+    
     STAssertThrowsSpecificNamed([object dictionaryRepresentation], NSException, @"NSUnknownKeyException", @"");
+    
+#endif
 }
 
 
@@ -104,8 +130,16 @@
                                  ];
     [fooDict setObject: newBarDict forKey:@"integerValue"];
     
+#ifdef AMC_NO_THROW
+    
+    STAssertTrueNoThrow( nil == [Foo objectWithDictionaryRepresentation: fooDict], @"On AMC_NO_THROW AMC should return nil instead of throwing exceptions!");
+    
+#else
+    
     // Should crash on decoding from corrupted dictionary representation with NSInvalidArgumentException.
     STAssertThrowsSpecificNamed([Foo objectWithDictionaryRepresentation: fooDict], NSException, NSInvalidArgumentException, @"");
+    
+#endif
 }
 
 // Changed Foo's dictionaryRepresentation to have simple intValue in
