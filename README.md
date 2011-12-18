@@ -108,8 +108,21 @@ Here's a list of bad things, that can happen with AMC:
    3. **Object for Scalar key in Dictionary Representation**: KVC will throw NSInvalidArgumentException i.e. if you're trying to set Object with it's own dictionary representation as simple int.
    4. **Scalar for Object key in Dictionary Representation**: No exception gets thrown. Object will not be set - so your property will still handle nil.
    5. **Object with different class name for Object Key in Dictinoary Representation**: No exception gets thrown. It's possible to set Foo for Bar property with AMC. Their own properties can be set with AMC or remain nil. Do [self.foo isKindOfClass: [Foo class]] checks in -initWithDictinoaryRepresentation: after calling super if it's necessary.
+   
+AMC_NO_THROW
+------------------
 
- 
+You can define AMC_NO_THROW to disable exceptions throw by following methods:
+
+* +objectWithDictionaryRepresentation:
+* -initWithDictionaryRepresentation:
+* -dictionaryRepresentation   
+
+With AMC_NO_THROW defined they will simply return nil instead.   
+-AMCDecodeStructFromString:withName: & -AMCEncodeStructWithValue:withName: can 
+throw exceptions even if AMC_NO_THROW is defined. Don't catch any exceptions in 
+your reimplementations of these methods - you don't need to call the directly, so AMC
+will caught their exceptions for you. 
 
 License
 ==================
