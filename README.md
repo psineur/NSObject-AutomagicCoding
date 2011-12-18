@@ -1,8 +1,8 @@
 AMC
 ==================
-AMC is AutoMagic Coding - very easy to use NSCoding replacement for Mac & iOS Projects.
+__AMC is AutoMagic Coding__ - very easy to use NSCoding replacement for Mac & iOS Projects.
 AMC gives you ability to create NSDictionary representation of any supported object, save it in PLIST
-(or any other PLIST-compatible file format) and load again without writing a lot of code.
+(or any other PLIST-compatible file format, i.e. JSON) and load again without writing a lot of code.
 
 AMC uses Objective-C Runtime to determine object's properties automatically & Key-Value-Coding to
 get & set them.
@@ -33,7 +33,7 @@ File Format
 AMC saves object to NSDictionary, that can be saved to PLIST (or JSON).   
 Keys simply are ivars names and/or properties names.   
 One special key ( "class" ) used to hold name of the object's class.   
-Run unit tests on Mac & go look to your documents folder - there will be a lot of PLISTs.   
+Run unit tests on Mac & go look to your Documents folder - there will be a lot of PLISTs.   
 They are test objects saved to PLIST files. 
 
 Known Issues
@@ -46,15 +46,17 @@ How To Use
  1. Drag'n'Drop NSObject+AutoMagicCoding.h | m to your project. This will add AMC methods to all objects
  inherited from NSObject.
  2. Import NSObject+AutoMagicCoding.h where you need it.
- 3. Reimplement +(BOOL)AMCEnabled and return YES to enable AMC for you class.
+ 3. Reimplement +(BOOL)AMCEnabled and return YES to enable AMC for all instances of your class.
  4. Reimplement -(id)initWithDictionaryRepresentation: and use [super initWithDictionaryRepresentation] inside of it. Ensure that all collections & other fields are created
  after calling super initWithDictionaryRepresentation. Do your own init routines after.
  4. Use -dictionaryRepresentation to encode your object to NSDictionary & NSObject::objectWithDictionaryRepresentation: to decode.
- * Additionaly: reimplement -AMCKeysForDictionaryRepresentation to change amount & order of encoded/decoded fields. (See AMCKeysForDictionaryRepresentation below for more info ).
- * Additionaly: reimplement -AMCEncodeStructWithValue: withName: /-AMCDecodeStructWithValue: withName:  to support custom structs (See Custom Struct below for more info).
- * Additionaly: reimplement -AMCFieldTypeForValueWithKey: for any non-scalar ivar, that you want to use
- as fields for AMC. (ATTENTION: It's recommended to avoid using iVars without properties in AMC due to
- harder memory management, need to write more code, unsupported custom structs & possible future restrictions)
+ * __Additionaly:__ reimplement -AMCKeysForDictionaryRepresentation to change amount & order of encoded/decoded fields. (See AMCKeysForDictionaryRepresentation below for more info ).
+ * __Additionaly:__ reimplement -AMCEncodeStructWithValue:withName: & -AMCDecodeStructWithValue: withName: to support custom structs (See Custom Struct below for more info).
+ * __Additionaly:__ reimplement -AMCFieldTypeForValueWithKey: for any non-scalar ivars, that you want to use
+ as fields for AMC. 
+ 
+ __ATTENTION__: It's recommended to avoid using iVars without properties in AMC due to
+ harder memory management, need to write more code, unsupported custom structs & possible future restrictions.
  
 AMCKeysForDictionaryRepresentation  
 ==================  
@@ -62,15 +64,15 @@ AMCKeysForDictionaryRepresentation
  -AMCKeysForDictionaryRepresentation returns NSArray of NSStrings, thar are passed to KVC methods
  to get & set fields of AMCEnabled objects.
  Default implementation returns complete set of all object properties (both readonly & readwrite).
- Reimplement this method choose manually, what properties should be encoded in NSDictionary.
- See tests in AutoMagicCodingTests for more info & usage examples.
+ Reimplement this method to choose manually, what properties should be encoded/decoded by AMC.
+ See tests in "Tests" folder for more info & usage examples.
  
 Custom Struct Support   
 ==================  
  
-To enable your own custom struct support you must do following:
+To support your own custom structs you must do the following:
 
-1. Your custom structs should be used __ONLY AS PROPERTIES__ in your class. iVars custom structs are not supported.
+1. Your custom structs should be used __ONLY AS PROPERTIES__ in your classes. iVars custom structs are not supported.
 2. Reimplement -AMCEncodeStructWithValue:withName: & AMCDecodeStructFromString:withName: like this: 
 
 ```
@@ -110,15 +112,15 @@ All exceptions, bad-data & unwanted behaviour tests are located in AMCExceptions
 Here's a list of bad things, that can happen with AMC:   
 
 * __Encoding__ ( calling -dictionaryRepresentation )
-   1. **Unsupported struct**:throws AMCEncodeException on  (See Custom Struct Support above)
+   1. **Unsupported struct**: throws AMCEncodeException (See Custom Struct Support above).
    2. **Wrong keys in -AMCKeysForDictionaryRepresentation**: Throws NSUnkownKeyException.( Wrong key = no such property, ivar or method - see KVC programming guide for details).
 * __Decoding__ ( calling +objectWithDictionaryRepresentation: & -initWithDictionaryRepresentation: )
    1. **Unsupported struct**: Throws AMCDecodeException (See Custom Struct Support above).
    2. **Mismatch between -AMCKeysForDictionaryRepresentation & Dictionary Representation Keys**: No exceptions gets thrown. Only intersect of keys in 
-   dictionary representation & -AMCKeysForDictionaryRepresentation are used to set values for decoding object's fields. So always check for neccessary fields in your -initWithDictionaryRepresentation - create them if they are nil.
+   dictionary representation & -AMCKeysForDictionaryRepresentation are used to set values for decoding object's fields. So always check for neccessery fields in your -initWithDictionaryRepresentation and create them if they are nil.
    3. **Object for Scalar key in Dictionary Representation**: KVC will throw NSInvalidArgumentException i.e. if you're trying to set Object with it's own dictionary representation as simple int.
    4. **Scalar for Object key in Dictionary Representation**: No exception gets thrown. Object will not be set - so your property will still handle nil.
-   5. **Object with different class name for Object Key in Dictinoary Representation**: No exception gets thrown. It's possible to set Foo for Bar property with AMC. Their own properties can be set with AMC or remain nil. Do [self.foo isKindOfClass: [Foo class]] checks in -initWithDictinoaryRepresentation: after calling super if it's necessary.
+   5. **Object with different class name for Object Key in Dictionary Representation**: No exception gets thrown. I.e. it's possible to set Foo instance for Bar class property with AMC. Their own properties can be set with AMC or remain nil. Do [self.foo isKindOfClass: [Foo class]] checks in -initWithDictinoaryRepresentation: after calling super if it's necessary.
    
 AMC_NO_THROW
 ------------------
@@ -132,8 +134,8 @@ You can define AMC_NO_THROW to disable exceptions throw by following methods:
 With AMC_NO_THROW defined they will simply return nil instead.   
 -AMCDecodeStructFromString:withName: & -AMCEncodeStructWithValue:withName: can 
 throw exceptions even if AMC_NO_THROW is defined. Don't catch any exceptions in 
-your reimplementations of these methods - you don't need to call the directly, so AMC
-will caught their exceptions for you. 
+your reimplementations of these methods - you don't need to call them directly, so AMC
+will catch their exceptions for you. 
 
 License
 ==================
