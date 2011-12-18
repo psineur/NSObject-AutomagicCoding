@@ -73,7 +73,7 @@
 		6D6B98AF140E162700835E88 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6D6B98CC140E2A3B00835E88 /* NSObject+AutomagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutomagicCoding.h"; sourceTree = "<group>"; };
 		6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutomagicCoding.m"; sourceTree = "<group>"; };
-		FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutomagicCodingTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDB80CDB149D3089001E95AA /* AutomagicCodingTests-NO_THROW.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutomagicCodingTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB80D3E149E2AF8001E95AA /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
 		FDB80D3F149E2AF8001E95AA /* AutomagicCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AutomagicCoding-Prefix.pch"; sourceTree = "<group>"; };
 		FDB80D40149E2AF8001E95AA /* AutomagicCodingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutomagicCodingAppDelegate.h; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			children = (
 				6D6B988D140E162700835E88 /* AutomagicCoding.app */,
 				6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */,
-				FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */,
+				FDB80CDB149D3089001E95AA /* AutomagicCodingTests-NO_THROW.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 			);
 			name = "AutomagicCodingTests AMC_NO_THROW";
 			productName = AutomagicCodingTests;
-			productReference = FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */;
+			productReference = FDB80CDB149D3089001E95AA /* AutomagicCodingTests-NO_THROW.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -635,7 +635,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-Mac/AutomagicCodingTests-Info.plist";
-				PRODUCT_NAME = "AutomagicCodingTests copy";
+				PRODUCT_NAME = "AutomagicCodingTests-NO_THROW";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -650,7 +650,7 @@
 				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = AMC_NO_THROW;
 				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Tests-Mac/AutomagicCodingTests-Info.plist";
-				PRODUCT_NAME = "AutomagicCodingTests copy";
+				PRODUCT_NAME = "AutomagicCodingTests-NO_THROW";
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
 			};
