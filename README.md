@@ -7,6 +7,17 @@ AMC gives you ability to create NSDictionary representation of any supported obj
 AMC uses Objective-C Runtime to determine object's properties automatically & Key-Value-Coding to
 get & set them.
 
+Repo Contents
+-------------------------------------
+
+* __AutoMagicCoding/__ - contains all AMC sources, that you need to import to your project.
+* __Tests/__ - contains all AMC Unit Tests sources.
+   * __ObjectsForTests/__ - contains test classes, that are used in Unit Tests. Good examples how to use AMC.
+* __SupportingFiles/__ - XCode stuff (Info.plists, xibs, main.m, etc...)
+* AutoMagicCoding.xcodeproj - Mac XCode Project for testing AMC on Mac.
+* AutoMagicCoding-iOS.xcodeproj - iOS XCode Project for testing AMC on iOS.
+* README.md - contains text that you're reading right now. ;)
+
 Supported properties types
 -------------------------------------
  * AMC Enabled Objects.
