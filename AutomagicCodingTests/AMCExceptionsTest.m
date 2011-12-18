@@ -33,20 +33,9 @@
 // BadClass have UnsupportedByAMCStruct ivar.
 // -dictionaryRepresentation should crash with AMCEncodeException
 - (void)testEncodeUnsupportedStructCrash
-{
-    BOOL crashed = NO; //< should be YES to pass the test.
-    
+{    
     BadClass *object = [BadClass new];
-    @try {
-        [object dictionaryRepresentation];
-    }
-    @catch (NSException *exception) {
-        crashed = YES;
-        STAssertTrue([[exception name] isEqualToString: AMCEncodeException], 
-                     @"Wrong exception name, should be %@ but is %@ instead", AMCEncodeException, [exception name] );
-    }
-    
-    STAssertTrue(crashed, @"");
+    STAssertThrowsSpecificNamed([object dictionaryRepresentation] , NSException, AMCEncodeException, @"");
 }
 
 // BadClass have UnsupportedByAMCStruct ivar, that's name is added to 
@@ -54,23 +43,15 @@
 // +objectWithDictionaryRepresentation should crash with AMCDecodeException
 - (void)testDecodeUnsupportedStructCrash
 {
-    BOOL crashed = NO; //< should be YES to pass the test.
-    
+    // Prepare dictionary representation manually.
     NSDictionary *dict = [NSDictionary dictionaryWithObjects: 
                           [NSArray arrayWithObjects: @"BadClass", @"i=5", nil ]
                                                      forKeys: 
                           [NSArray arrayWithObjects: @"class", @"struct", nil]
                           ];
-    @try {
-        [NSObject objectWithDictionaryRepresentation: dict];
-    }
-    @catch (NSException *exception) {
-        crashed = YES;
-        STAssertTrue([[exception name] isEqualToString: AMCDecodeException], 
-                     @"Wrong exception name, should be %@ but is %@ instead", AMCDecodeException, [exception name] );
-    }
     
-    STAssertTrue(crashed, @"");
+    // Crash on decode.
+    STAssertThrowsSpecificNamed([NSObject objectWithDictionaryRepresentation: dict] , NSException, AMCDecodeException,@"");
 }
 
 // Each time when AMC creates dictionary representation of an object - it uses
@@ -79,19 +60,8 @@
 // If it's impossible to get value - KVC throws NSUnkownKeyException
 - (void) testEncodeWrongKeyInAMCKeysCrash
 {
-    BOOL crashed = NO; //< should be YES to pass the test.
-    
-    Foobar *object = [Foobar new];
-    @try {
-        [object dictionaryRepresentation];
-    }
-    @catch (NSException *exception) {
-        crashed = YES;
-        STAssertTrue([[exception name] isEqualToString: @"NSUnknownKeyException" ], 
-                     @"Wrong exception name, should be %@ but is %@ instead", @"NSUnknownKeyException", [exception name] );
-    }
-    
-    STAssertTrue(crashed, @"");
+    Foobar *object = [Foobar new];    
+    STAssertThrowsSpecificNamed([object dictionaryRepresentation], NSException, @"NSUnknownKeyException", @"");
 }
 
 
@@ -102,17 +72,13 @@
 // no crash will occur.
 - (void) testDecodeUnnecessaryKeyInDict
 { 
+    // Prepare dictionary representation manually.
     NSDictionary *dict = [[NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: @"Foobar", @"wrongString", nil]
                                                      forKeys: [NSArray arrayWithObjects: kAMCDictionaryKeyClassName, @"wrongKeyThatDoesntExist", nil]
                           ] retain];
     
-    @try {
-        id object = [[NSObject objectWithDictionaryRepresentation: dict] retain];
-        [object release];
-    }
-    @catch (NSException *exception) {
-        STFail(@"+objectWithDictionaryRepresentation crashed with Exception = %@ (%@).", [exception name], [exception reason] );
-    }
+    // Don't crash on decode.
+    STAssertNoThrow([[[NSObject objectWithDictionaryRepresentation: dict] retain] autorelease], @"");
 }
 
 // Changed Foo's dictionaryRepresentation to have Object dictionaryRepresentation 
@@ -120,44 +86,26 @@
 // Should crash in KVC's methods with NSInvalidArgumentException
 - (void) testDecodeObjectToInt
 {
-    BOOL crashed = NO; //< Should be YES to pass the test.
-    
-    // Prepare Foo class - that we will serialize & deserialize in-memory.
+    // ===== Prepare Foo instance. =====
     Foo *foo = [[Foo new] autorelease];
     foo.publicBar = [[Bar new] autorelease];
     foo.integerValue = 17;
-    
     Bar *privateBarInFoo = [[Bar new]autorelease];
     [foo setValue: privateBarInFoo forKey:@"privateBar"];
-    
-    // Prepare inside bar objects in Foo.
     foo.publicBar.someString = @"Some Randooooom String! =)";
     privateBarInFoo.someString = @"Some another random string - this time it's in private bar!";
     
-    // Retain Foo.
-    [foo retain];
-    
-    // Save object representation in mutable NSDictionary.
+    // ===== Save foo's representation in mutable NSDictionary. =====
     NSMutableDictionary *fooDict = [NSMutableDictionary dictionaryWithDictionary: [foo dictionaryRepresentation] ];
     
-    // Change integerValue representation with Bar representation in dictionary representation.
+    // ===== Change integerValue representation with Bar representation in dictionary representation. =====
     NSDictionary *newBarDict = [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: @"Bar", @"New Bar to set as Int!", nil]
                                                             forKeys: [NSArray arrayWithObjects: kAMCDictionaryKeyClassName, @"someString", nil]
                                  ];
     [fooDict setObject: newBarDict forKey:@"integerValue"];
     
-    
-    @try {  
-        // Try to create new object from that dictionary.
-        Foo *newFoo = [[Foo objectWithDictionaryRepresentation: fooDict] retain];
-        [newFoo release];
-    }
-    @catch (NSException *exception) {
-        crashed = YES;
-        STAssertTrue( [[exception name] isEqualToString:NSInvalidArgumentException], @"Exception name should be %@, but its %@ ( %@ )", NSInvalidArgumentException, [exception name], [exception reason]);
-    }    
-    
-    STAssertTrue(crashed, @"Did not crashed.");
+    // Should crash on decoding from corrupted dictionary representation with NSInvalidArgumentException.
+    STAssertThrowsSpecificNamed([Foo objectWithDictionaryRepresentation: fooDict], NSException, NSInvalidArgumentException, @"");
 }
 
 // Changed Foo's dictionaryRepresentation to have simple intValue in
@@ -165,41 +113,33 @@
 // Shouldn't crash, but publicBar should be nil.
 - (void) testDecodeIntToObject
 {
-    // Prepare Foo class - that we will serialize & deserialize in-memory.
+    // ===== Prepare Foo instance. =====
     Foo *foo = [[Foo new] autorelease];
     foo.publicBar = [[Bar new] autorelease];
-    foo.integerValue = 17;
-    
+    foo.integerValue = 17;    
     Bar *privateBarInFoo = [[Bar new]autorelease];
     [foo setValue: privateBarInFoo forKey:@"privateBar"];
-    
-    // Prepare inside bar objects in Foo.
     foo.publicBar.someString = @"Some Randooooom String! =)";
     privateBarInFoo.someString = @"Some another random string - this time it's in private bar!";
     
-    // Retain Foo.
-    [foo retain];
-    
-    // Save object representation in mutable NSDictionary.
+    // ===== Save foo's representation in mutable NSDictionary. =====
     NSMutableDictionary *fooDict = [NSMutableDictionary dictionaryWithDictionary: [foo dictionaryRepresentation] ];
     
-    // Change publicBar representation with integerValue representation in dictionary representation.
+    // ===== Change publicBar representation with integerValue representation in foo's dictionary =====
     [fooDict setObject: [NSNumber numberWithInt: 19] forKey:@"publicBar"];
     
-    @try {
-        // Try to create new object from that dictionary.
-        Foo *newFoo = [[Foo objectWithDictionaryRepresentation: fooDict] retain];
-        STAssertTrue([newFoo isKindOfClass: [Foo class]], @"foo class should be Foo but it is %@ instead.", [Foo className]);
-        
-        STAssertNil(newFoo.publicBar, @"publicBar can't init from int representation. It should be nil, but it's %@ instead", newFoo.publicBar );
-        
-        STAssertFalse([newFoo.publicBar isKindOfClass: [NSNumber class]], @"PublicBar is an NSNumber!");
-        
-        [newFoo release];
-    }
-    @catch (NSException *exception) {
-        STFail(@"Crashed %@ %@", [exception name], [exception reason]);
-    }    
+    // Shouldn't crash on decode.
+    Foo *newFoo = nil;
+    STAssertNoThrow(newFoo = [Foo objectWithDictionaryRepresentation: fooDict], @"");
+    
+    // newFoo shouldn't be nil.        
+    STAssertTrue([newFoo isKindOfClass: [Foo class]], @"foo class should be Foo but it is %@ instead.", [Foo className]);
+    
+    // publicBar should be nil.
+    STAssertNil(newFoo.publicBar, @"publicBar can't init from int representation. It should be nil, but it's %@ instead", newFoo.publicBar );    
+    
+    // It shouldn't be NSNumber.
+    STAssertFalse([newFoo.publicBar isKindOfClass: [NSNumber class]], @"PublicBar is an NSNumber! THIS IS REALLY BAD!!!");   
 }
 
 @end
