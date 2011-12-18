@@ -29,16 +29,39 @@
 		6D6D28A51410B12000B7EA19 /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
 		6D6D28A91410B7F500B7EA19 /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
 		6D6D28AC1410EE1A00B7EA19 /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
+		FDB80CC5149D3089001E95AA /* NSObject+AutomagicCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CD140E2A3B00835E88 /* NSObject+AutomagicCoding.m */; };
+		FDB80CC6149D3089001E95AA /* AMCTestSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98BC140E162700835E88 /* AMCTestSimple.m */; };
+		FDB80CC7149D3089001E95AA /* Foo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98C7140E16F200835E88 /* Foo.m */; };
+		FDB80CC8149D3089001E95AA /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6B98CA140E173E00835E88 /* Bar.m */; };
+		FDB80CC9149D3089001E95AA /* FooWithCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A11410B03200B7EA19 /* FooWithCollections.m */; };
+		FDB80CCA149D3089001E95AA /* AMCCollectionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A41410B12000B7EA19 /* AMCCollectionsTest.m */; };
+		FDB80CCB149D3089001E95AA /* AMCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28A81410B7F500B7EA19 /* AMCTest.m */; };
+		FDB80CCC149D3089001E95AA /* FooWithMutableCollections.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */; };
+		FDB80CCD149D3089001E95AA /* FooWithSctructs.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D29975A141398A3005F486B /* FooWithSctructs.m */; };
+		FDB80CCE149D3089001E95AA /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997621413DD9A005F486B /* CCArray.m */; };
+		FDB80CCF149D3089001E95AA /* FooWithCustomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2997681413DDC9005F486B /* FooWithCustomCollection.m */; };
+		FDB80CD0149D3089001E95AA /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */; };
+		FDB80CD2149D3089001E95AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B98AF140E162700835E88 /* SenTestingKit.framework */; };
+		FDB80CD3149D3089001E95AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D6B9891140E162700835E88 /* Cocoa.framework */; };
+		FDB80CD5149D3089001E95AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98B7140E162700835E88 /* InfoPlist.strings */; };
+		FDB80CD6149D3089001E95AA /* AMCTestSimple.h in Resources */ = {isa = PBXBuildFile; fileRef = 6D6B98BA140E162700835E88 /* AMCTestSimple.h */; };
 		FDCE7BEC148A8214009A6DCB /* AMCExceptionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FD41F3DA1484E48C00F9B341 /* PBXContainerItemProxy */ = {
+		FDB80CEA149E095B001E95AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6D6B9884140E162600835E88 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6D6B98AD140E162700835E88;
 			remoteInfo = AutomagicCodingTests;
+		};
+		FDB80CEC149E095B001E95AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D6B9884140E162600835E88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDB80CC3149D3089001E95AA;
+			remoteInfo = "AutomagicCodingTests AMC_NO_THROW";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -83,6 +106,7 @@
 		6D6D28A81410B7F500B7EA19 /* AMCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCTest.m; sourceTree = "<group>"; };
 		6D6D28AA1410EE1A00B7EA19 /* FooWithMutableCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooWithMutableCollections.h; sourceTree = "<group>"; };
 		6D6D28AB1410EE1A00B7EA19 /* FooWithMutableCollections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooWithMutableCollections.m; sourceTree = "<group>"; };
+		FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutomagicCodingTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCE7BEA148A8213009A6DCB /* AMCExceptionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCExceptionsTest.h; sourceTree = "<group>"; };
 		FDCE7BEB148A8213009A6DCB /* AMCExceptionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCExceptionsTest.m; sourceTree = "<group>"; };
 		FDCE7BF1148A97C9009A6DCB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -106,6 +130,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDB80CD1149D3089001E95AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80CD2149D3089001E95AA /* SenTestingKit.framework in Frameworks */,
+				FDB80CD3149D3089001E95AA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -125,6 +158,7 @@
 			children = (
 				6D6B988D140E162700835E88 /* AutomagicCoding.app */,
 				6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */,
+				FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,7 +270,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				FD41F3DB1484E48C00F9B341 /* PBXTargetDependency */,
+				FDB80CEB149E095B001E95AA /* PBXTargetDependency */,
+				FDB80CED149E095B001E95AA /* PBXTargetDependency */,
 			);
 			name = AutomagicCoding;
 			productName = AutomagicCoding;
@@ -261,6 +296,24 @@
 			productReference = 6D6B98AE140E162700835E88 /* AutomagicCodingTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		FDB80CC3149D3089001E95AA /* AutomagicCodingTests AMC_NO_THROW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDB80CD8149D3089001E95AA /* Build configuration list for PBXNativeTarget "AutomagicCodingTests AMC_NO_THROW" */;
+			buildPhases = (
+				FDB80CC4149D3089001E95AA /* Sources */,
+				FDB80CD1149D3089001E95AA /* Frameworks */,
+				FDB80CD4149D3089001E95AA /* Resources */,
+				FDB80CD7149D3089001E95AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AutomagicCodingTests AMC_NO_THROW";
+			productName = AutomagicCodingTests;
+			productReference = FDB80CDB149D3089001E95AA /* AutomagicCodingTests copy.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -283,6 +336,7 @@
 			targets = (
 				6D6B988C140E162700835E88 /* AutomagicCoding */,
 				6D6B98AD140E162700835E88 /* AutomagicCodingTests */,
+				FDB80CC3149D3089001E95AA /* AutomagicCodingTests AMC_NO_THROW */,
 			);
 		};
 /* End PBXProject section */
@@ -307,10 +361,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDB80CD4149D3089001E95AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80CD5149D3089001E95AA /* InfoPlist.strings in Resources */,
+				FDB80CD6149D3089001E95AA /* AMCTestSimple.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		FD41F3DC1484E49700F9B341 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
+		};
+		FDB80CD7149D3089001E95AA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -355,13 +431,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDB80CC4149D3089001E95AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB80CC5149D3089001E95AA /* NSObject+AutomagicCoding.m in Sources */,
+				FDB80CC6149D3089001E95AA /* AMCTestSimple.m in Sources */,
+				FDB80CC7149D3089001E95AA /* Foo.m in Sources */,
+				FDB80CC8149D3089001E95AA /* Bar.m in Sources */,
+				FDB80CC9149D3089001E95AA /* FooWithCollections.m in Sources */,
+				FDB80CCA149D3089001E95AA /* AMCCollectionsTest.m in Sources */,
+				FDB80CCB149D3089001E95AA /* AMCTest.m in Sources */,
+				FDB80CCC149D3089001E95AA /* FooWithMutableCollections.m in Sources */,
+				FDB80CCD149D3089001E95AA /* FooWithSctructs.m in Sources */,
+				FDB80CCE149D3089001E95AA /* CCArray.m in Sources */,
+				FDB80CCF149D3089001E95AA /* FooWithCustomCollection.m in Sources */,
+				FDB80CD0149D3089001E95AA /* AMCExceptionsTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FD41F3DB1484E48C00F9B341 /* PBXTargetDependency */ = {
+		FDB80CEB149E095B001E95AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6D6B98AD140E162700835E88 /* AutomagicCodingTests */;
-			targetProxy = FD41F3DA1484E48C00F9B341 /* PBXContainerItemProxy */;
+			targetProxy = FDB80CEA149E095B001E95AA /* PBXContainerItemProxy */;
+		};
+		FDB80CED149E095B001E95AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDB80CC3149D3089001E95AA /* AutomagicCodingTests AMC_NO_THROW */;
+			targetProxy = FDB80CEC149E095B001E95AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -410,6 +510,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -437,6 +538,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -461,6 +563,8 @@
 				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = YES;
+				TEST_HOST = "";
+				TEST_RIG = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -477,6 +581,8 @@
 				INFOPLIST_FILE = "AutomagicCoding/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = YES;
+				TEST_HOST = "";
+				TEST_RIG = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -484,13 +590,14 @@
 		6D6B98C4140E162700835E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutomagicCoding.app/Contents/MacOS/AutomagicCoding";
+				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -498,13 +605,48 @@
 		6D6B98C5140E162700835E88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AutomagicCoding.app/Contents/MacOS/AutomagicCoding";
+				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		FDB80CD9149D3089001E95AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					AMC_NO_THROW,
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				PRODUCT_NAME = "AutomagicCodingTests copy";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FDB80CDA149D3089001E95AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutomagicCoding/AutomagicCoding-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = AMC_NO_THROW;
+				INFOPLIST_FILE = "AutomagicCodingTests/AutomagicCodingTests-Info.plist";
+				PRODUCT_NAME = "AutomagicCodingTests copy";
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -535,6 +677,15 @@
 			buildConfigurations = (
 				6D6B98C4140E162700835E88 /* Debug */,
 				6D6B98C5140E162700835E88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDB80CD8149D3089001E95AA /* Build configuration list for PBXNativeTarget "AutomagicCodingTests AMC_NO_THROW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDB80CD9149D3089001E95AA /* Debug */,
+				FDB80CDA149D3089001E95AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
