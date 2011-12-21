@@ -182,27 +182,19 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 
 - (NSArray *) AMCKeysForDictionaryRepresentation
 {
-    NSMutableArray *classes = [NSMutableArray arrayWithCapacity:10];
+    // Array that will hold properties names.
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity: 0];
+    
+    // Go through superClasses from self class to NSObject to get all inherited properties.
     id curClass = [self class];
-    while (1) {
-        if (curClass && curClass == [NSObject class])
-            break;
-        [classes addObject: curClass];
-        curClass = [curClass superclass];
-    }
-    
-    NSLog(@"%@", classes);
-    
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity: 10];
-    
-    NSEnumerator *classesReversed = [classes reverseObjectEnumerator];
-    for (id class in classesReversed)
-    {
+    while (1) 
+    {        
         // Use objc runtime to get all properties and return their names.
         unsigned int outCount;
-        objc_property_t *properties = class_copyPropertyList(class, &outCount);
+        objc_property_t *properties = class_copyPropertyList(curClass, &outCount);
         
-        for (int i = 0; i < outCount; ++i)
+        // Reverse order of curClass properties, cause we will return reversed array.
+        for (int i = outCount - 1; i >= 0; --i)
         {
             objc_property_t curProperty = properties[i];
             const char *name = property_getName(curProperty);
@@ -213,9 +205,19 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
         
         if (properties)
             free(properties);
+        
+        // Stop after NSObject, it's possible to add dynamic properties to NSObject,
+        // so we break from loop after getting NSObject's properties.
+        if (curClass && curClass == [NSObject class])
+            break;  
+        
+        // Next.
+        curClass = [curClass superclass];        
     }
     
-    return array;
+    id result = [[array reverseObjectEnumerator] allObjects];
+    
+    return result;
 }
 
 - (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey
