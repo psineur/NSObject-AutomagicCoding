@@ -189,6 +189,10 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     id curClass = [self class];
     while (1) 
     {        
+        // Stop on NSObject.
+        if (curClass && curClass == [NSObject class])
+            break;
+        
         // Use objc runtime to get all properties and return their names.
         unsigned int outCount;
         objc_property_t *properties = class_copyPropertyList(curClass, &outCount);
@@ -205,11 +209,6 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
         
         if (properties)
             free(properties);
-        
-        // Stop after NSObject, it's possible to add dynamic properties to NSObject,
-        // so we break from loop after getting NSObject's properties.
-        if (curClass && curClass == [NSObject class])
-            break;  
         
         // Next.
         curClass = [curClass superclass];        
