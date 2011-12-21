@@ -196,8 +196,14 @@ typedef enum
 #pragma mark Info for Serialization
 
 /** Returns array of keys, that will be used to create dictionary representation.
+ *
  * By default - uses list of all available properties in the object 
  * provided by Objective-C Runtime methods.
+ * All properties declared by superclasses are included. *
+ * Keys order: from NSObject's properties first, our object's properties last.
+ * Inside of each class order: exactly how they was declared - from top
+ * to bottom.
+ * 
  * You can expand it with your custom non-property ivars, by appending your own
  * keys to keys that were returned by [super AMCKeysForDictionaryRepresentation].  
  */
