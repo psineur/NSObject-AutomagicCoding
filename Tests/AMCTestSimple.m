@@ -297,4 +297,15 @@
     [newFoo release];
 }
 
+- (void) testAMCKeysForDictionaryRepresentation
+{
+    // Get AMC Keys.
+    BarBarBar *barbarbar = [[BarBarBar new] autorelease];
+    NSArray *keys = [barbarbar AMCKeysForDictionaryRepresentation];
+    
+    // Test that there's right amount of keys.
+    NSArray *expectedKeys = [NSArray arrayWithObjects:@"someString", @"someOtherString", @"thirdString", nil];
+    STAssertTrue([expectedKeys isEqual: keys], @"ExpectedKeys = %@, but got Keys = %@", expectedKeys, keys);
+}
+
 @end

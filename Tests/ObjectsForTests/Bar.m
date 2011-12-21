@@ -64,3 +64,17 @@
 }
 
 @end
+
+
+@implementation BarBar
+
+@synthesize someOtherString = _someOtherString;
+
+
+@end
+
+@implementation BarBarBar
+
+@synthesize thirdString = _thirdString;
+
+@end
