@@ -64,7 +64,7 @@ AMCKeysForDictionaryRepresentation
  -AMCKeysForDictionaryRepresentation returns NSArray of NSStrings, thar are passed to KVC methods
  to get & set fields of AMCEnabled objects.
  Default implementation returns complete set of all object properties (both readonly & readwrite),
- including properties declared by superclasses.
+ including properties declared by superclasses (NSObject's properties are not included).
  Reimplement this method to choose manually, what properties should be encoded/decoded by AMC.
  See tests in "Tests" folder for more info & usage examples.
  

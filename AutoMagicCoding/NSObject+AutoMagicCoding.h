@@ -200,9 +200,10 @@ typedef enum
  * By default - uses list of all available properties in the object 
  * provided by Objective-C Runtime methods.
  * All properties declared by superclasses are included. *
- * Keys order: from NSObject's properties first, our object's properties last.
+ * Keys order: from siperClasses properties first, our object's properties last.
  * Inside of each class order: exactly how they was declared - from top
  * to bottom.
+ * NSObject's properties are not included.
  * 
  * You can expand it with your custom non-property ivars, by appending your own
  * keys to keys that were returned by [super AMCKeysForDictionaryRepresentation].  
