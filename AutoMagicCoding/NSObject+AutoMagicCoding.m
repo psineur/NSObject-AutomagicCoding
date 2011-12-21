@@ -198,21 +198,21 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     NSEnumerator *classesReversed = [classes reverseObjectEnumerator];
     for (id class in classesReversed)
     {
-    // Use objc runtime to get all properties and return their names.
-    unsigned int outCount;
-    objc_property_t *properties = class_copyPropertyList(class, &outCount);
-    
-    for (int i = 0; i < outCount; ++i)
-    {
-        objc_property_t curProperty = properties[i];
-        const char *name = property_getName(curProperty);
+        // Use objc runtime to get all properties and return their names.
+        unsigned int outCount;
+        objc_property_t *properties = class_copyPropertyList(class, &outCount);
         
-        NSString *propertyKey = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-        [array addObject: propertyKey];        
-    }
-    
-    if (properties)
-        free(properties);
+        for (int i = 0; i < outCount; ++i)
+        {
+            objc_property_t curProperty = properties[i];
+            const char *name = property_getName(curProperty);
+            
+            NSString *propertyKey = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            [array addObject: propertyKey];        
+        }
+        
+        if (properties)
+            free(properties);
     }
     
     return array;
