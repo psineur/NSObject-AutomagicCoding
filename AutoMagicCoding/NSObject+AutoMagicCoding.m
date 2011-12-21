@@ -182,12 +182,26 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 
 - (NSArray *) AMCKeysForDictionaryRepresentation
 {
-    id class = [self class];
+    NSMutableArray *classes = [NSMutableArray arrayWithCapacity:10];
+    id curClass = [self class];
+    while (1) {
+        if (curClass && curClass == [NSObject class])
+            break;
+        [classes addObject: curClass];
+        curClass = [curClass superclass];
+    }
     
+    NSLog(@"%@", classes);
+    
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity: 10];
+    
+    NSEnumerator *classesReversed = [classes reverseObjectEnumerator];
+    for (id class in classesReversed)
+    {
     // Use objc runtime to get all properties and return their names.
     unsigned int outCount;
     objc_property_t *properties = class_copyPropertyList(class, &outCount);
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity: outCount];
+    
     for (int i = 0; i < outCount; ++i)
     {
         objc_property_t curProperty = properties[i];
@@ -199,6 +213,7 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     
     if (properties)
         free(properties);
+    }
     
     return array;
 }
