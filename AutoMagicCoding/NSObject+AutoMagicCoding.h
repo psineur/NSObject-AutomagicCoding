@@ -135,6 +135,19 @@ typedef enum
  */
 - (id) initWithDictionaryRepresentation: (NSDictionary *) aDict;
 
+/** Works similar to -initWithDictionary: but sets only one value, loaded from
+ * dictionary representation for given key.
+ *
+ * Can be very handy to load only some of values from dictionary representation
+ * to pass them to existing class init methods.
+ *
+ * Uses KVC setValue:forKey: method to set value.
+ *
+ * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
+ * Define AMC_NO_THROW to disable throwing exceptions by this method.
+ */
+- (void) loadValueForKey:(NSString *)key fromDictionaryRepresentation: (NSDictionary *) aDict;
+
 
 #pragma mark Encode/Save
 

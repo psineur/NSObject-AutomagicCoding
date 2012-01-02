@@ -134,6 +134,41 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     return self;
 }
 
+- (void) loadValueForKey:(NSString *)key fromDictionaryRepresentation: (NSDictionary *) aDict
+{
+    @try
+    {
+        if (aDict && key)
+        {
+            id value = [aDict valueForKey: key];
+            if (value)
+            {
+                AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
+                objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+                if ( kAMCFieldTypeStructure == fieldType)
+                {
+                    NSValue *structValue = [self AMCDecodeStructFromString: (NSString *)value withName: AMCPropertyStructName(property)];
+                    [self setValue: structValue forKey: key];
+                }
+                else
+                {
+                    id class = AMCPropertyClass(property);
+                    value = AMCDecodeObject(value, fieldType, class);
+                    [self setValue:value forKey: key];
+                }
+            }
+        }
+    }
+    
+    @catch (NSException *exception) {
+        
+#ifdef AMC_NO_THROW
+#else
+        @throw exception;
+#endif
+    }
+}
+
 #pragma mark Encode/Save
 
 - (NSDictionary *) dictionaryRepresentation
