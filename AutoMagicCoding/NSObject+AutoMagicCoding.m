@@ -24,8 +24,11 @@
 //  THE SOFTWARE.
 
 #import "NSObject+AutoMagicCoding.h"
+#import "CoreGraphics/CoreGraphics.h"
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+#import "UIKit/UIKit.h"
 
 #define NSPoint CGPoint
 #define NSSize CGSize
