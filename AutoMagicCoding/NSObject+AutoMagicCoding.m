@@ -187,7 +187,7 @@ NSString *const AMCKeyValueCodingFailureException = @"AMCKeyValueCodingFailureEx
             // Save our current isa, to restore it after using valueForKey:, cause
             // it can corrupt it sometimes (sic!), when getting ccColor3B struct via 
             // property/method. (Issue #19)
-            Class oldIsa = [self valueForKey:@"isa"];
+            Class oldIsa = isa;
             
             // Get value with KVC as usual.
             id value = [self valueForKey: key];
