@@ -178,40 +178,40 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 {
     NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
     NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count] + 1];
-       
+    
     
     @try
     {
-    for (NSString *key in keysForValues)
-    {
-        // Save our current isa, to restore it after using valueForKey:, cause
-        // it can corrupt it sometimes (sic!), when getting ccColor3B struct via 
-        // property/method. (Issue #19)
-        Class oldIsa = [self valueForKey:@"isa"];
-        
-        // Get value with KVC as usual.
-        id value = [self valueForKey: key];
-        
-        // Restore isa.
-        isa = oldIsa;
-        
-        AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
-        
-        if ( kAMCFieldTypeStructure == fieldType)
+        for (NSString *key in keysForValues)
         {
-            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
-            value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
-        }
-        else
-        {
-            value = AMCEncodeObject(value, fieldType);
+            // Save our current isa, to restore it after using valueForKey:, cause
+            // it can corrupt it sometimes (sic!), when getting ccColor3B struct via 
+            // property/method. (Issue #19)
+            Class oldIsa = [self valueForKey:@"isa"];
+            
+            // Get value with KVC as usual.
+            id value = [self valueForKey: key];
+            
+            // Restore isa.
+            isa = oldIsa;
+            
+            AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
+            
+            if ( kAMCFieldTypeStructure == fieldType)
+            {
+                objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+                value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
+            }
+            else
+            {
+                value = AMCEncodeObject(value, fieldType);
+            }
+            
+            // Scalar or struct - simply use KVC.                       
+            [aDict setValue:value forKey: key];
         }
         
-        // Scalar or struct - simply use KVC.                       
-        [aDict setValue:value forKey: key];
-    }
-    
-    [aDict setValue:[self className] forKey: kAMCDictionaryKeyClassName];
+        [aDict setValue:[self className] forKey: kAMCDictionaryKeyClassName];
     }
     @catch (NSException *exception) {
 #ifdef AMC_NO_THROW
