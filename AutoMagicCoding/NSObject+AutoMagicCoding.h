@@ -35,6 +35,8 @@
 extern NSString *const AMCEncodeException;
 /** Custom AMC NSException name for errors while decoding. */
 extern NSString *const AMCDecodeException;
+/** Custom AMC NSException name for detected KVC bugs. */
+extern NSString *const AMCKeyValueCodingFailureException;
 
 /** Object's fields types recoginzed by AMC. */
 typedef enum 

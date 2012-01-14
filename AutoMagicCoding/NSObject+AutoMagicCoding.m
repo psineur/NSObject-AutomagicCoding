@@ -60,6 +60,7 @@
 
 NSString *const AMCEncodeException = @"AMCEncodeException";
 NSString *const AMCDecodeException = @"AMCDecodeException";
+NSString *const AMCKeyValueCodingFailureException = @"AMCKeyValueCodingFailureException";
 
 @implementation NSObject (AutoMagicCoding)
 
@@ -179,7 +180,6 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
     NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count] + 1];
     
-    
     @try
     {
         for (NSString *key in keysForValues)
@@ -192,8 +192,21 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
             // Get value with KVC as usual.
             id value = [self valueForKey: key];
             
-            // Restore isa.
-            isa = oldIsa;
+            if (oldIsa != isa)
+            {
+#ifdef AMC_NO_THROW
+                NSLog(@"ATTENTION: isa was corrupted, valueForKey: %@ returned %@ It can be garbage!", key, value);
+                
+#else 
+                NSException *exception = [NSException exceptionWithName: AMCKeyValueCodingFailureException 
+                                                                 reason: [NSString stringWithFormat:@"ATTENTION: isa was corrupted, valueForKey: %@ returned %@ It can be garbage!", key, value]
+                                                               userInfo: nil ];
+                @throw exception;
+#endif
+                
+                // Restore isa.
+                isa = oldIsa;
+            }
             
             AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
             
