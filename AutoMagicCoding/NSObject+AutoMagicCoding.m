@@ -184,7 +184,16 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     {
     for (NSString *key in keysForValues)
     {
+        // Save our current isa, to restore it after using valueForKey:, cause
+        // it can corrupt it sometimes (sic!), when getting ccColor3B struct via 
+        // property/method.
+        Class oldIsa = [self valueForKey:@"isa"];
+        
+        // Get value with KVC as usual.
         id value = [self valueForKey: key];
+        
+        // Restore isa.
+        isa = oldIsa;
         
         AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
         
