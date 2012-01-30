@@ -176,6 +176,8 @@
     STAssertFalse([newFoo.publicBar isKindOfClass: [NSNumber class]], @"PublicBar is an NSNumber! THIS IS REALLY BAD!!!");   
 }
 
+// TODO: test exceptions in loadValueForKey:fromDictionaryRepresentation:
+
 @end
 
 @implementation BadClass
