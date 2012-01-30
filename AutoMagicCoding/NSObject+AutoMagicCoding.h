@@ -1,6 +1,7 @@
 //
 //  NSObject+AutoMagicCoding.h
 //  AutoMagicCoding
+// ( https://github.com/psineur/NSObject-AutomagicCoding/ )
 //
 //  31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -30,6 +31,9 @@
  * Used with NSClassFromString.
  */
 #define kAMCDictionaryKeyClassName @"class"
+
+/** Current version of AutoMagicCoding. */
+extern NSString *const AMCVersion; // = @"1.1"
 
 /** Custom AMC NSException name for errors while encoding. */
 extern NSString *const AMCEncodeException;
@@ -100,6 +104,7 @@ typedef enum
 #pragma mark - AutoMagicCoding Interface 
 
 /** @category AutoMagicCoding AMC Public Interface.
+ * @version 1.1
  */
 @interface NSObject (AutoMagicCoding)
 
@@ -147,6 +152,8 @@ typedef enum
  *
  * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
  * Define AMC_NO_THROW to disable throwing exceptions by this method.
+ *
+ * @since v1.1
  */
 - (void) loadValueForKey:(NSString *)key fromDictionaryRepresentation: (NSDictionary *) aDict;
 
