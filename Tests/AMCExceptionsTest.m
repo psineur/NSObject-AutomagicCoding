@@ -176,7 +176,42 @@
     STAssertFalse([newFoo.publicBar isKindOfClass: [NSNumber class]], @"PublicBar is an NSNumber! THIS IS REALLY BAD!!!");   
 }
 
-// TODO: test exceptions in loadValueForKey:fromDictionaryRepresentation:
+- (void) testLoadUnnecessaryKeyInDict
+{
+    // Prepare dictionary representation manually.
+    NSDictionary *dict = [[NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: @"Foobar", @"wrongString", nil]
+                                                      forKeys: [NSArray arrayWithObjects: kAMCDictionaryKeyClassName, @"wrongKeyThatDoesntExist", nil]
+                           ] retain];
+    
+    // Create object.
+    Foobar *foobar = [Foobar alloc];
+    
+    // Load unsupported key - don't crash when AMC_NO_THROW defined, crash in KVC-set when not defined.
+    
+#ifdef AMC_NO_THROW
+    
+    STAssertNoThrow([foobar loadValueForKey:@"wrongKeyThatDoesntExist" fromDictionaryRepresentation: dict], @"On AMC_NO_THROW AMC shouldn't throw exceptions in -loadValueForKey:fromDictionaryRepresentation:!");
+#else
+    
+    // Should crash on decoding from corrupted dictionary representation with NSInvalidArgumentException.
+    STAssertThrowsSpecificNamed([foobar loadValueForKey:@"wrongKeyThatDoesntExist" fromDictionaryRepresentation: dict], NSException, @"NSUnknownKeyException", @"");
+    
+#endif
+}
+
+- (void) testLoadNotPresentKey
+{
+    // Prepare dictionary representation without @"wrongKeyThatDoesntExist" key.
+    NSDictionary *dict = [[NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects: @"Foobar", nil]
+                                                      forKeys: [NSArray arrayWithObjects: kAMCDictionaryKeyClassName, nil]
+                           ] retain];
+    
+    // Create object.
+    Foobar *foobar = [Foobar alloc];
+    
+    // Load not present key - nothing happens.
+    STAssertNoThrow([foobar loadValueForKey:@"wrongKeyThatDoesntExist" fromDictionaryRepresentation: dict], @"On AMC_NO_THROW AMC shouldn't throw exceptions in -loadValueForKey:fromDictionaryRepresentation:!");
+}
 
 @end
 
