@@ -1,0 +1,14 @@
+
+1.1 - XX-Jan/Feb-2012   
+   * [NEW] Added -loadValueForKey:fromDictionaryRepresentation: method.
+   * [FIX] Default implementation of AMCKeysForDictionaryRepresentation returns complete set of all object's properties names, including properties declared by superclasses. ( Issue #15 )
+   * [FIX] Added Log, Workaround ( when AMC_NO_THROW defined) & Exception ( when AMC_NO_THROW not defined) on possible KVC failure/bug (Issue #19).
+   * [FIX] Fixed missed imports in NSObject+AutoMagicCoding.m, which may lead to inability to compile AMC as a part of libs (no compile error occurred, but AMC wasn't included in library).
+   
+1.0 - 18-Dec-2011
+   * Initial release with following features:
+      * Supported: Primitive & PLIST-compatible types, Custom Objects, Structs(Point/Rect/Size for Mac/iOS), Custom Structs, Collections, Custom class Collections.
+      * Ability to turn exceptions on/off (AMC_NO_THROW) .
+      * Mac / iOS Support.
+	
+	
