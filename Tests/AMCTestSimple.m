@@ -308,4 +308,66 @@
     STAssertTrue([expectedKeys isEqual: keys], @"ExpectedKeys = %@, but got Keys = %@", expectedKeys, keys);
 }
 
+// No additional ...InFile test needed, cause we use same objects and if other tests
+// pass - no need to test can these objects be saved to file or not.
+- (void) testLoadValueInMemory
+{
+    // Prepare objects for test with scalar, customObject, struct & customStruct.
+    Foo *foo = [Foo new];
+    foo.publicBar = [Bar new];//< Custom Object
+    foo.publicBar.someString = @"somestring";  //< Scalar in Custom Object.
+    foo.integerValue = 15; //< Scalar.
+    
+    FooWithSctructs *fooWithStructs = [FooWithSctructs new];
+    fooWithStructs.point = CGPointMake(156, 12.5f); // < Struct
+    CustomStruct custom = {26, 26.1f, 26.2, -9};
+    fooWithStructs.customStruct = custom;
+    
+    // Prepare dictionary representation of these objects.
+    NSDictionary *fooRepresentation = [foo dictionaryRepresentation];
+    NSDictionary *fooWithStructsRepresentation = [fooWithStructs dictionaryRepresentation];
+    
+    // Alloc new objects, that will be used to test -loadValueForKey:fromDictionaryRepresentation:
+    Foo *newFoo = [Foo alloc];
+    Bar *newBar = [Bar alloc]; //< will test how to create independent custom object from included custom object's representation.
+    FooWithSctructs *newFooWithStructs = [FooWithSctructs alloc];
+    
+    
+    // Load one value at time and test that other values aren't loaded.
+   
+    // IntegerValue - scalar.
+    STAssertFalse(newFoo.integerValue == 15, @"newFoo already has integerValue loaded, but it shouldn't!");
+    [newFoo loadValueForKey:@"integerValue" fromDictionaryRepresentation: fooRepresentation];
+    STAssertTrue(newFoo.integerValue == 15, @"newFoo.integerValue = %d", newFoo.integerValue);
+    
+    // PublicBar - Custom Object.
+    STAssertFalse(newFoo.publicBar != nil, @"Bar shouldn't be loaded at this step!");
+    [newFoo loadValueForKey:@"publicBar" fromDictionaryRepresentation:fooRepresentation];
+    STAssertNotNil(newFoo.publicBar, @"Bar should be loaded!");
+    STAssertTrue([newFoo.publicBar.someString isEqualToString: @"somestring"], @"newFoo.publicBar.someString = %@", newFoo.publicBar.someString);
+    
+    // PublicBar as independent object.
+    STAssertNil(newBar.someString, @"newBar.someString shouldn't be loaded at this step!");
+    NSDictionary *publicBarInFooDictionary = [fooRepresentation objectForKey:@"publicBar"];
+    [newBar loadValueForKey:@"someString" fromDictionaryRepresentation: publicBarInFooDictionary ];
+    STAssertTrue([newBar.someString isEqualToString: @"somestring"], @"newBar.someString = %@", newBar.someString);
+    
+    // CGPoint - non-custom structure.
+    STAssertFalse(CGPointEqualToPoint( newFooWithStructs.point, CGPointMake(156, 12.5f) ) , @"fooWithStructs.point shouldn't be loaded at this step!");
+    [newFooWithStructs loadValueForKey:@"point" fromDictionaryRepresentation: fooWithStructsRepresentation];
+    STAssertTrue(CGPointEqualToPoint( newFooWithStructs.point, CGPointMake(156, 12.5f) ) , @"fooWithStructs.point failed to load properly!");
+    
+    // CustomStruct.
+    STAssertFalse(newFooWithStructs.customStruct.ui == 26 , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    STAssertFalse(newFooWithStructs.customStruct.f == 26.1f , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    STAssertFalse(newFooWithStructs.customStruct.d == 26.2 , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    STAssertFalse(newFooWithStructs.customStruct.i == -9 , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    [newFooWithStructs loadValueForKey:@"customStruct" fromDictionaryRepresentation:fooWithStructsRepresentation];
+    
+    STAssertTrue(newFooWithStructs.customStruct.ui == 26 , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    STAssertTrue(newFooWithStructs.customStruct.f == 26.1f , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    STAssertTrue(newFooWithStructs.customStruct.d == 26.2 , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+    STAssertTrue(newFooWithStructs.customStruct.i == -9 , @"fooWithStructs.customStruct shouldn't be loaded at this step!");
+}
+
 @end
