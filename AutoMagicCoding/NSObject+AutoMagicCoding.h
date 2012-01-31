@@ -40,7 +40,7 @@ extern NSString *const AMCVersion; // = @"1.1"
 extern NSString *const AMCEncodeException;
 /** Custom AMC NSException name for errors while decoding. */
 extern NSString *const AMCDecodeException;
-/** Custom AMC NSException name for detected KVC bugs/failuers (see issue #19). */
+/** Custom AMC NSException name for detected KVC bugs/failures (see issue #19). */
 extern NSString *const AMCKeyValueCodingFailureException;
 
 /** Object's fields types recoginzed by AMC. */
@@ -217,7 +217,7 @@ typedef enum
  * @param structValue NSValue that holds structure to encode.
  *
  * @param structName Name of structure type to encode. 
- * In order to receive valud structName - your struct must be encoded/decoded
+ * In order to receive valid structName - your struct must be encoded/decoded
  * with name of it's property - not iVar name. (Issue #10)
  *
  * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
@@ -240,7 +240,7 @@ typedef enum
  * @param value NSString representation of structure.
  *
  * @param structName Name of structure type to decode.
- * In order to receive valud structName - your struct must be encoded/decoded
+ * In order to receive valid structName - your struct must be encoded/decoded
  * with name of it's property - not iVar name. (Issue #10)
  *
  * ATTENTION: Can throw exceptions - see README.md "Exceptions" part for details.
