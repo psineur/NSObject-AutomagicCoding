@@ -1,7 +1,7 @@
 //
 //  NSObject+AutoMagicCoding.m
 //  AutoMagicCoding
-// ( https://github.com/psineur/NSObject-AutomagicCoding/ )
+//  ( https://github.com/psineur/NSObject-AutomagicCoding/ )
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
