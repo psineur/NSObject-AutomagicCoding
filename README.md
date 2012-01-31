@@ -63,7 +63,8 @@ AMCKeysForDictionaryRepresentation
 
  -AMCKeysForDictionaryRepresentation returns NSArray of NSStrings, thar are passed to KVC methods
  to get & set fields of AMCEnabled objects.
- Default implementation returns complete set of all object properties (both readonly & readwrite).
+ Default implementation returns complete set of all object properties (both readonly & readwrite),
+ including properties declared by superclasses (NSObject's properties are not included).
  Reimplement this method to choose manually, what properties should be encoded/decoded by AMC.
  See tests in "Tests" folder for more info & usage examples.
  
@@ -114,6 +115,7 @@ Here's a list of bad things, that can happen with AMC:
 * __Encoding__ ( calling -dictionaryRepresentation )
    1. **Unsupported struct**: throws AMCEncodeException (See Custom Struct Support above).
    2. **Wrong keys in -AMCKeysForDictionaryRepresentation**: Throws NSUnkownKeyException.( Wrong key = no such property, ivar or method - see KVC programming guide for details).
+   3. **KVC bug/failure, when using -valueForKey: with method/property on struct with size that is not multiple of 4**: Throws AMCKeyValueCodingFailureException (Issue #19).
 * __Decoding__ ( calling +objectWithDictionaryRepresentation: & -initWithDictionaryRepresentation: )
    1. **Unsupported struct**: Throws AMCDecodeException (See Custom Struct Support above).
    2. **Mismatch between -AMCKeysForDictionaryRepresentation & Dictionary Representation Keys**: No exceptions gets thrown. Only intersect of keys in 
@@ -129,9 +131,10 @@ You can define AMC_NO_THROW to disable exceptions throw by following methods:
 
 * +objectWithDictionaryRepresentation:
 * -initWithDictionaryRepresentation:
+* -loadValueForKey:fromDictionaryRepresentation:
 * -dictionaryRepresentation   
 
-With AMC_NO_THROW defined they will simply return nil instead.   
+With AMC_NO_THROW defined they will simply return nil and/or do nothing instead.   
 -AMCDecodeStructFromString:withName: & -AMCEncodeStructWithValue:withName: can 
 throw exceptions even if AMC_NO_THROW is defined. Don't catch any exceptions in 
 your reimplementations of these methods - you don't need to call them directly, so AMC

@@ -1,6 +1,7 @@
 //
 //  NSObject+AutoMagicCoding.m
 //  AutoMagicCoding
+//  ( https://github.com/psineur/NSObject-AutomagicCoding/ )
 //
 //   31.08.11.
 //  Copyright 2011 Stepan Generalov.
@@ -26,6 +27,9 @@
 #import "NSObject+AutoMagicCoding.h"
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+
+#import "UIKit/UIKit.h"
+#import "CoreGraphics/CoreGraphics.h"
 
 #define NSPoint CGPoint
 #define NSSize CGSize
@@ -55,8 +59,10 @@
 
 #endif
 
+NSString *const AMCVersion = @"1.1";
 NSString *const AMCEncodeException = @"AMCEncodeException";
 NSString *const AMCDecodeException = @"AMCDecodeException";
+NSString *const AMCKeyValueCodingFailureException = @"AMCKeyValueCodingFailureException";
 
 @implementation NSObject (AutoMagicCoding)
 
@@ -134,37 +140,93 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
     return self;
 }
 
+- (void) loadValueForKey:(NSString *)key fromDictionaryRepresentation: (NSDictionary *) aDict
+{
+    @try
+    {
+        if (aDict && key)
+        {
+            id value = [aDict valueForKey: key];
+            if (value)
+            {
+                AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key];
+                objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+                if ( kAMCFieldTypeStructure == fieldType)
+                {
+                    NSValue *structValue = [self AMCDecodeStructFromString: (NSString *)value withName: AMCPropertyStructName(property)];
+                    [self setValue: structValue forKey: key];
+                }
+                else
+                {
+                    id class = AMCPropertyClass(property);
+                    value = AMCDecodeObject(value, fieldType, class);
+                    [self setValue:value forKey: key];
+                }
+            }
+        }
+    }
+    
+    @catch (NSException *exception) {
+        
+#ifdef AMC_NO_THROW
+#else
+        @throw exception;
+#endif
+    }
+}
+
 #pragma mark Encode/Save
 
 - (NSDictionary *) dictionaryRepresentation
 {
     NSArray *keysForValues = [self AMCKeysForDictionaryRepresentation];
     NSMutableDictionary *aDict = [NSMutableDictionary dictionaryWithCapacity:[keysForValues count] + 1];
-       
     
     @try
     {
-    for (NSString *key in keysForValues)
-    {
-        id value = [self valueForKey: key];
-        
-        AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
-        
-        if ( kAMCFieldTypeStructure == fieldType)
+        for (NSString *key in keysForValues)
         {
-            objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
-            value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
-        }
-        else
-        {
-            value = AMCEncodeObject(value, fieldType);
+            // Save our current isa, to restore it after using valueForKey:, cause
+            // it can corrupt it sometimes (sic!), when getting ccColor3B struct via 
+            // property/method. (Issue #19)
+            Class oldIsa = isa;
+            
+            // Get value with KVC as usual.
+            id value = [self valueForKey: key];
+            
+            if (oldIsa != isa)
+            {
+#ifdef AMC_NO_THROW
+                NSLog(@"ATTENTION: isa was corrupted, valueForKey: %@ returned %@ It can be garbage!", key, value);
+                
+#else 
+                NSException *exception = [NSException exceptionWithName: AMCKeyValueCodingFailureException 
+                                                                 reason: [NSString stringWithFormat:@"ATTENTION: isa was corrupted, valueForKey: %@ returned %@ It can be garbage!", key, value]
+                                                               userInfo: nil ];
+                @throw exception;
+#endif
+                
+                // Restore isa.
+                isa = oldIsa;
+            }
+            
+            AMCFieldType fieldType = [self AMCFieldTypeForValueWithKey: key]; 
+            
+            if ( kAMCFieldTypeStructure == fieldType)
+            {
+                objc_property_t property = class_getProperty([self class], [key cStringUsingEncoding:NSUTF8StringEncoding]);
+                value = [self AMCEncodeStructWithValue: value withName: AMCPropertyStructName(property)];
+            }
+            else
+            {
+                value = AMCEncodeObject(value, fieldType);
+            }
+            
+            // Scalar or struct - simply use KVC.                       
+            [aDict setValue:value forKey: key];
         }
         
-        // Scalar or struct - simply use KVC.                       
-        [aDict setValue:value forKey: key];
-    }
-    
-    [aDict setValue:[self className] forKey: kAMCDictionaryKeyClassName];
+        [aDict setValue:[self className] forKey: kAMCDictionaryKeyClassName];
     }
     @catch (NSException *exception) {
 #ifdef AMC_NO_THROW
@@ -182,25 +244,41 @@ NSString *const AMCDecodeException = @"AMCDecodeException";
 
 - (NSArray *) AMCKeysForDictionaryRepresentation
 {
-    id class = [self class];
+    // Array that will hold properties names.
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity: 0];
     
-    // Use objc runtime to get all properties and return their names.
-    unsigned int outCount;
-    objc_property_t *properties = class_copyPropertyList(class, &outCount);
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity: outCount];
-    for (int i = 0; i < outCount; ++i)
-    {
-        objc_property_t curProperty = properties[i];
-        const char *name = property_getName(curProperty);
+    // Go through superClasses from self class to NSObject to get all inherited properties.
+    id curClass = [self class];
+    while (1) 
+    {        
+        // Stop on NSObject.
+        if (curClass && curClass == [NSObject class])
+            break;
         
-        NSString *propertyKey = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-        [array addObject: propertyKey];        
+        // Use objc runtime to get all properties and return their names.
+        unsigned int outCount;
+        objc_property_t *properties = class_copyPropertyList(curClass, &outCount);
+        
+        // Reverse order of curClass properties, cause we will return reversed array.
+        for (int i = outCount - 1; i >= 0; --i)
+        {
+            objc_property_t curProperty = properties[i];
+            const char *name = property_getName(curProperty);
+            
+            NSString *propertyKey = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            [array addObject: propertyKey];        
+        }
+        
+        if (properties)
+            free(properties);
+        
+        // Next.
+        curClass = [curClass superclass];        
     }
     
-    if (properties)
-        free(properties);
+    id result = [[array reverseObjectEnumerator] allObjects];
     
-    return array;
+    return result;
 }
 
 - (AMCFieldType) AMCFieldTypeForValueWithKey: (NSString *) aKey

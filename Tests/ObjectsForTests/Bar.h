@@ -33,3 +33,23 @@
 @property(copy) NSString *someString;
 
 @end
+
+@interface BarBar : Bar {
+
+    NSString *_someOtherString;
+    
+}
+
+@property(copy) NSString *someOtherString;
+
+@end
+
+@interface BarBarBar : BarBar {
+    
+    NSString *_thirdString;
+    
+}
+
+@property(copy) NSString *thirdString;
+
+@end
