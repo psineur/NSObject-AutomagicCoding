@@ -83,6 +83,7 @@
 		6D6D28E21411608600B7EA19 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		FD8C3CE1149E366200FAA45D /* NSObject+AutoMagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoMagicCoding.h"; sourceTree = "<group>"; };
 		FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoMagicCoding.m"; sourceTree = "<group>"; };
+		FDA4D40F14D6DABA00B9AE2A /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "AutoMagicCoding-iOSTests copy.octest"; path = "AutoMagicCoding-iOSTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB80DBE149E300F001E95AA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FDB80DC1149E300F001E95AA /* AutoMagicCoding-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutoMagicCoding-iOS-Info.plist"; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				FDB80DBE149E300F001E95AA /* README.md */,
+				FDA4D40F14D6DABA00B9AE2A /* CHANGELOG */,
 				FD8C3CE0149E366200FAA45D /* AutoMagicCoding */,
 				FDB80DE6149E3010001E95AA /* Tests */,
 				FDB80DBF149E300F001E95AA /* SupportingFiles */,
