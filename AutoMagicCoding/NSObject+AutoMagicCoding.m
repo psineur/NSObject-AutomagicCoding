@@ -85,7 +85,7 @@ NSString *const AMCKeyValueCodingFailureException = @"AMCKeyValueCodingFailureEx
     Class rClass = NSClassFromString(className);
     if ( rClass && [rClass instancesRespondToSelector:@selector(initWithDictionaryRepresentation:) ] )
     {
-        id instance = [[[rClass alloc] initWithDictionaryRepresentation: aDict] autorelease];
+        id instance = [[rClass alloc] initWithDictionaryRepresentation: aDict];
         return instance;
     }
     
@@ -128,8 +128,6 @@ NSString *const AMCKeyValueCodingFailureException = @"AMCKeyValueCodingFailureEx
     }
     
     @catch (NSException *exception) {
-        [self release];
-        
 #ifdef AMC_NO_THROW
         return nil;
 #else
@@ -545,7 +543,6 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
             object = [object initWithArray: dstCollection];
             }
             @finally {
-                [object autorelease];
             }
             
             if (object)
@@ -582,7 +579,6 @@ id AMCDecodeObject (id value, AMCFieldType fieldType, id collectionClass )
             object = [object initWithDictionary: dstCollection];
             }
             @finally {
-                [object autorelease];
             }
             
             if (object)
