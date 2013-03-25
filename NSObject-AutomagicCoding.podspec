@@ -5,7 +5,5 @@ Pod::Spec.new do |s|
   s.summary  = 'Very easy to use NSCoding replacement for Mac and iOS Projects'
   s.homepage = 'https://github.com/psineur/NSObject-AutomagicCoding'
   s.source   = { :git => 'https://github.com/psineur/NSObject-AutomagicCoding.git', :tag => 'v1.1' }
-  s.platform = :ios
-  s.platform = :osx
   s.source_files = 'AutoMagicCoding/NSObject+AutoMagicCoding.{h,m}'
 end
