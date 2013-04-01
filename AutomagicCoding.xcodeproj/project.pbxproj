@@ -74,6 +74,7 @@
 		6D6B98CC140E2A3B00835E88 /* NSObject+AutoMagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoMagicCoding.h"; sourceTree = "<group>"; };
 		6D6B98CD140E2A3B00835E88 /* NSObject+AutoMagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoMagicCoding.m"; sourceTree = "<group>"; };
 		6DBAC62F17096CC100298BEB /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6DBAC6301709702800298BEB /* NSObject-AutomagicCoding.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "NSObject-AutomagicCoding.podspec"; sourceTree = "<group>"; };
 		FDA4D40D14D6D90200B9AE2A /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		FDB80CDB149D3089001E95AA /* AutomagicCodingTests-NO_THROW.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutomagicCodingTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB80D3E149E2AF8001E95AA /* AutomagicCoding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutomagicCoding-Info.plist"; sourceTree = "<group>"; };
@@ -146,8 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				FDCE7BF1148A97C9009A6DCB /* README.md */,
-				6DBAC62F17096CC100298BEB /* LICENSE */,
 				FDA4D40D14D6D90200B9AE2A /* CHANGELOG */,
+				6DBAC62F17096CC100298BEB /* LICENSE */,
+				6DBAC6301709702800298BEB /* NSObject-AutomagicCoding.podspec */,
 				6D6B9897140E162700835E88 /* AutoMagicCoding */,
 				FDB80D87149E2B5E001E95AA /* Tests */,
 				FDB80D2A149E2AF8001E95AA /* SupportingFiles */,
