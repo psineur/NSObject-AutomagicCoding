@@ -1,5 +1,8 @@
 
-1.1 - XX-Jan/Feb-2012   
+1.1.1 - 1-Apr-2013
+   * [NEW] Cocoapods support
+
+1.1 - 31-Jan-2012   
    * [NEW] Added -loadValueForKey:fromDictionaryRepresentation: method.
    * [FIX] Default implementation of AMCKeysForDictionaryRepresentation returns complete set of all object's properties names, including properties declared by superclasses. ( Issue #15 )
    * [FIX] Added Log, Workaround ( when AMC_NO_THROW defined) & Exception ( when AMC_NO_THROW not defined) on possible KVC failure/bug (Issue #19).
