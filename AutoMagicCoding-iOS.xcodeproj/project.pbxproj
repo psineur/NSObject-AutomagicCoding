@@ -84,7 +84,7 @@
 		FD8C3CE1149E366200FAA45D /* NSObject+AutoMagicCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AutoMagicCoding.h"; sourceTree = "<group>"; };
 		FD8C3CE2149E366200FAA45D /* NSObject+AutoMagicCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AutoMagicCoding.m"; sourceTree = "<group>"; };
 		FDA4D40F14D6DABA00B9AE2A /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
-		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "AutoMagicCoding-iOSTests copy.octest"; path = "AutoMagicCoding-iOSTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests-NO_THROW.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutoMagicCoding-iOSTests-NO_THROW.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB80DBE149E300F001E95AA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FDB80DC1149E300F001E95AA /* AutoMagicCoding-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AutoMagicCoding-iOS-Info.plist"; sourceTree = "<group>"; };
 		FDB80DC2149E300F001E95AA /* AutoMagicCoding-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AutoMagicCoding-iOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 			children = (
 				6D6D28B81411608600B7EA19 /* AutoMagicCoding-iOS.app */,
 				6D6D28E11411608600B7EA19 /* AutoMagicCoding-iOSTests.octest */,
-				FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */,
+				FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests-NO_THROW.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 			);
 			name = "AutoMagicCoding-iOSTests AMC_NO_THROW";
 			productName = "AutoMagicCoding-iOSTests";
-			productReference = FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests copy.octest */;
+			productReference = FDB80D16149E268F001E95AA /* AutoMagicCoding-iOSTests-NO_THROW.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -592,11 +592,13 @@
 		6D6D28F61411608600B7EA19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -604,11 +606,13 @@
 		6D6D28F71411608600B7EA19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-iOS/AutoMagicCoding-iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

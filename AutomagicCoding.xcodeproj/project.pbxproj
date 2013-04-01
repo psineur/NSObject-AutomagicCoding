@@ -565,6 +565,8 @@
 		6D6B98C1140E162700835E88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -573,6 +575,7 @@
 				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				TEST_AFTER_BUILD = YES;
 				TEST_HOST = "";
 				TEST_RIG = "";
@@ -583,6 +586,8 @@
 		6D6B98C2140E162700835E88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -591,6 +596,7 @@
 				GCC_PREFIX_HEADER = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Prefix.pch";
 				INFOPLIST_FILE = "SupportingFiles/SupportingFiles-Mac/AutomagicCoding-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				TEST_AFTER_BUILD = YES;
 				TEST_HOST = "";
 				TEST_RIG = "";
