@@ -13,9 +13,9 @@ Repo Contents
 * __AutoMagicCoding/__ - contains all AMC sources, that you need to import to your project.
 * __Tests/__ - contains all AMC Unit Tests sources.
    * __ObjectsForTests/__ - contains test classes, that are used in Unit Tests. Good examples how to use AMC.
-* __SupportingFiles/__ - XCode stuff (Info.plists, xibs, main.m, etc...)
-* AutoMagicCoding.xcodeproj - Mac XCode Project for testing AMC on Mac.
-* AutoMagicCoding-iOS.xcodeproj - iOS XCode Project for testing AMC on iOS.
+* __SupportingFiles/__ - Xcode stuff (Info.plists, xibs, main.m, etc...)
+* AutoMagicCoding.xcodeproj - Mac Xcode Project for testing AMC on Mac.
+* AutoMagicCoding-iOS.xcodeproj - iOS Xcode Project for testing AMC on iOS.
 * README.md - contains text that you're reading right now. ;)
 
 Supported properties types
@@ -39,7 +39,7 @@ They are test objects saved to PLIST files.
 Known Issues
 ==================
  * Structures can't be iVars - they must be used in AMC as properties (Issue #10) .
- * There's some troubles in XCode running Unit Tests on iOS. See Issue #9 for details.
+ * There's some troubles in Xcode running Unit Tests on iOS. See Issue #9 for details.
 
 How To Use
 ==================
